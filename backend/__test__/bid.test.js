@@ -56,7 +56,7 @@ describe('Post  /bid', () => {
     test('Place a Valid Bid', async () => {
         const response = await request(app).post('/api/bid').send({
             _id: products[0]._id,
-            current_bid: 1500,
+            new_bid: 1500,
         });
 
         expect(response.status).toBe(STATUS_OK);
@@ -70,7 +70,7 @@ describe('Post  /bid', () => {
     test('Bid Below Current Bid', async () => {
         const response = await request(app).post('/api/bid').send({
             _id: products[0]._id,
-            current_bid: 150,
+            new_bid: 150,
         });
 
         expect(response.status).toBe(STATUS_BAD_REQUEST);
@@ -82,7 +82,7 @@ describe('Post  /bid', () => {
     test('Bid on a Sold Item', async () => {
         const response = await request(app).post('/api/bid').send({
             _id: products[1]._id,
-            current_bid: 150,
+            new_bid: 150,
         });
 
         expect(response.status).toBe(STATUS_BAD_REQUEST);
@@ -92,7 +92,7 @@ describe('Post  /bid', () => {
     test('Bid with String', async () => {
         const response = await request(app).post('/api/bid').send({
             _id: products[1]._id,
-            current_bid: 'hundred dollars',
+            new_bid: 'hundred dollars',
         });
 
         expect(response.status).toBe(STATUS_BAD_REQUEST);
@@ -102,7 +102,7 @@ describe('Post  /bid', () => {
     test('Bid with negative', async () => {
         const response = await request(app).post('/api/bid').send({
             _id: products[1]._id,
-            current_bid: -100,
+            new_bid: -100,
         });
 
         expect(response.status).toBe(STATUS_BAD_REQUEST);
@@ -122,7 +122,7 @@ describe('Post  /bid', () => {
 
     test('Product ID is not provided.', async () => {
         const response = await request(app).post('/api/bid').send({
-            current_bid: 150,
+            new_bid: 150,
         });
 
         expect(response.status).toBe(STATUS_BAD_REQUEST);
@@ -132,7 +132,7 @@ describe('Post  /bid', () => {
     test('Bid with Special Characters', async () => {
         const response = await request(app).post('/api/bid').send({
             _id: '<script>alert(1)</script>',
-            current_bid: 150,
+            new_bid: 150,
         });
 
         expect(response.status).toBe(STATUS_BAD_REQUEST);
@@ -144,7 +144,7 @@ describe('Post  /bid', () => {
     test('Place a Bid on Item That Does Not Exist', async () => {
         const response = await request(app).post('/api/bid').send({
             _id: '60b1b4b3b3b3b3b3b3b3b3b3',
-            current_bid: 150,
+            new_bid: 150,
         });
 
         expect(response.status).toBe(STATUS_NOT_FOUND);

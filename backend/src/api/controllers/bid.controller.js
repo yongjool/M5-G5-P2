@@ -1,17 +1,17 @@
 const Product = require('../models/product');
 async function bid(req, res, next) {
     try {
-        const { _id, current_bid } = req.body;
+        const { _id, new_bid } = req.body;
 
-        // Check if productId or current_bid is missing
-        if (!_id || current_bid === undefined) {
+        // Check if productId or new_bid is missing
+        if (!_id || new_bid === undefined) {
             return res
                 .status(400)
                 .json({ error: 'Product ID and bid amount are required.' });
         }
 
-        // Ensure current_bid is a valid float
-        const bidValue = parseFloat(current_bid);
+        // Ensure new_bid is a valid float
+        const bidValue = parseFloat(new_bid);
         if (isNaN(bidValue) || bidValue <= 0) {
             return res.status(400).json({ error: 'Invalid bid amount.' });
         }
@@ -28,7 +28,7 @@ async function bid(req, res, next) {
         }
 
         // Check if the bid is below the current bid or start price
-        const currentPrice = product.current_bid || product.start_price;
+        const currentPrice = product.new_bid || product.start_price;
         if (bidValue <= currentPrice) {
             return res.status(400).json({
                 error: 'Bid amount must be higher than the current price.',
