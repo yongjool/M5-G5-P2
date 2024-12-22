@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
-const searchRoutes = require('./routes/search.routes.js');
+const apiRoutes = require('./routes/api.routes.js');
 const checkQueryLength = require('./middleware/checkQueryLength.js');
 const errorMiddleware = require('./middleware/errorMiddleware.js');
 
@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(checkQueryLength);
 
-app.use('/api', searchRoutes);
+app.use('/api', apiRoutes);
 
 app.use(errorMiddleware);
 

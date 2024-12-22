@@ -1,7 +1,5 @@
 const Product = require('../models/product');
 
-const MAX_QUERY_LENGTH = 1000;
-
 async function search(req, res, next) {
     const { query } = req.query;
 

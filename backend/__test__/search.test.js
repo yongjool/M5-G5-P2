@@ -9,7 +9,6 @@ const connectDB = require('../src/api/config/db.js');
 
 const STATUS_OK = 200;
 const STATUS_BAD_REQUEST = 400;
-const STATUS_INTERNAL_SERVER_ERROR = 500;
 
 // MongoMemoryServer instance
 let mongoServer;
@@ -119,7 +118,7 @@ describe('GET  /search', () => {
 
         expect(response.status).toBe(STATUS_BAD_REQUEST);
         expect(response.body.error).toBe(
-            'Invalid search query. Special characters are not allowed.',
+            'Invalid query. Special characters are not allowed.',
         );
     });
 

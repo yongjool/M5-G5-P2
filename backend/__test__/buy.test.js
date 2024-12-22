@@ -16,5 +16,4 @@ describe('Buy API', () => {
     test.todo('Buy Sold Item');
     test.todo('Buy an Item Below the Current Bid');
     test.todo('Buy with Special Characters');
-    test.todo('Database Connection Error Handling');
 });
