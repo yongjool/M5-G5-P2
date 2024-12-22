@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 
 const STATUS_OK = 200;
 const STATUS_BAD_REQUEST = 400;
+const STATUS_INTERNAL_SERVER_ERROR = 500;
 
 // MongoMemoryServer instance
 let mongoServer;
@@ -66,11 +67,102 @@ describe('GET  /search', () => {
         await runTestHelper(input, expectedStatus, expectedOutput);
     });
 
-    test.todo('Empty Search Query');
-    test.todo('Case Insensitive Search');
-    test.todo('Partial Match Search');
-    test.todo('No Matching Results');
-    test.todo('Invalid Search Query');
-    test.todo('Database Connection Error Handling');
-    test.todo('Search with Special Characters');
+    test('Empty Search Query return whole list', async () => {
+        const input = { query: '' };
+        const expectedOutput = [];
+        const expectedStatus = STATUS_OK;
+
+        await runTestHelper(input, expectedStatus, expectedOutput);
+    });
+
+    test('No Search Query return whole list', async () => {
+        const input = {};
+        const expectedOutput = [];
+        const expectedStatus = STATUS_OK;
+
+        await runTestHelper(input, expectedStatus, expectedOutput);
+    });
+
+    test('Case Insensitive Search', async () => {
+        const input = { query: 'LApToP' };
+        const expectedOutput = [
+            {
+                title: 'laptop',
+            },
+        ];
+        const expectedStatus = STATUS_OK;
+
+        await runTestHelper(input, expectedStatus, expectedOutput);
+    });
+
+    test('Partial Match Search', async () => {
+        const input = { query: 'top' };
+        const expectedOutput = [];
+        const expectedStatus = STATUS_BAD_REQUEST;
+
+        await runTestHelper(input, expectedStatus, expectedOutput);
+    });
+
+    test('No Matching Results', async () => {
+        const input = { query: 'hahaha' };
+        const expectedOutput = [];
+        const expectedStatus = STATUS_OK;
+
+        await runTestHelper(input, expectedStatus, expectedOutput);
+    });
+
+    test('Invalid Search Query - null', async () => {
+        const input = { query: 'null' };
+        const expectedOutput = {
+            error: 'Invalid query value - query value is null',
+        };
+        const expectedStatus = STATUS_BAD_REQUEST;
+
+        await runTestHelper(input, expectedStatus, expectedOutput);
+    });
+
+    test('Invalid Search Query - special characters', async () => {
+        const input = { query: "<script>alert('test')</script>" };
+        const expectedOutput = {
+            error: 'Invalid query value - query value contains special characters',
+        };
+        const expectedStatus = STATUS_BAD_REQUEST;
+
+        await runTestHelper(input, expectedStatus, expectedOutput);
+    });
+
+    test('Invalid Search Query - Invalid Query Parameter Format', async () => {
+        const input = { product: 'laptop' };
+        const expectedOutput = {
+            error: 'Invalid query value - query value is missing',
+        };
+        const expectedStatus = STATUS_BAD_REQUEST;
+
+        await runTestHelper(input, expectedStatus, expectedOutput);
+    });
+
+    test('Invalid Search Query - too long', async () => {
+        const longQuery = 'a'.repeat(1001); // 1001 characters long query
+        const input = { query: longQuery };
+        const expectedOutput = {
+            error: 'Invalid query value - query value is too long',
+        };
+        const expectedStatus = STATUS_BAD_REQUEST;
+
+        await runTestHelper(input, expectedStatus, expectedOutput);
+    });
+
+    test('Database Connection Error Handling', async () => {
+        await mongoose.connection.dropDatabase();
+        await mongoose.connection.close();
+        await mongoServer.stop();
+
+        const input = { query: 'laptop' };
+        const expectedOutput = {
+            error: 'Cannot connect to the database',
+        };
+        const expectedStatus = STATUS_INTERNAL_SERVER_ERROR;
+
+        await runTestHelper(input, expectedStatus, expectedOutput);
+    });
 });
