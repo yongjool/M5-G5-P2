@@ -18,7 +18,7 @@ async function add(title, description, start_price, reserve_price) {
         });
         console.log(
             chalk.yellowBright(
-                `Item added _id: ${newProduct._id}, ${newProduct.title} , ${newProduct.description} , $${newProduct.start_price}, $${newProduct.reserve_price}`,
+                `Item added _id: ${newProduct._id}, ${newProduct.title} , ${newProduct.description} , $${newProduct.start_price}`,
             ),
         );
 

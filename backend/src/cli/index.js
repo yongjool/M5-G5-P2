@@ -19,9 +19,8 @@ program
     .requiredOption('-t, --title <title>', 'Title of the auction item')
     .requiredOption('-d, --description <description>', 'Description of the auction item')
     .requiredOption('-s, --start_price <start_price>', 'Starting price of the auction item', (val) => parseFloat(val))
-    .requiredOption('-r, --reserve_price <reserve_price>', 'Reserve price of the auction item', (val) => parseFloat(val))
     .action((options) => {
-        add(options.title, options.description, options.start_price, options.reserve_price);
+        add(options.title, options.description, options.start_price);
     });
 
 program.parse(); // This line is important. It tells commander to parse the arguments and execute the appropriate command.
