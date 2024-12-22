@@ -1,7 +1,9 @@
 const { Router } = require('express');
-const { searchByKeyword } = require('../controllers/search.controller.js');
+const { search } = require('../controllers/search.controller.js');
+
+const sanitizeQuery = require('../middleware/sanitizeQuery');
 const router = Router();
 
-router.get('/search', searchByKeyword);
+router.get('/search', sanitizeQuery, search);
 
 module.exports = router;

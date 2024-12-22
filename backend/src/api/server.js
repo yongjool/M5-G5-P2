@@ -1,4 +1,5 @@
 const app = require('./app');
+const connectDB = require('./config/db');
 
 // Export the app (for testing)
 module.exports = app;
@@ -8,6 +9,9 @@ const PORT = process.env.PORT || 4000;
 
 // Start the server only if this file is run directly
 if (require.main === module) {
+    // Initialize MongoDB connection
+    connectDB(process.env.MONGO_URI);
+
     app.listen(PORT, () => {
         console.log(`Server is live at http://localhost:${PORT}`);
     }).on('error', (error) => {

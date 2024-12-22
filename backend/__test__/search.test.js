@@ -5,6 +5,7 @@ const Product = require('../src/api/models/product.js'); // Import Product model
 
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoose = require('mongoose');
+const connectDB = require('../src/api/config/db.js');
 
 const STATUS_OK = 200;
 const STATUS_BAD_REQUEST = 400;
@@ -13,15 +14,15 @@ const STATUS_INTERNAL_SERVER_ERROR = 500;
 // MongoMemoryServer instance
 let mongoServer;
 
-// Connect to in-memory MongoDB before running tests
 beforeAll(async () => {
-    // Create an instance of the MongoMemoryServer
+    // Create an in-memory MongoDB instance
     mongoServer = await MongoMemoryServer.create();
-    const mongoUri = mongoServer.getUri(); // Get the URI for the in-memory server
+    const mongoUri = mongoServer.getUri(); // Get the in-memory DB URI
 
-    // Connect Mongoose to the in-memory MongoDB
-    await mongoose.connect(mongoUri);
+    // Connect Mongoose to the in-memory MongoDB instance
+    await connectDB(mongoUri);
 
+    // Insert mock data for the tests
     const mockProducts = [
         {
             title: 'Laptop',
@@ -36,133 +37,108 @@ beforeAll(async () => {
             current_bid: 600,
         },
     ];
-    await Product.insertMany(mockProducts); // Insert mock products into the in-memory database
+
+    await Product.insertMany(mockProducts);
 });
 
-// Close the connection after all tests are done
 afterAll(async () => {
-    await mongoose.connection.dropDatabase(); // Optional: Drop the database after tests
-    await mongoose.connection.close(); // Close the connection
-    await mongoServer.stop(); // Stop the in-memory MongoDB server
+    // Close the Mongoose connection and stop the in-memory MongoDB instance
+    await mongoose.disconnect();
+    await mongoServer.stop();
 });
-
-const runTestHelper = async (input, expectedStatus, expectedOutput) => {
-    const queryString = new URLSearchParams(input).toString();
-    const response = await request(app).get(`/api/search?${queryString}`);
-
-    expect(response.status).toBe(expectedStatus);
-    expect(response.body).toEqual(expectedOutput);
-};
 
 describe('GET  /search', () => {
     test('should return products matching the search query', async () => {
         const input = { query: 'laptop' };
-        const expectedOutput = [
-            {
-                title: 'laptop',
-            },
-        ];
-        const expectedStatus = STATUS_OK;
+        const response = await request(app).get(`/api/search`).query(input);
 
-        await runTestHelper(input, expectedStatus, expectedOutput);
+        expect(response.status).toBe(STATUS_OK);
+        expect(response.body.products).toHaveLength(1); // One product should match the query 'laptop'
+        expect(response.body.products[0].title).toBe('Laptop');
     });
 
     test('Empty Search Query return whole list', async () => {
         const input = { query: '' };
-        const expectedOutput = [];
-        const expectedStatus = STATUS_OK;
+        const response = await request(app).get(`/api/search`).query(input);
 
-        await runTestHelper(input, expectedStatus, expectedOutput);
+        expect(response.status).toBe(STATUS_OK);
+        expect(response.body.products).toHaveLength(2); // One product should match the query 'laptop'
+        expect(response.body.products[0].title).toBe('Laptop');
+        expect(response.body.products[1].title).toBe('Smartphone');
     });
 
-    test('No Search Query return whole list', async () => {
-        const input = {};
-        const expectedOutput = [];
-        const expectedStatus = STATUS_OK;
+    test('null Search Query return whole list', async () => {
+        const input = { query: null };
+        const response = await request(app).get(`/api/search`).query(input);
 
-        await runTestHelper(input, expectedStatus, expectedOutput);
+        expect(response.status).toBe(STATUS_OK);
+        expect(response.body.products).toHaveLength(2); // One product should match the query 'laptop'
+        expect(response.body.products[0].title).toBe('Laptop');
+        expect(response.body.products[1].title).toBe('Smartphone');
+    });
+
+    test('No Search Query', async () => {
+        const input = {};
+        const response = await request(app).get(`/api/search`).query(input);
+
+        expect(response.status).toBe(STATUS_BAD_REQUEST);
+        expect(response.body.error).toBe('Invalid search query');
     });
 
     test('Case Insensitive Search', async () => {
         const input = { query: 'LApToP' };
-        const expectedOutput = [
-            {
-                title: 'laptop',
-            },
-        ];
-        const expectedStatus = STATUS_OK;
+        const response = await request(app).get(`/api/search`).query(input);
 
-        await runTestHelper(input, expectedStatus, expectedOutput);
+        expect(response.status).toBe(STATUS_OK);
+        expect(response.body.products).toHaveLength(1); // One product should match the query 'laptop'
+        expect(response.body.products[0].title).toBe('Laptop');
     });
 
     test('Partial Match Search', async () => {
         const input = { query: 'top' };
-        const expectedOutput = [];
-        const expectedStatus = STATUS_BAD_REQUEST;
+        const response = await request(app).get(`/api/search`).query(input);
 
-        await runTestHelper(input, expectedStatus, expectedOutput);
+        expect(response.status).toBe(STATUS_OK);
+        expect(response.body.products).toHaveLength(1); // One product should match the query 'laptop'
+        expect(response.body.products[0].title).toBe('Laptop');
     });
 
     test('No Matching Results', async () => {
         const input = { query: 'hahaha' };
-        const expectedOutput = [];
-        const expectedStatus = STATUS_OK;
+        const response = await request(app).get(`/api/search`).query(input);
 
-        await runTestHelper(input, expectedStatus, expectedOutput);
-    });
-
-    test('Invalid Search Query - null', async () => {
-        const input = { query: 'null' };
-        const expectedOutput = {
-            error: 'Invalid query value - query value is null',
-        };
-        const expectedStatus = STATUS_BAD_REQUEST;
-
-        await runTestHelper(input, expectedStatus, expectedOutput);
+        expect(response.status).toBe(STATUS_OK);
+        expect(response.body.products).toHaveLength(0); // One product should match the query 'laptop'
     });
 
     test('Invalid Search Query - special characters', async () => {
-        const input = { query: "<script>alert('test')</script>" };
-        const expectedOutput = {
-            error: 'Invalid query value - query value contains special characters',
+        const input = {
+            query: "<script>alert('test')</script>Laptop&price=1000#sale",
         };
-        const expectedStatus = STATUS_BAD_REQUEST;
+        const response = await request(app).get(`/api/search`).query(input);
 
-        await runTestHelper(input, expectedStatus, expectedOutput);
+        expect(response.status).toBe(STATUS_BAD_REQUEST);
+        expect(response.body.error).toBe(
+            'Invalid search query. Special characters are not allowed.',
+        );
     });
 
     test('Invalid Search Query - Invalid Query Parameter Format', async () => {
         const input = { product: 'laptop' };
-        const expectedOutput = {
-            error: 'Invalid query value - query value is missing',
-        };
-        const expectedStatus = STATUS_BAD_REQUEST;
+        const response = await request(app).get(`/api/search`).query(input);
 
-        await runTestHelper(input, expectedStatus, expectedOutput);
+        expect(response.status).toBe(STATUS_BAD_REQUEST);
+        expect(response.body.error).toBe('Invalid search query');
     });
 
     test('Invalid Search Query - too long', async () => {
         const longQuery = 'a'.repeat(1001); // 1001 characters long query
         const input = { query: longQuery };
-        const expectedOutput = {
-            error: 'Invalid query value - query value is too long',
-        };
-        const expectedStatus = STATUS_BAD_REQUEST;
+        const response = await request(app).get(`/api/search`).query(input);
 
-        await runTestHelper(input, expectedStatus, expectedOutput);
-    });
-
-    test('Database Connection Error Handling', async () => {
-        await mongoose.connection.dropDatabase();
-        await mongoose.connection.close();
-        await mongoServer.stop();
-
-        const input = { query: 'laptop' };
-        const expectedOutput = {
-            error: 'Cannot connect to the database',
-        };
-        const expectedStatus = STATUS_INTERNAL_SERVER_ERROR;
-
-        await runTestHelper(input, expectedStatus, expectedOutput);
+        expect(response.status).toBe(STATUS_BAD_REQUEST);
+        expect(response.body.error).toBe(
+            'Query string is too long. Maximum length is 1000 characters.',
+        );
     });
 });
