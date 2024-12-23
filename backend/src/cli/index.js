@@ -1,6 +1,15 @@
 #! /usr/bin/env node
 
-require('dotenv').config();
+// Require necessary modules
+const path = require('path');
+const dotenv = require('dotenv');
+
+// Resolve the root directory (adjust path if needed)
+const rootPath = path.resolve(__dirname, '../../'); // Adjust to your root folder relative to index.js
+
+// Load the .env file from the root directory
+dotenv.config({ path: path.resolve(rootPath, '.env') });
+
 const { Command } = require('commander');
 const program = new Command();
 
