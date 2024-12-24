@@ -6,8 +6,6 @@
 
 ## About The Project
 
-Task 5: Seed Auction Data into MongoDB
-
 Create an application based on the version of prototype design you received from UX Designers at the end of Phase 1.  
 Your application will need to use a MongoDB backend.
 
