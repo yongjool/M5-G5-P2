@@ -1,0 +1,92 @@
+.searchContainer {
+    display: flex;
+    width: 100%;
+    background-image: url('../../../assets/searchBG.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.searchBody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 800px;
+    max-width: 1280px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin-bottom: 48px;
+}
+
+.textItem {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #e7b2da;
+    padding: 1px 12px;
+}
+
+.emptyBox {
+    display: flex;
+    flex: 1;
+    border: 1px solid red;
+}
+
+/* Text Input */
+.inputContainer {
+    display: flex;
+    width: 70%;
+    height: 56px;
+    min-width: 784px;
+    padding: 1px 12px;
+}
+
+.imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 12px;
+    width: 30px;
+    height: auto;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 1px solid rgred;
+}
+
+.inputBody {
+    display: flex;
+    width: 100%;
+    min-width: 780px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 3px 3px;
+}
+
+.textInput {
+    padding-left: 32px; /* Give space for the icon */
+    padding: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    flex: 1; /* Make it grow to take available space */
+}
+
+/* Button */
+.button {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    width: 107px;
+    color: #ffffff;
+    background-color: #0076bc;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.button:hover {
+    background-color: #528ee1;
+}

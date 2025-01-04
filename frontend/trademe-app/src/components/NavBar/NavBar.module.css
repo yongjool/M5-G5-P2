@@ -1,0 +1,129 @@
+.navbar {
+    display: flex;
+    flex-direction: column;
+}
+
+.topNavContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 1px;
+}
+
+.emptyBox {
+    display: flex;
+    flex: 1;
+    border: 1px solid red;
+}
+
+.NavBodyContainer {
+    display: flex;
+    width: 100%;
+    min-width: 800px;
+    max-width: 1280px;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+.topLeftNavContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 85%;
+    margin-right: 72px;
+}
+
+.topRightNavContainer {
+    display: flex;
+    margin-left: auto;
+    padding: 1px 16px;
+    gap: 20px;
+    width: 15%;
+    justify-content: flex-end;
+}
+
+.topItem {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+}
+
+/* bottom nav bar */
+.BottomNavContainer {
+    display: flex;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.logoContainer {
+    display: flex;
+    width: 170px;
+    padding: 1px 12px;
+}
+
+.logoContainer img {
+    transform: scale(0.5); /* Scale the image to 80% of its original size */
+    transform-origin: left; /* Ensure the scaling is from the center */
+}
+
+.browseContainer {
+    display: flex;
+    width: 35%;
+    padding: 1px 40px;
+}
+
+.browseItem {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.bottomRightNavContainer {
+    display: flex;
+    width: 45%;
+    padding: 1px 12px;
+    justify-content: space-between;
+}
+
+.iconContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconContainer img {
+    width: auto; /* Keep the original width */
+    height: auto; /* Keep the original height */
+    max-width: none; /* Disable any maximum width constraints */
+    max-height: none; /* Disable any maximum height constraints */
+    font-size: 12px;
+}
+
+.bottomItemContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bottomItem {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+    .bottomItemContainer {
+        flex-direction: column;
+    }
+    .iconContainer {
+        order: 1;
+    }
+    .bottomItem {
+        order: 2;
+    }
+}

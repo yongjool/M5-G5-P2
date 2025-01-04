@@ -1,0 +1,26 @@
+.body {
+    display: flex;
+    width: 100%;
+    position: relative;
+    top: -28px;
+    z-index: 1;
+}
+
+.emptyBox {
+    display: flex;
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid red;
+}
+
+.mainBodyContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 800px;
+    max-width: 1280px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin-bottom: 48px;
+    border: 1px solid gold;
+}
