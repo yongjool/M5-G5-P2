@@ -1,0 +1,25 @@
+.CategoriesCards {
+    display: flex;
+    width: 100%;
+
+    margin-top: 20px;
+    height: 116px;
+}
+
+.emptyBox {
+    display: flex;
+    flex: 1;
+    min-width: 20px;
+    border: 1px solid red;
+}
+
+.CategoriesCardsContainer {
+    display: flex;
+    justify-content: space-between;
+
+    min-width: 760px;
+    max-width: 1200px;
+    width: 100%;
+
+    gap: 32px;
+}

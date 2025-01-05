@@ -1,0 +1,90 @@
+.AuctionCardsBody {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid red;
+}
+
+.ImgContainer {
+    display: flex;
+    height: 70%;
+    position: relative; /* Enables stacking elements within the container */
+
+    justify-content: center; /* Centers the original image horizontally */
+}
+.bgImage {
+    position: relative;
+    width: 100%; /* Fits the container's width */
+    height: 100%; /* Fits the container's height */
+    z-index: 1; /* Background layer */
+}
+
+.iconImage {
+    position: absolute; /* Keeps the image on top */
+    z-index: 2; /* Foreground layer */
+    width: auto; /* Maintains the original width */
+    height: auto; /* Maintains the original height */
+    max-width: 100%; /* Prevents overflow if the original image is too large */
+    right: 0;
+}
+.iconImage:hover {
+    filter: brightness(1.1);
+}
+
+.TextContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height */
+    justify-content: space-between; /* Push one container to the top and the other to the bottom */
+
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+
+    padding: 8px;
+    height: 30%;
+}
+
+.TopTextContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.BottomTextContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.SubTextContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Text {
+    display: flex;
+
+    padding: 4px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #44413d;
+}
+
+.SubText {
+    display: flex;
+
+    padding: 4px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #b9b7c1;
+}

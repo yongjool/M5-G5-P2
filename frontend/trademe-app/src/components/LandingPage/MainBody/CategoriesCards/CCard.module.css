@@ -1,0 +1,35 @@
+.CategoriesCardsBody {
+    display: flex;
+    flex-direction: column;
+    background-color: #c64a3d;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+
+    height: 100%;
+    justify-content: center;
+
+    border-radius: 12px;
+    border: 1px solid red;
+}
+
+.CategoriesCardsText {
+    display: flex;
+
+    padding: 4px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.CategoriesCardsSubText {
+    display: flex;
+
+    padding: 4px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #ffffff;
+}

@@ -1,5 +1,6 @@
-.body {
+.mainbody {
     display: flex;
+    flex-direction: column;
     width: 100%;
     position: relative;
     top: -28px;
@@ -9,18 +10,50 @@
 .emptyBox {
     display: flex;
     flex: 1;
-    background-color: rgba(0, 0, 0, 0);
+    min-width: 20px;
     border: 1px solid red;
 }
 
-.mainBodyContainer {
+/*header titles*/
+
+.title {
+    display: flex;
+    width: 100%;
+    margin-top: 42px;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    min-width: 760px;
+    max-width: 1200px;
+}
+
+.headerBody {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    min-width: 800px;
-    max-width: 1280px;
-    flex-grow: 0;
+    align-items: flex-start;
+    flex-grow: 1;
     flex-shrink: 1;
-    margin-bottom: 48px;
-    border: 1px solid gold;
+    flex-basis: 0;
+}
+
+.header {
+    display: flex;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #44413d;
+}
+
+.subHeader {
+    display: flex;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #b9b7c1;
 }
