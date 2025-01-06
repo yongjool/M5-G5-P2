@@ -1,4 +1,68 @@
 import styles from "./ListingPage.module.css";
+import Header from "../components/Header/Header";
+import Navbar from "../components/Navigation/Navbar";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
+
+interface Listing {
+  title: string;
+  seller: user;
+  pageViews: number;
+  id: string;
+  watchlistCount: number;
+  listingTitle: string;
+  bids: Bid[];
+  highestBid: () => Bid | null;
+  viewCount: number;
+}
+
+interface user {
+  id: string;
+  name: string;
+  createdAt: Date;
+  profilePic: string;
+  rating: string;
+  totalRatings: number;
+  location: string;
+}
+interface Bid {
+  amount: number;
+  bidderName: string;
+  placedAt: Date;
+  id: string;
+  listingId: string;
+}
+
+const bid: Bid = {
+  amount: 100,
+  bidderName: "TradeMeGuy7",
+  placedAt: new Date(),
+  id: "1234567890",
+  listingId: "1234567890",
+};
+
+const listing: Listing = {
+  title: "Computer Monitor",
+  seller: {
+    id: "1234567890",
+    name: "TradeMeGuy7",
+    createdAt: new Date(),
+    profilePic: "seller profile pic",
+    rating: "99.87",
+    totalRatings: 1234,
+    location: "Miramar, Wellington",
+  },
+  pageViews: 1234,
+  id: "1234567890",
+  watchlistCount: 123,
+  listingTitle: "Computer Monitor",
+  highestBid: function () {
+    return this.bids.reduce((previous, current) =>
+      previous.amount > current.amount ? previous : current
+    );
+  },
+  bids: [bid],
+  viewCount: 1234,
+};
 
 const ListingPage: React.FC = () => {
   const handlePlaceBid = () => {
@@ -13,41 +77,21 @@ const ListingPage: React.FC = () => {
     // set up logic for making an offer;
   };
 
-  const sellerName = "TradeMeGuy7";
-  const sellerAccountCreationDate = "Friday, 1 January 2000";
-  const sellerProfilePic = "seller profile pic";
-  const sellerRating = 99.87;
-  const sellerTotalRatings = 1234;
-  const sellerLocation = "Miramar, Wellington";
-  const pageViews = 1234;
-  const listingNumber = 1234567890;
-  const currentPrice = 1234.56;
-  const watchlistCount = 123;
-  const listingTitle = "Computer Monitor";
-
   return (
     <div className={styles.listingPage}>
       <header className={styles.header}>
-        <div>Logo PH</div>
-        <div>Search icon</div>
-        <div>Watchlist</div>
-        <div>Profile icon</div>
+        <Header />
+        <Navbar />
       </header>
-      <div className={styles.navigation}>
-        <div>Broswe Marketplace</div>
-        <div>List an item</div>
-      </div>
-      <div className={styles.breadcrumbs}>
-        Navigation / path / to / items / Laptops & PC's
-      </div>
+      <Breadcrumbs />
 
       <div className={styles.listingDetails}>
         <div>Listing description</div>
-        <h2>{listingTitle}</h2>
+        <h2>{listing.title}</h2>
       </div>
       <div className={styles.bidContainer}>
         <div>Starting price</div>
-        <h2>${currentPrice}</h2>
+        <h2>${listing.highestBid()?.amount}</h2>
         <button
           className={`${styles.blue} ${styles.lrgBtn}`}
           onClick={handlePlaceBid}
@@ -78,21 +122,21 @@ const ListingPage: React.FC = () => {
           Add to Watchlist
         </button>
         <div className={styles.watchlistCount}>
-          {watchlistCount} others watchlisted
+          {listing.watchlistCount} others watchlisted
         </div>
       </div>
       <div className={styles.sellerProfileContainer}>
         <div className={styles.sellerProfilePic}>
-          <img src={sellerProfilePic} alt="seller profile pic" />
+          <img src={listing.seller.profilePic} alt="seller profile pic" />
         </div>
         <div className={styles.sellerProfileText}>
           <div>
             <a>
-              {sellerName} ({sellerTotalRatings})
+              {listing.seller.name} ({listing.seller.totalRatings})
             </a>
           </div>
-          <div>{sellerRating}% positive feedback</div>
-          <div>Seller located in {sellerLocation}</div>
+          <div>{listing.seller.rating}% positive feedback</div>
+          <div>Seller located in {listing.seller.location}</div>
         </div>
       </div>
       <div className={styles.productAtGlanceContainer}></div>
@@ -124,19 +168,20 @@ const ListingPage: React.FC = () => {
       </div>
       <div className={styles.aboutSellerContainer}>
         <h2 className={styles.aboutSellerTitle}>About the seller</h2>
-        <div>{sellerProfilePic}</div>
-        <div>{sellerName}</div>
+        <div>{listing.seller.profilePic}</div>
+        <div>{listing.seller.name}</div>
         <div>
-          {sellerRating}% positive feedback ({sellerTotalRatings})
+          {listing.seller.rating}% positive feedback (
+          {listing.seller.totalRatings})
         </div>
         <div className={styles.sellerLocation}>
           <div>Location</div>
-          <div>{sellerLocation}</div>
+          <div>{listing.seller.location}</div>
         </div>
         <hr />
         <div className={styles.sellerMemberSince}>
           <div>Member since</div>
-          <div>{sellerAccountCreationDate}</div>
+          <div>{listing.seller.createdAt.toDateString()}</div>
         </div>
         <hr />
         <div className={styles.sellerOtherListings}>
@@ -153,8 +198,8 @@ const ListingPage: React.FC = () => {
         <div>
           <a>Share this listing</a>
         </div>
-        <div>Page views: {pageViews}</div>
-        <div>Listing #{listingNumber}</div>
+        <div>Page views: {listing.viewCount}</div>
+        <div>Listing #{listing.id}</div>
         <div>
           Community Watch: <a>Report this listing</a>
         </div>
