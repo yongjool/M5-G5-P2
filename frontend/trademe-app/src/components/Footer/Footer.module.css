@@ -31,3 +31,25 @@
     height: 8px;
     background-color: #ecb537;
 }
+
+.desktop {
+    display: flex;
+}
+
+.mobile {
+    display: none;
+    margin-top: 20px;
+}
+
+@media (max-width: 400px) {
+    .emptyBox {
+        display: none;
+    }
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+    }
+}
