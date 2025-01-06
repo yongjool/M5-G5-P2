@@ -4,6 +4,7 @@ import axios from 'axios';
 import Navbar from '../components/NavBar/NavBar';
 import SearchBar from '../components/LandingPage/SearchBar/SearchBar';
 import MainBody from '../components/LandingPage/MainBody/MainBody';
+import Footer from '../components/Footer/Footer';
 
 // Define the type of the response data (you can adjust this based on your API response structure)
 interface AuctionItem {
@@ -49,6 +50,8 @@ const LandingPage: React.FC = () => {
             <Navbar />
             <SearchBar />
             <MainBody />
+            <Footer />
+
             <h1>Empty Typescript Page</h1>
 
             <div>

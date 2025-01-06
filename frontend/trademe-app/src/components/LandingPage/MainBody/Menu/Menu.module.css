@@ -20,7 +20,6 @@
     flex: 1;
     min-width: 20px;
     background-color: rgba(0, 0, 0, 0);
-    border: 1px solid red;
 }
 
 .menuBody {
@@ -81,11 +80,11 @@
     }
 
     .menuBodyContainer {
-        min-width: 320px;
+        min-width: 280px;
         max-width: 400px;
 
         height: auto;
-        padding: 20px;
+        padding: 5vw;
     }
 
     .icon {

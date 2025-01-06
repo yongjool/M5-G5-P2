@@ -10,7 +10,6 @@
     flex: 1;
     min-width: 20px;
     background-color: rgba(0, 0, 0, 0);
-    border: 1px solid red;
 }
 
 .AuctionCardsContainer {
@@ -31,8 +30,13 @@
         display: none;
     }
 
+    .AuctionCardsContainer {
+        min-width: 280px;
+    }
+
     .AuctionCards {
         height: 380px;
+
         margin-left: 28px;
     }
 }

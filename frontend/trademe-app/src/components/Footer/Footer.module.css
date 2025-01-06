@@ -1,0 +1,33 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.emptyBox {
+    display: flex;
+    flex: 1;
+    min-width: 20px;
+}
+
+.topFooterContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 1px;
+}
+
+.FooterBodyContainer {
+    display: flex;
+    width: 100%;
+    min-width: 760px;
+    max-width: 1200px;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+.seperator {
+    display: flex;
+    width: 100%;
+    height: 8px;
+    background-color: #ecb537;
+}

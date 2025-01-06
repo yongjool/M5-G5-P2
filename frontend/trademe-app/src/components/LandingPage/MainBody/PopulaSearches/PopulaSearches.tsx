@@ -11,12 +11,7 @@ const PSContent: React.FC<PSProps> = ({ text }) => {
     return (
         <div className={`${styles.populaSearchesItem} ${styles.extra}`}>
             <span className={styles.text}>{text}</span>
-            <img
-                style={{ marginLeft: 'auto' }}
-                src={plusIcon}
-                className={styles.bgImage}
-                alt="plusIcon"
-            />
+            <img src={plusIcon} className={styles.iconImage} alt="plusIcon" />
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Navbar.module.css'; // Import styles as an object
 import logo from '../../assets/TrademeLogo.png'; // Import the logo image
+import LogoMobile from '../../assets/LogoMobile.png'; // Import the logo image
 
 //icons
 import icon_down from '../../assets/icon_down.png'; // Import the logo image
@@ -9,10 +10,61 @@ import icon_heart from '../../assets/icon_heart.png'; // Import the logo image
 import icon_pen from '../../assets/icon_pen.png'; // Import the logo image
 import icon_login from '../../assets/icon_login.png'; // Import the logo image
 
+import icon_login_mobile from '../../assets/icon_login_mobile.png'; // Import the logo image
+import icon_search_mobile from '../../assets/icon_search_mobile.png'; // Import the logo image
+import icon_watch_mobile from '../../assets/icon_watch_mobile.png'; // Import the logo image
+
 const Navbar: React.FC = () => {
     return (
         <nav className={styles.navbar}>
-            <div className={styles.topNavContainer}>
+            <div className={`${styles.BottomNavContainer} ${styles.mobile}`}>
+                <div className={styles.NavBodyContainer}>
+                    <div className={styles.logoContainer}>
+                        {LogoMobile && (
+                            <img src={LogoMobile} alt="LogoMobile" />
+                        )}
+                    </div>
+                    <div className={styles.browseContainer}>
+                        <div className={styles.bottomItemContainer}>
+                            <div className={styles.iconContainer}>
+                                {icon_search_mobile && (
+                                    <img
+                                        src={icon_search_mobile}
+                                        alt="icon_search_mobile"
+                                    />
+                                )}
+                            </div>
+                            <div className={styles.bottomItem}>Search</div>
+                        </div>
+                    </div>
+                    <div className={styles.bottomRightNavContainer}>
+                        <div className={styles.bottomItemContainer}>
+                            <div className={styles.iconContainer}>
+                                {icon_watch_mobile && (
+                                    <img
+                                        src={icon_watch_mobile}
+                                        alt="icon_watch_mobile"
+                                    />
+                                )}
+                            </div>
+                            <div className={styles.bottomItem}>Watchlist</div>
+                        </div>
+
+                        <div className={styles.bottomItemContainer}>
+                            <div className={styles.bottomItem}>My Trade Me</div>
+                            <div className={styles.iconContainer}>
+                                {icon_login_mobile && (
+                                    <img
+                                        src={icon_login_mobile}
+                                        alt="icon_login_mobile"
+                                    />
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={`${styles.topNavContainer} ${styles.desktop}`}>
                 <div className={styles.emptyBox}></div>
                 <div className={styles.NavBodyContainer}>
                     <div className={styles.topLeftNavContainer}>
@@ -30,7 +82,7 @@ const Navbar: React.FC = () => {
                 </div>
                 <div className={styles.emptyBox}></div>
             </div>
-            <div className={styles.BottomNavContainer}>
+            <div className={`${styles.BottomNavContainer} ${styles.desktop}`}>
                 <div
                     className={styles.emptyBox}
                     style={{ backgroundColor: '#ffffff' }}

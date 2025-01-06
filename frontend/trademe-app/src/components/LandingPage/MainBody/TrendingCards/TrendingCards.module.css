@@ -7,7 +7,6 @@
     display: flex;
     flex: 1;
     min-width: 20px;
-    border: 1px solid red;
 }
 
 .trendingCardsContainer {

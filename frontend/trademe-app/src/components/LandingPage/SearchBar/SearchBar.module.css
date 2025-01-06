@@ -33,7 +33,6 @@
     display: flex;
     flex: 1;
     min-width: 20px;
-    border: 1px solid red;
 }
 
 /* Text Input */
@@ -105,16 +104,17 @@
         min-width: 320px;
         max-width: 400px;
 
-        height: 200px;
         margin-bottom: 20px;
     }
 
     .inputContainer {
-        width: 90%;
+        width: 93%;
         margin-top: 8px;
     }
+
     .textItem {
         margin-top: 16px;
+        line-height: 1;
     }
 
     .text {
@@ -123,6 +123,10 @@
 
     .icon {
         display: inline; /* Show icon */
+    }
+
+    .textInput {
+        width: 50%;
     }
 
     .button {

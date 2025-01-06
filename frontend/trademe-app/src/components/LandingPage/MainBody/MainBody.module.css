@@ -11,7 +11,6 @@
     display: flex;
     flex: 1;
     min-width: 20px;
-    border: 1px solid red;
 }
 
 /*header titles*/
@@ -84,8 +83,8 @@
     }
 
     .headerContainer {
-        margin-left: 28px;
-        margin-right: 28px;
+        margin-left: 7vw;
+        margin-right: 7vw;
 
         min-width: 344px; /* Allow full width */
         max-width: 344px;
