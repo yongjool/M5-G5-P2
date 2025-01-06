@@ -6,6 +6,7 @@
     flex-shrink: 1;
     flex-basis: 0;
     border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .trendingCardsImg {
@@ -55,4 +56,24 @@
 
     padding: 8px;
     margin: 8px;
+}
+
+@media (max-width: 400px) {
+    .trendingCardsBody {
+        justify-content: flex-start;
+        flex-grow: 0; /* Remove even width distribution */
+        flex-shrink: 0; /* Prevent shrinking */
+        flex-basis: auto; /* Allow each item to take its natural width */
+
+        width: 280px;
+        margin: 0 auto;
+    }
+
+    .trendingCardsImg {
+        width: 30%;
+    }
+
+    .trendingCardsTextBox {
+        width: 70%;
+    }
 }

@@ -1,0 +1,32 @@
+.PopulaSearches {
+    display: none;
+    flex-direction: column;
+
+    width: 100%;
+
+    margin-top: 28px;
+}
+
+.populaSearchesItem {
+    display: flex;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+
+    border: none;
+    color: #528ee1;
+
+    margin-left: 12px;
+
+    padding: 6px;
+    padding-left: 16px;
+
+    border-bottom: 1px solid #b9b7c1;
+}
+
+@media (max-width: 400px) {
+    .PopulaSearches {
+        display: flex;
+        width: 100%;
+    }
+}

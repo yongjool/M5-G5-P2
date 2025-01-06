@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './SearchBar.module.css'; // Import styles as an object
 
+import searchIcon from '../../../assets/SearchMobile.png';
+
 const SearchBar: React.FC = () => {
     return (
         <div className={styles.searchContainer}>
@@ -19,7 +21,16 @@ const SearchBar: React.FC = () => {
                             className={styles.textInput}
                             placeholder="Search all of Trade Me"
                         />
-                        <button className={styles.button}>Search</button>
+                        <button className={styles.button}>
+                            <span className={styles.icon}>
+                                <img
+                                    src={searchIcon}
+                                    className={styles.bgImage}
+                                    alt="auctionImg"
+                                />
+                            </span>
+                            <span className={styles.text}>Search</span>
+                        </button>
                     </div>
                 </div>
             </div>

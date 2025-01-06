@@ -24,3 +24,18 @@
     flex-grow: 0;
     flex-shrink: 1;
 }
+
+@media (max-width: 400px) {
+    .emptyBox {
+        display: none;
+    }
+
+    .trendingCardsContainer {
+        margin-top: 32px;
+        margin-left: 28px;
+
+        height: 200px;
+
+        gap: 20px;
+    }
+}

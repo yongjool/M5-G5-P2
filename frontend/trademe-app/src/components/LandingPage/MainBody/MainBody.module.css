@@ -57,3 +57,61 @@
     font-weight: bold;
     color: #b9b7c1;
 }
+
+.extra {
+    display: none;
+}
+
+.mobileText {
+    display: none;
+}
+
+.desktopText {
+    display: flex;
+}
+
+@media (max-width: 400px) {
+    .emptyBox {
+        display: none;
+    }
+
+    .mainbody {
+        top: 0px;
+    }
+
+    .title {
+        margin-top: 16px;
+    }
+
+    .headerContainer {
+        margin-left: 28px;
+        margin-right: 28px;
+
+        min-width: 344px; /* Allow full width */
+        max-width: 344px;
+        width: 100%;
+    }
+
+    .header {
+        font-size: 16px;
+    }
+
+    .subHeader {
+        font-size: 12px;
+    }
+
+    .extraHeader {
+        display: flex; /* Show the button on mobile */
+        font-weight: normal;
+        color: #528ee1;
+    }
+
+    .mobileText {
+        display: flex;
+        margin-top: 32px;
+    }
+
+    .desktopText {
+        display: none;
+    }
+}

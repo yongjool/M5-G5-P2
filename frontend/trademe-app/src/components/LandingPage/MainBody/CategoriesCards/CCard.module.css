@@ -1,4 +1,4 @@
-.CategoriesCardsBody {
+.CCardBody {
     display: flex;
     flex-direction: column;
     background-color: #c64a3d;
@@ -10,10 +10,10 @@
     justify-content: center;
 
     border-radius: 12px;
-    border: 1px solid red;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-.CategoriesCardsText {
+.CCardText {
     display: flex;
 
     padding: 4px;
@@ -24,7 +24,7 @@
     color: #ffffff;
 }
 
-.CategoriesCardsSubText {
+.CCardSubText {
     display: flex;
 
     padding: 4px;
@@ -32,4 +32,12 @@
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     color: #ffffff;
+}
+
+@media (max-width: 400px) {
+    .CCardText,
+    .CCardSubText {
+        padding: 2px;
+        padding-left: 20px;
+    }
 }

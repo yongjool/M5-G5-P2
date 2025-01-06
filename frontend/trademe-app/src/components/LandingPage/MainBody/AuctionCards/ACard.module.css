@@ -9,7 +9,7 @@
 
     overflow: hidden;
     border-radius: 12px;
-    border: 1px solid red;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .ImgContainer {
@@ -87,4 +87,16 @@
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     color: #b9b7c1;
+}
+
+@media (max-width: 400px) {
+    .AuctionCardsBody {
+        justify-content: flex-start;
+        flex-grow: 0; /* Remove even width distribution */
+        flex-shrink: 0; /* Prevent shrinking */
+        flex-basis: auto; /* Allow each item to take its natural width */
+
+        width: 280px;
+        margin: 0 auto;
+    }
 }

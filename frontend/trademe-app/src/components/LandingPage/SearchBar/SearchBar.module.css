@@ -64,7 +64,7 @@
     border-radius: 4px;
     background-color: #ffffff;
     border: 1px solid #ffffff;
-    padding: 3px 3px;
+    padding: 4px 4px;
 }
 
 .textInput {
@@ -81,7 +81,7 @@
 .button {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
-    width: 107px;
+    width: 108px;
     color: #ffffff;
     background-color: #0076bc;
     cursor: pointer;
@@ -89,5 +89,47 @@
 }
 
 .button:hover {
-    background-color: #528ee1;
+    filter: brightness(1.1);
+}
+
+.icon {
+    display: none; /* Show icon */
+}
+
+@media (max-width: 400px) {
+    .emptyBox {
+        display: none;
+    }
+
+    .searchBody {
+        min-width: 320px;
+        max-width: 400px;
+
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .inputContainer {
+        width: 90%;
+        margin-top: 8px;
+    }
+    .textItem {
+        margin-top: 16px;
+    }
+
+    .text {
+        display: none; /* Hide text */
+    }
+
+    .icon {
+        display: inline; /* Show icon */
+    }
+
+    .button {
+        width: 72px;
+        align-items: center; /* Align image vertically */
+        justify-content: center; /* Align image horizontally */
+        padding: 0; /* Remove padding for size consistency */
+        border: none;
+    }
 }

@@ -13,9 +13,9 @@ const CCard: React.FC<CCardProps> = ({ isInvert, CardTitle, CardText }) => {
     };
 
     return (
-        <div style={cardStyle} className={styles.CategoriesCardsBody}>
-            <div className={styles.CategoriesCardsText}>{CardTitle}</div>
-            <div className={styles.CategoriesCardsSubText}>{CardText}</div>
+        <div style={cardStyle} className={styles.CCardBody}>
+            <div className={styles.CCardText}>{CardTitle}</div>
+            <div className={styles.CCardSubText}>{CardText}</div>
         </div>
     );
 };

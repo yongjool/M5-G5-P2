@@ -23,3 +23,28 @@
 
     gap: 32px;
 }
+
+@media (max-width: 400px) {
+    .emptyBox {
+        display: none;
+    }
+
+    .CategoriesCards {
+        height: 396px;
+        margin-bottom: -20px;
+    }
+
+    .CategoriesCardsContainer {
+        display: flex;
+        flex-direction: column;
+
+        gap: 20px;
+
+        margin-left: 28px;
+        margin-right: 28px;
+
+        min-width: 344px; /* Allow full width */
+        max-width: 344px;
+        width: 100%;
+    }
+}
