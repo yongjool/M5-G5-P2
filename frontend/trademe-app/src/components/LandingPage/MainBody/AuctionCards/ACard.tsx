@@ -25,7 +25,11 @@ const ACard: React.FC<ACardProps> = ({ data }) => {
             <div className={styles.ImgContainer}>
                 {auctionImg && (
                     <img
-                        src={auctionImg}
+                        src={
+                            data.image === 'default'
+                                ? auctionImg
+                                : `data:image/jpeg;base64,${data.image}`
+                        }
                         className={styles.bgImage}
                         alt="auctionImg"
                     />
@@ -47,7 +51,7 @@ const ACard: React.FC<ACardProps> = ({ data }) => {
                             {data.date}
                         </div>
                     </div>
-                    <div className={styles.Text}> {data.type}</div>
+                    <div className={styles.Text}> {data.title}</div>
                 </div>
                 <div className={styles.BottomTextContainer}>
                     <div className={styles.SubText}>
@@ -58,7 +62,7 @@ const ACard: React.FC<ACardProps> = ({ data }) => {
                               : 'Reserve not met'}
                     </div>
                     <div style={cardStyle} className={styles.Text}>
-                        {data.detail}
+                        {data.price_detail}
                     </div>
                 </div>
             </div>

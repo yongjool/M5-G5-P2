@@ -6,17 +6,13 @@ import SearchBar from '../components/LandingPage/SearchBar/SearchBar';
 import MainBody from '../components/LandingPage/MainBody/MainBody';
 import Footer from '../components/Footer/Footer';
 
-// Define the type of the response data (you can adjust this based on your API response structure)
-interface AuctionItem {
-    _id: string;
-    title: string;
-    description: string;
-    start_price: number;
-}
+import { AuctionData } from '../types/dataTypes';
 
 const LandingPage: React.FC = () => {
-    const [auctionItems, setAuctionItems] = useState<AuctionItem[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+    const [auctionItems, setAuctionItems] = useState<AuctionData[] | null>(
+        null,
+    );
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     // Make the API call using useEffect
@@ -24,12 +20,12 @@ const LandingPage: React.FC = () => {
         const fetchAuctionItems = async () => {
             try {
                 const response = await axios.get(
-                    'http://localhost:4000/api/search?query=lamp',
+                    'http://localhost:4000/api/search?query=',
                 ); // Update the API endpoint if necessary
                 setAuctionItems(response.data.products); // Assuming response.data is an array of auction items
-                setLoading(false);
             } catch (err) {
                 setError('Error fetching auction items');
+            } finally {
                 setLoading(false);
             }
         };
@@ -44,30 +40,16 @@ const LandingPage: React.FC = () => {
     if (error) {
         return <div>{error}</div>;
     }
+    if (!auctionItems || auctionItems.length === 0) {
+        return <div>No auction items available</div>;
+    }
 
     return (
         <div>
             <Navbar />
             <SearchBar />
-            <MainBody />
+            <MainBody data={auctionItems} />
             <Footer />
-
-            <h1>Empty Typescript Page</h1>
-
-            <div>
-                {auctionItems.length > 0 ? (
-                    auctionItems.map((item) => (
-                        <div key={item._id}>
-                            <h3>{item.title}</h3>
-                            <p>{item.description}</p>
-                            <p>Starting Price: ${item.start_price}</p>
-                        </div>
-                    ))
-                ) : (
-                    <p>No auction items available at the moment.</p>
-                )}
-            </div>
-            <a href="/search">Go to search Page</a>
         </div>
     );
 };

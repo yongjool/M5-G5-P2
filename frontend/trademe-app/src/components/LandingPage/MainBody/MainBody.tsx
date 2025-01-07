@@ -8,7 +8,13 @@ import AuctionCards from './AuctionCards/AuctionCards';
 import ReserveCards from './ReserveCards/ReserveCards';
 import PopulaSearches from './PopulaSearches/PopulaSearches';
 
-const MainBody: React.FC = () => {
+import { AuctionData } from '../../../types/dataTypes';
+
+interface Products {
+    data: AuctionData[];
+}
+
+const MainBody: React.FC<Products> = ({ data }) => {
     return (
         <div>
             <div className={styles.mainbody}>
@@ -32,7 +38,7 @@ const MainBody: React.FC = () => {
                     </div>
                     <div className={styles.emptyBox}></div>
                 </div>
-                <AuctionCards />
+                <AuctionCards data={data} />
 
                 <div className={`${styles.title} ${styles.mobileText}`}>
                     <div className={styles.emptyBox}></div>
@@ -75,7 +81,7 @@ const MainBody: React.FC = () => {
                     </div>
                     <div className={styles.emptyBox}></div>
                 </div>
-                <ReserveCards />
+                <ReserveCards data={data} />
             </div>
         </div>
     );

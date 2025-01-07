@@ -31,6 +31,15 @@ beforeAll(async () => {
             start_price: 1000,
             current_bid: 1200,
             sold: false,
+
+            location: 'Auckland',
+            date: 'Fri, 15 Nov',
+            closing: false,
+            reserve: false,
+            onedollar: false,
+            favourite: false,
+            price_detail: 'Price by negotiation',
+            picture_path: 'none',
         },
         {
             title: 'Smartphone',
@@ -38,6 +47,15 @@ beforeAll(async () => {
             start_price: 500,
             current_bid: 600,
             sold: true,
+
+            location: 'Auckland',
+            date: 'Fri, 15 Nov',
+            closing: false,
+            reserve: false,
+            onedollar: false,
+            favourite: false,
+            price_detail: 'Price by negotiation',
+            picture_path: 'none',
         },
     ];
 

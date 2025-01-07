@@ -28,12 +28,30 @@ beforeAll(async () => {
             description: 'A powerful laptop',
             start_price: 1000,
             current_bid: 1200,
+
+            location: 'Auckland',
+            date: 'Fri, 15 Nov',
+            closing: false,
+            reserve: false,
+            onedollar: false,
+            favourite: false,
+            price_detail: 'Price by negotiation',
+            picture_path: 'none',
         },
         {
             title: 'Smartphone',
             description: 'A new smartphone',
             start_price: 500,
             current_bid: 600,
+
+            location: 'Auckland',
+            date: 'Fri, 15 Nov',
+            closing: false,
+            reserve: false,
+            onedollar: false,
+            favourite: false,
+            price_detail: 'Price by negotiation',
+            picture_path: 'none',
         },
     ];
 

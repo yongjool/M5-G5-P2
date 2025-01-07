@@ -30,8 +30,18 @@ async function search(req, res, next) {
         // Perform the search
         const products = await Product.find(filter);
 
+        const base64Image = product.image.toString('base64');
+        const imageData = `data:image/jpeg;base64,${base64Image}`;
+
+        products.image = imageData;
+
         // Return the search results
-        res.status(200).json({ products });
+        res.status(200).json({
+            products: {
+                ...products.toObject(),
+                image: imageData, // Add the base64 image URL
+            },
+        });
     } catch (err) {
         res.status(500).json({
             error: 'An error occurred while searching for products.',

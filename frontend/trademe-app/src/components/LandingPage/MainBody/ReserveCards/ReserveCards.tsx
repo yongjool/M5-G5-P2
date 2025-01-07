@@ -1,53 +1,23 @@
 import React from 'react';
 import styles from './ReserveCards.module.css'; // Import styles as an object
 
+import { AuctionData } from '../../../../types/dataTypes';
 import ACard from '../AuctionCards/ACard';
 
-const ReserveCards: React.FC = () => {
+interface Products {
+    data: AuctionData[];
+}
+
+const ReserveCards: React.FC<Products> = ({ data }) => {
     return (
         <div className={styles.ReserveCards}>
             <div className={styles.emptyBox}></div>
             <div className={styles.ReserveCardsContainer}>
-                <ACard
-                    data={{
-                        location: 'Auckland',
-                        date: '1hr 19 mins',
-                        type: 'Mini lathe $1 Reserve',
-                        closing: true,
-                        reserve: true,
-                        detail: '$453.00',
-                    }}
-                />
-                <ACard
-                    data={{
-                        location: 'Auckland',
-                        date: '1hr 19 mins',
-                        type: 'Honda lawn mower',
-                        closing: true,
-                        reserve: true,
-                        detail: '$123.00',
-                    }}
-                />
-                <ACard
-                    data={{
-                        location: 'Auckland',
-                        date: '1hr 5 mins',
-                        type: 'Casio watch',
-                        closing: true,
-                        reserve: true,
-                        detail: '$23.00',
-                    }}
-                />
-                <ACard
-                    data={{
-                        location: 'Auckland',
-                        date: '1hr 5 mins',
-                        type: 'Makita drill driver',
-                        closing: true,
-                        reserve: false,
-                        detail: '$31.00',
-                    }}
-                />
+                {data
+                    .filter((item) => item.onedollar === true) // Filter items with dollar property set to true
+                    .map((item, i) => (
+                        <ACard key={'ACard' + i} data={item} />
+                    ))}
             </div>
             <div className={styles.emptyBox}></div>
         </div>
