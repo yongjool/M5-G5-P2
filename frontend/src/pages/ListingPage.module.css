@@ -43,9 +43,6 @@
   align-items: flex-start;
 }
 
-.listingDetails {
-}
-
 .productDetails button {
   display: block;
   width: 100%;
@@ -248,10 +245,45 @@
   border: none;
   font-size: 16px;
   cursor: pointer;
+  color: #44413d;
 }
 
 .modalButtons {
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   justify-content: space-between;
   margin-top: 20px;
+}
+
+.shippingInfoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.shippingOptions {
+  display: flex;
+  flex-direction: row;
+}
+
+.shippingSelection {
+  display: flex;
+  flex-direction: row;
+}
+
+.listingPrewiew {
+  display: flex;
+  flex-direction: row;
+}
+
+.listingInfoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.heroImage {
+  width: fit-content;
+  height: auto;
 }

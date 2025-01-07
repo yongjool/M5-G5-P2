@@ -19,6 +19,7 @@ import communityWatch from "../assets/communityWatch.svg";
 import favouriteIcon from "../assets/favouriteIcon.svg";
 import watchlistIcon from "../assets/binoculars-svgrepo-com.svg";
 import clockIcon from "../assets/clockIcon.svg";
+import toggleIcon from "../assets/toggleIcon.svg";
 interface Listing {
   title: string;
   seller: user;
@@ -133,10 +134,11 @@ const ListingPage: React.FC = () => {
 
   const handleBuyNow = () => {
     // set up logic for buying now;
+    // TODO: redirect to payment page
   };
 
   const handleMakeOffer = () => {
-    // set up logic for making an offer;
+    // TODO: set up logic for making an offer;
   };
 
   return (
@@ -387,7 +389,7 @@ const ListingPage: React.FC = () => {
               <div className={styles.listingInfo}>
                 <div>{listing.seller.location}</div>
                 <div>
-                  Closes:{" "}
+                  Closes:
                   {new Date(
                     new Date(listing.createdAt).getTime() +
                       7 * 24 * 60 * 60 * 1000
@@ -403,12 +405,17 @@ const ListingPage: React.FC = () => {
               <div>Your bid</div>
               <input type="text" value={bidAmount} onChange={handleBidChange} />
               <div>
-                -TOGGLE ICON- Auto-bid <a>More info &#x25BC;</a>
+                <img
+                  className={styles.miniBrandLogo}
+                  src={toggleIcon}
+                  alt="Auto-bid toggle"
+                />
+                Auto-bid <a>More info &#x25BC;</a>
               </div>
             </div>
-            <div className={styles.shippingInfo}>
-              <div>Shipping</div>
-              <div>
+            <div>Shipping</div>
+            <div className={styles.shippingInfoContainer}>
+              <div className={styles.shippingOptions}>
                 <input
                   type="radio"
                   id="urban"
@@ -416,8 +423,13 @@ const ListingPage: React.FC = () => {
                   value="11.30"
                 />
                 <label htmlFor="urban">
-                  <div>Nationwide (Urban)</div> <div>$11.30</div>
+                  <div className={styles.shippingSelection}>
+                    <div>Nationwide (Urban)</div>
+                    <div>$11.30</div>
+                  </div>
                 </label>
+              </div>
+              <div className={styles.shippingOptions}>
                 <input
                   type="radio"
                   id="rural"
@@ -425,8 +437,13 @@ const ListingPage: React.FC = () => {
                   value="17.00"
                 />
                 <label htmlFor="rural">
-                  <div>Nationwide (Rural)</div> <div>$11.30</div>
+                  <div className={styles.shippingSelection}>
+                    <div>Nationwide (Rural)</div>
+                    <div>$11.30</div>
+                  </div>
                 </label>
+              </div>
+              <div className={styles.shippingOptions}>
                 <input
                   type="radio"
                   id="pickUp"
@@ -434,7 +451,10 @@ const ListingPage: React.FC = () => {
                   value="0.00"
                 />
                 <label htmlFor="pickUp">
-                  <div>Pick-up from seller</div> <div>FREE</div>
+                  <div className={styles.shippingSelection}>
+                    <div>Pick-up from seller</div>
+                    <div>FREE</div>
+                  </div>
                 </label>
               </div>
               <div className={styles.sellerPaymentOptions}>
