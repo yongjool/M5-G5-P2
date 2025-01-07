@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom'; // Import useLocation hook
 import axios from 'axios';
 
 const SearchResultPage = () => {
+    const location = useLocation(); // Get the location object to access state
+    const message = location.state?.message || '';
+
     const [auctionItems, setAuctionItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -10,8 +14,10 @@ const SearchResultPage = () => {
     useEffect(() => {
         const fetchAuctionItems = async () => {
             try {
+                console.log(message);
+
                 const response = await axios.get(
-                    'http://localhost:4000/api/search?query=oil',
+                    `http://localhost:4000/api/search?query=${message}`,
                 ); // Replace with your actual API endpoint
                 setAuctionItems(response.data.products); // Assuming response.data is an array of auction items
                 setLoading(false);
