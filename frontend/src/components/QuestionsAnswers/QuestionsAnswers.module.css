@@ -1,0 +1,25 @@
+.questionsAnswers {
+  margin-top: 16px;
+}
+
+.questionsAnswers textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.questionsAnswers button {
+  margin-top: 8px;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.questionsAnswers button:hover {
+  background-color: #0056b3;
+}

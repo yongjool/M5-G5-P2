@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Header.module.css";
 
 //assets
-import trademeLogoSpotlight from "../../../public/trademe-logo-spotlight.png";
+import trademeLogoSpotlight from "../../assets/trademe-logo-spotlight.png";
 
 const Header: React.FC = () => {
   return (

@@ -3,10 +3,12 @@ import Header from "../components/Header/Header";
 import Navbar from "../components/Navigation/Navbar";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ProductAtGlance from "../components/ProductAtGlance/ProductAtGlance";
+import QuestionsAnswers from "../components/QuestionsAnswers/QuestionsAnswers";
 
 // assets
-import pingLogo from "../../public/ping.svg";
-import afterpayLogo from "../../public/afterpay.svg";
+import pingLogo from "../assets/ping.svg";
+import afterpayLogo from "../assets/afterpay.svg";
+import facebookF from "../assets/facebookF.svg";
 
 interface Listing {
   title: string;
@@ -91,6 +93,7 @@ const ListingPage: React.FC = () => {
       <Breadcrumbs />
 
       <div className={styles.listingDetails}>
+        <div> TODO: Listing Gallery carousel</div>
         <div>Listing description</div>
         <h2>{listing.title}</h2>
       </div>
@@ -178,11 +181,7 @@ const ListingPage: React.FC = () => {
           <div>Cash, NZ Bank Deposit</div>
         </div>
       </div>
-      <div className={styles.questionsAnswers}>
-        <h2>Questions & answers (1)</h2>
-        <div>Q&A Chat box</div>
-        <button className={`${styles.blue}`}>Ask a question</button>
-      </div>
+      <QuestionsAnswers />
       <div className={styles.aboutSellerContainer}>
         <h2 className={styles.aboutSellerTitle}>About the seller</h2>
         <div>{listing.seller.profilePic}</div>
@@ -249,7 +248,9 @@ const ListingPage: React.FC = () => {
         <div className={styles.infoContainer}>
           <div>Copy right trademe</div>
           <div>Dark mode/light mode toggle</div>
-          <div>Links to Socials</div>
+          <div>
+            <img src={facebookF} alt="Facebook" />
+          </div>
         </div>
         <div className={styles.loginContainer}>
           <div>Register</div>
