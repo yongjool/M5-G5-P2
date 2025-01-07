@@ -73,7 +73,11 @@
     .emptyBox {
         display: none;
     }
-
+    .extra {
+        display: flex;
+        font-weight: normal;
+        color: #528ee1;
+    }
     .mainbody {
         top: 0px;
     }

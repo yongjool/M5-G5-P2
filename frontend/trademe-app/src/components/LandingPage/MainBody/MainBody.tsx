@@ -45,7 +45,7 @@ const MainBody: React.FC<Products> = ({ data }) => {
                                 style={{ marginLeft: 'auto' }}
                                 className={`${styles.header} ${styles.extra}`}
                             >
-                                View All
+                                View All {'(' + data.length + ')'}
                             </div>
                         </div>
                     </div>
