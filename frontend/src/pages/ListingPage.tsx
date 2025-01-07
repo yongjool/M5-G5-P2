@@ -380,10 +380,12 @@ const ListingPage: React.FC = () => {
       {isModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalWindow}>
-            <button className={styles.closeButton} onClick={handleCloseModal}>
-              X
-            </button>
-            <h2>Place a bid</h2>
+            <div className={styles.modalHeader}>
+              <div className={styles.bold}>Place a bid</div>
+              <button className={styles.closeButton} onClick={handleCloseModal}>
+                <span className={styles.blueText}>X</span>
+              </button>
+            </div>
             <div className={styles.listingInfoContainer}>
               <div className={styles.heroImage}>{listing.heroImage}</div>
               <div className={styles.listingInfo}>
@@ -395,16 +397,21 @@ const ListingPage: React.FC = () => {
                       7 * 24 * 60 * 60 * 1000
                   ).toDateString()}
                 </div>
-                <div>{listing.title}</div>
+                <div className={styles.bold}>{listing.title}</div>
                 <div>No reserve, no bid</div>
-                {/* PLACEHOLDER TEXT ADD DYNAMIC VALUES */}
+                {/* PLACEHOLDER TEXT ADD DYNAMIC VALUES ^^^*/}
                 <div>${listing.highestBid()?.amount}</div>
               </div>
             </div>
             <div className={styles.bidInputContainer}>
               <div>Your bid</div>
-              <input type="text" value={bidAmount} onChange={handleBidChange} />
-              <div>
+              <input
+                className={styles.bidInput}
+                type="text"
+                value={bidAmount}
+                onChange={handleBidChange}
+              />
+              <div className={styles.autoBidContainer}>
                 <img
                   className={styles.miniBrandLogo}
                   src={toggleIcon}
@@ -413,62 +420,69 @@ const ListingPage: React.FC = () => {
                 Auto-bid <a>More info &#x25BC;</a>
               </div>
             </div>
-            <div>Shipping</div>
+            <div className={styles.bold}>Shipping</div>
             <div className={styles.shippingInfoContainer}>
               <div className={styles.shippingOptions}>
                 <input
+                  className={styles.shippingRadio}
                   type="radio"
                   id="urban"
                   name="shippingOption"
                   value="11.30"
                 />
                 <label htmlFor="urban">
-                  <div className={styles.shippingSelection}>
-                    <div>Nationwide (Urban)</div>
-                    <div>$11.30</div>
+                  <div className={styles.shippingCostContainer}>
+                    <div className={styles.shippingType}>
+                      Nationwide (Urban)
+                    </div>
+                    <div className={styles.shippingCost}>$11.30</div>
                   </div>
                 </label>
               </div>
               <div className={styles.shippingOptions}>
                 <input
+                  className={styles.shippingRadio}
                   type="radio"
                   id="rural"
                   name="shippingOption"
                   value="17.00"
                 />
                 <label htmlFor="rural">
-                  <div className={styles.shippingSelection}>
+                  <div className={styles.shippingCostContainer}>
                     <div>Nationwide (Rural)</div>
-                    <div>$11.30</div>
+                    <div className={styles.shippingCost}>$17.00</div>
                   </div>
                 </label>
               </div>
               <div className={styles.shippingOptions}>
                 <input
+                  className={styles.shippingRadio}
                   type="radio"
                   id="pickUp"
                   name="shippingOption"
                   value="0.00"
                 />
                 <label htmlFor="pickUp">
-                  <div className={styles.shippingSelection}>
+                  <div className={styles.shippingCostContainer}>
                     <div>Pick-up from seller</div>
-                    <div>FREE</div>
+                    <div className={styles.shippingCost}>Free</div>
                   </div>
                 </label>
               </div>
               <div className={styles.sellerPaymentOptions}>
-                <div>Seller accepts payment by</div>
-                <div>Ping, Afterpay, NZ Bank Deposit</div>
+                <div className={styles.bold}>Seller accepts payment by</div>
+                <div className={styles.sellerTransferPref}>
+                  Ping, Afterpay, NZ Bank Deposit
+                </div>
                 {/* placeholder text*/}
-                <div>
+                <div className={styles.buyerLegalReminder}>
                   If you win the auction, you are legally obligated to complete
                   your purchase
                 </div>
               </div>
               <div className={styles.remindersContainer}>
-                <div>Reminders</div>
-                <div>
+                <div className={styles.bold}>Reminders</div>
+                <div className={styles.reminderCheckboxContainer}>
                   <input type="checkbox" id="emailReminderCheckbox"></input>
                   <label htmlFor="emailReminderCheckbox">
                     Email me if I'm outbid
@@ -477,8 +491,12 @@ const ListingPage: React.FC = () => {
               </div>
             </div>
             <div className={styles.modalButtons}>
-              <button onClick={handleSubmitBid}>Place bid</button>
-              <button onClick={handleCloseModal}>Go back to listing</button>
+              <button className={`${styles.blue}`} onClick={handleSubmitBid}>
+                Place bid
+              </button>
+              <button className={`${styles.white}`} onClick={handleCloseModal}>
+                Go back to listing
+              </button>
             </div>
           </div>
         </div>
@@ -486,10 +504,12 @@ const ListingPage: React.FC = () => {
       {isConfirmModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalWindow}>
-            <button className={styles.closeButton} onClick={handleCloseModal}>
-              X
-            </button>
-            <h2>Confirm your bid</h2>
+            <div className={styles.modalHeader}>
+              <div className={styles.bold}>Confirm your bid</div>
+              <button className={styles.closeButton} onClick={handleCloseModal}>
+                <span className={styles.blueText}>X</span>
+              </button>
+            </div>
             <div className={styles.listingInfoContainer}>
               <div className={styles.heroImage}>{listing.heroImage}</div>
               <div className={styles.listingInfo}>
@@ -501,16 +521,26 @@ const ListingPage: React.FC = () => {
                       7 * 24 * 60 * 60 * 1000
                   ).toDateString()}
                 </div>
-                <div>{listing.title}</div>
+                <div className={styles.bold}>{listing.title}</div>
                 <div>No reserve, no bid</div>
                 {/* PLACEHOLDER TEXT ADD DYNAMIC VALUES */}
-                <div>${listing.highestBid()?.amount}</div>
+                <div className={styles.bold}>
+                  ${listing.highestBid()?.amount}
+                </div>
               </div>
             </div>
-            <p>Do you want to make a bid for ${bidAmount}?</p>
+            <div className={styles.bidValueConfirmation}>
+              <div>Do you want to make a bid for</div>
+              <div className={styles.bold}>${bidAmount}?</div>
+              {/* ^^^^^ Need to add space between them ^^^^^ */}
+            </div>
             <div className={styles.modalButtons}>
-              <button onClick={handleConfirmBid}>Yes, place bid</button>
-              <button onClick={handleGoBack}>Go back</button>
+              <button className={`${styles.blue}`} onClick={handleConfirmBid}>
+                Yes, place bid
+              </button>
+              <button className={`${styles.white}`} onClick={handleGoBack}>
+                Go back
+              </button>
             </div>
           </div>
         </div>
