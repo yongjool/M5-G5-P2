@@ -2,6 +2,11 @@ import styles from "./ListingPage.module.css";
 import Header from "../components/Header/Header";
 import Navbar from "../components/Navigation/Navbar";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
+import ProductAtGlance from "../components/ProductAtGlance/ProductAtGlance";
+
+// assets
+import pingLogo from "../../public/ping.svg";
+import afterpayLogo from "../../public/afterpay.svg";
 
 interface Listing {
   title: string;
@@ -139,21 +144,33 @@ const ListingPage: React.FC = () => {
           <div>Seller located in {listing.seller.location}</div>
         </div>
       </div>
-      <div className={styles.productAtGlanceContainer}></div>
+      <div className={styles.productAtGlanceContainer}>
+        <ProductAtGlance />
+      </div>
       <div className={styles.paymentOptions}>
         <h2>Payment Options</h2>
         <div className={styles.pingContainer}>
-          <div>Ping logo</div>
+          <img
+            className={styles.miniBrandLogo}
+            src={pingLogo}
+            alt="ping by TradeMe logo"
+          ></img>
           <div>Pay instantly by card, Ping balance or saved bank account.</div>
           <div>
-            <a>What's Ping? (link to ping info)</a>
+            <a href="https://www.trademe.co.nz/c/promo/ping">What's Ping?</a>
           </div>
         </div>
         <div className={styles.afterPayContainer}>
-          <div>Afterpay logo</div>
+          <img
+            className={styles.miniBrandLogo}
+            src={afterpayLogo}
+            alt="Afterpay logo"
+          ></img>
           <div>Four fortnightly interest-free payments.</div>
           <div>
-            <a>What's Afterpay? (link to afterpay info)</a>
+            <a href="https://www.afterpay.com/en-Us/how-it-works">
+              What's Afterpay?
+            </a>
           </div>
         </div>
         <div className={styles.otherPaymentOptionsContainer}>

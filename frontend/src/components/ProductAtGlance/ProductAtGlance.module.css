@@ -1,0 +1,27 @@
+.productAtGlanceContainer {
+  padding: 16px;
+  margin: 16px 0;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionHeader {
+  cursor: pointer;
+  padding: 8px;
+  border: 1px solid #0076bc;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionContent {
+  padding: 8px;
+  border: 1px solid #44413d;
+  border-radius: 0.5rem;
+}
+
+.icon {
+  margin-left: 8px;
+}
