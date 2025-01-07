@@ -25,11 +25,50 @@ List all auction items in the database.
 
 Add a new auction item.
 
+Required Option:
+
+-   `--title <title>` Title of the auction item
+-   `--description <description>` Description of the auction item
+-   `--price_detail <price_detail>` Description of price
+-   `--start_price <start_price>` Starting price of the auction item
+-   `--location <location>` Seller location
+-   `--date <date>` listed date/remaining for closing
+  
+Option:
+
+-   `--sold <sold>` status of sold or not
+-   `--closing <closing>` auction is coming to close
+-   `--reserve <reserve>` item met reserve
+-   `--onedollar <onedollar>` item is one dollar reserve
+-   `--favourite <favourite>` item set as favourite
+-   `--current_bid <current_bid>` current bid of item
+-   `--picture_path <picture_path>` picture url/filepath
+
+---
+
+#### `update`
+
+Update existing auction item.
+
+Required Option:
+
+-   `--key <_id>` _id of the item to update
+
 Options:
 
--   `-t, --title <title>` Title of the auction item
--   `-d, --description <description>` Description of the auction item
--   `-s, --start_price <start_price>` Starting price of the auction item
+-   `--title <title>` Title of the auction item
+-   `--description <description>` Description of the auction item
+-   `--price_detail <price_detail>` Description of price
+-   `--start_price <start_price>` Starting price of the auction item
+-   `--location <location>` Seller location
+-   `--date <date>` listed date/remaining for closing
+-   `--sold <sold>` status of sold or not
+-   `--closing <closing>` auction is coming to close
+-   `--reserve <reserve>` item met reserve
+-   `--onedollar <onedollar>` item is one dollar reserve
+-   `--favourite <favourite>` item set as favourite
+-   `--current_bid <current_bid>` current bid of item
+-   `--picture_path <picture_path>` picture url/filepath
 
 ---
 
@@ -43,11 +82,21 @@ Options:
 -   Description : send searchString, returns auction Item array.
 -   Response :
 -                 "products":[
-                             {  "_id":"id",
-                                "title":"tile of item",
-                                "description":"Description of item"
-                                "start_price":500,
-                                "sold":false
+                             {
+                                _id: String,
+                                title: String,
+                                description: String,
+                                start_price: Number,
+                                sold: Boolean,
+                                current_bid: Number,
+                                location: String,
+                                date: String,
+                                closing: Boolean,
+                                reserve: boolean,
+                                onedollar: Boolean,
+                                favourite: Boolean,
+                                price_detail: String,
+                                image: string,
                              }
                              ]
 
