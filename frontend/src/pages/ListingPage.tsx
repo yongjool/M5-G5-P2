@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./ListingPage.module.css";
 import Header from "../components/Header/Header";
 import Navbar from "../components/Navigation/Navbar";
@@ -28,6 +29,7 @@ interface Listing {
   bids: Bid[];
   highestBid: () => Bid | null;
   viewCount: number;
+  images: string[];
 }
 
 interface user {
@@ -77,9 +79,22 @@ const listing: Listing = {
   },
   bids: [bid],
   viewCount: 1234,
+  images: ["image1.jpg", "image2.jpg", "image3.jpg"],
 };
 
 const ListingPage: React.FC = () => {
+  const [selectedImage, setSelectedImage] = React.useState<string>("");
+
+  React.useEffect(() => {
+    if (listing.images && listing.images.length > 0) {
+      setSelectedImage(listing.images[0]);
+    }
+  }, [listing.images]);
+
+  const handleImageClick = (image: string) => {
+    setSelectedImage(image);
+  };
+
   const handlePlaceBid = () => {
     // set up logic for placing a bid;
   };
@@ -101,8 +116,20 @@ const ListingPage: React.FC = () => {
       <Breadcrumbs />
 
       <div className={styles.listingDetails}>
-        <div> TODO: Listing Hero image</div>
-        <div>Listing Gallery images / Hero image selector </div>
+        {selectedImage && (
+          <img className={styles.heroImage} src={selectedImage} alt="Hero" />
+        )}
+        <div className={styles.imageCarousel}>
+          {listing.images.map((image, index) => (
+            <img
+              key={index}
+              className={styles.carouselImage}
+              src={image}
+              alt={`Thumbnail ${index + 1}`}
+              onClick={() => handleImageClick(image)}
+            />
+          ))}
+        </div>
         <h2>{listing.title}</h2>
       </div>
       <div className={styles.bidContainer}>

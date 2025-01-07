@@ -201,3 +201,21 @@
 .miniBrandLogo {
   height: 1.5rem;
 }
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.imageCarousel {
+  display: flex;
+  overflow-x: scroll;
+  gap: 8px;
+}
+
+.carouselImage {
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+}
