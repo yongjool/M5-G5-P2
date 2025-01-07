@@ -9,7 +9,15 @@ import QuestionsAnswers from "../components/QuestionsAnswers/QuestionsAnswers";
 import pingLogo from "../assets/ping.svg";
 import afterpayLogo from "../assets/afterpay.svg";
 import facebookF from "../assets/facebookF.svg";
-
+import darkLightMode from "../assets/dark-mode.png";
+import twitterLogo from "../assets/twitterLogo.svg";
+import commentBubble from "../assets/commentBubble.svg";
+import infoCircle from "../assets/info-circle-svgrepo-com.svg";
+import shareNodes from "../assets/shareNodes.svg";
+import communityWatch from "../assets/communityWatch.svg";
+import favouriteIcon from "../assets/favouriteIcon.svg";
+import watchlistIcon from "../assets/binoculars-svgrepo-com.svg";
+import clockIcon from "../assets/clockIcon.svg";
 interface Listing {
   title: string;
   seller: user;
@@ -93,8 +101,8 @@ const ListingPage: React.FC = () => {
       <Breadcrumbs />
 
       <div className={styles.listingDetails}>
-        <div> TODO: Listing Gallery carousel</div>
-        <div>Listing description</div>
+        <div> TODO: Listing Hero image</div>
+        <div>Listing Gallery images / Hero image selector </div>
         <h2>{listing.title}</h2>
       </div>
       <div className={styles.bidContainer}>
@@ -124,9 +132,19 @@ const ListingPage: React.FC = () => {
 
       <div className={styles.closingInfoContainer}>
         <div className={styles.closingTime}>
+          <img
+            className={styles.miniBrandLogo}
+            src={clockIcon}
+            alt="Acution exporation date"
+          />
           Closing in X days/ hours + date and time (posted / ends??)
         </div>
         <button className={`${styles.watchlistYellow} ${styles.lrgBtn}`}>
+          <img
+            className={styles.miniBrandLogo}
+            src={watchlistIcon}
+            alt="Watchlist"
+          />
           Add to Watchlist
         </button>
         <div className={styles.watchlistCount}>
@@ -206,17 +224,34 @@ const ListingPage: React.FC = () => {
         </div>
         <hr />
         <button className={`${styles.blue} ${styles.lrgBtn}`}>
+          <img
+            className={styles.miniBrandLogo}
+            src={favouriteIcon}
+            alt="Favourite"
+          />
           Add to favourite sellers
         </button>
         <div>
           <a>Read our safe buying advice guide</a>
         </div>
         <div>
-          <a>Share this listing</a>
+          <a>
+            <img
+              className={styles.miniBrandLogo}
+              src={shareNodes}
+              alt="Share"
+            />
+            Share this listing
+          </a>
         </div>
         <div>Page views: {listing.viewCount}</div>
         <div>Listing #{listing.id}</div>
         <div>
+          <img
+            className={styles.miniBrandLogo}
+            src={communityWatch}
+            alt="Community Watch"
+          />
           Community Watch: <a>Report this listing</a>
         </div>
       </div>
@@ -232,10 +267,22 @@ const ListingPage: React.FC = () => {
       <div className={styles.upgradeNotice}>
         We're upgrading some of our systems.
         <div>
+          <img
+            className={styles.miniBrandLogo}
+            src={infoCircle}
+            alt="Info circle"
+          />
           <a>Learn more</a>
         </div>
         <div>
-          <a>Tell us what you think</a>
+          <a>
+            <img
+              className={styles.miniBrandLogo}
+              src={commentBubble}
+              alt="Comment speach bubble"
+            />
+            Tell us what you think
+          </a>
         </div>
       </div>
       <footer className={styles.footer}>
@@ -243,14 +290,26 @@ const ListingPage: React.FC = () => {
           <div>Desktop site</div>
           <div>Help</div>
           <div>Contact us</div>
-          <div>Terms and conditions</div>
+          <div>Terms & conditions</div>
         </div>
         <div className={styles.infoContainer}>
-          <div>Copy right trademe</div>
-          <div>Dark mode/light mode toggle</div>
-          <div>
-            <img src={facebookF} alt="Facebook" />
-          </div>
+          <div>© 2024 Trade Me Limited</div>
+          <img
+            className={styles.miniBrandLogo}
+            src={darkLightMode}
+            alt="Dark / Light mode toggle"
+          />
+
+          <img
+            className={styles.miniBrandLogo}
+            src={facebookF}
+            alt="Facebook"
+          />
+          <img
+            className={styles.miniBrandLogo}
+            src={twitterLogo}
+            alt="Twitter"
+          />
         </div>
         <div className={styles.loginContainer}>
           <div>Register</div>
