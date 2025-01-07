@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ListingPage.module.css";
 import Header from "../components/Header/Header";
 import Navbar from "../components/Navigation/Navbar";
@@ -30,6 +30,9 @@ interface Listing {
   highestBid: () => Bid | null;
   viewCount: number;
   images: string[];
+  heroImage: string;
+  createdAt: Date;
+  //   reserveStatus: string;
 }
 
 interface user {
@@ -80,10 +83,15 @@ const listing: Listing = {
   bids: [bid],
   viewCount: 1234,
   images: ["image1.jpg", "image2.jpg", "image3.jpg"],
+  heroImage: "heroImage.jpg",
+  createdAt: new Date(),
 };
 
 const ListingPage: React.FC = () => {
-  const [selectedImage, setSelectedImage] = React.useState<string>("");
+  const [selectedImage, setSelectedImage] = useState<string>("");
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
+  const [bidAmount, setBidAmount] = useState<string>("");
 
   React.useEffect(() => {
     if (listing.images && listing.images.length > 0) {
@@ -96,7 +104,31 @@ const ListingPage: React.FC = () => {
   };
 
   const handlePlaceBid = () => {
-    // set up logic for placing a bid;
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setIsConfirmModalOpen(false);
+  };
+
+  const handleBidChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setBidAmount(event.target.value);
+  };
+
+  const handleSubmitBid = () => {
+    setIsModalOpen(false);
+    setIsConfirmModalOpen(true);
+  };
+
+  const handleConfirmBid = () => {
+    // Logic to submit the bid
+    setIsConfirmModalOpen(false);
+  };
+
+  const handleGoBack = () => {
+    setIsConfirmModalOpen(false);
+    setIsModalOpen(true);
   };
 
   const handleBuyNow = () => {
@@ -343,6 +375,126 @@ const ListingPage: React.FC = () => {
           <div>Log in</div>
         </div>
       </footer>
+      {isModalOpen && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalWindow}>
+            <button className={styles.closeButton} onClick={handleCloseModal}>
+              X
+            </button>
+            <h2>Place a bid</h2>
+            <div className={styles.listingInfoContainer}>
+              <div className={styles.heroImage}>{listing.heroImage}</div>
+              <div className={styles.listingInfo}>
+                <div>{listing.seller.location}</div>
+                <div>
+                  Closes:{" "}
+                  {new Date(
+                    new Date(listing.createdAt).getTime() +
+                      7 * 24 * 60 * 60 * 1000
+                  ).toDateString()}
+                </div>
+                <div>{listing.title}</div>
+                <div>No reserve, no bid</div>
+                {/* PLACEHOLDER TEXT ADD DYNAMIC VALUES */}
+                <div>${listing.highestBid()?.amount}</div>
+              </div>
+            </div>
+            <div className={styles.bidInputContainer}>
+              <div>Your bid</div>
+              <input type="text" value={bidAmount} onChange={handleBidChange} />
+              <div>
+                -TOGGLE ICON- Auto-bid <a>More info &#x25BC;</a>
+              </div>
+            </div>
+            <div className={styles.shippingInfo}>
+              <div>Shipping</div>
+              <div>
+                <input
+                  type="radio"
+                  id="urban"
+                  name="shippingOption"
+                  value="11.30"
+                />
+                <label htmlFor="urban">
+                  <div>Nationwide (Urban)</div> <div>$11.30</div>
+                </label>
+                <input
+                  type="radio"
+                  id="rural"
+                  name="shippingOption"
+                  value="17.00"
+                />
+                <label htmlFor="rural">
+                  <div>Nationwide (Rural)</div> <div>$11.30</div>
+                </label>
+                <input
+                  type="radio"
+                  id="pickUp"
+                  name="shippingOption"
+                  value="0.00"
+                />
+                <label htmlFor="pickUp">
+                  <div>Pick-up from seller</div> <div>FREE</div>
+                </label>
+              </div>
+              <div className={styles.sellerPaymentOptions}>
+                <div>Seller accepts payment by</div>
+                <div>Ping, Afterpay, NZ Bank Deposit</div>
+                {/* placeholder text*/}
+                <div>
+                  If you win the auction, you are legally obligated to complete
+                  your purchase
+                </div>
+              </div>
+              <div className={styles.remindersContainer}>
+                <div>Reminders</div>
+                <div>
+                  <input type="checkbox" id="emailReminderCheckbox"></input>
+                  <label htmlFor="emailReminderCheckbox">
+                    Email me if I'm outbid
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className={styles.modalButtons}>
+              <button onClick={handleSubmitBid}>Place bid</button>
+              <button onClick={handleCloseModal}>Go back to listing</button>
+            </div>
+          </div>
+        </div>
+      )}
+      {isConfirmModalOpen && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalWindow}>
+            <button className={styles.closeButton} onClick={handleCloseModal}>
+              X
+            </button>
+            <h2>Confirm your bid</h2>
+            <div className={styles.listingInfoContainer}>
+              <div className={styles.heroImage}>{listing.heroImage}</div>
+              <div className={styles.listingInfo}>
+                <div>{listing.seller.location}</div>
+                <div>
+                  Closes:{" "}
+                  {new Date(
+                    new Date(listing.createdAt).getTime() +
+                      7 * 24 * 60 * 60 * 1000
+                  ).toDateString()}
+                </div>
+                <div>{listing.title}</div>
+                <div>No reserve, no bid</div>
+                {/* PLACEHOLDER TEXT ADD DYNAMIC VALUES */}
+                <div>${listing.highestBid()?.amount}</div>
+              </div>
+            </div>
+            <p>Do you want to make a bid for ${bidAmount}?</p>
+            <div className={styles.modalButtons}>
+              <button onClick={handleConfirmBid}>Yes, place bid</button>
+              <button onClick={handleGoBack}>Go back</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
