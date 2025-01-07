@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './MainBody.module.css'; // Import styles as an object
 
 import Menu from './Menu/Menu';
@@ -15,6 +15,19 @@ interface Products {
 }
 
 const MainBody: React.FC<Products> = ({ data }) => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(max-width: 480px)');
+        const handleMediaChange = () => setIsMobile(mediaQuery.matches);
+
+        handleMediaChange(); // Initial check
+        mediaQuery.addEventListener('change', handleMediaChange);
+
+        return () =>
+            mediaQuery.removeEventListener('change', handleMediaChange);
+    }, []);
+
     return (
         <div>
             <div className={styles.mainbody}>
@@ -81,7 +94,7 @@ const MainBody: React.FC<Products> = ({ data }) => {
                     </div>
                     <div className={styles.emptyBox}></div>
                 </div>
-                <ReserveCards data={data} />
+                <ReserveCards data={data} popular={isMobile} />
             </div>
         </div>
     );

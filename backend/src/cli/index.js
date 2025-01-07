@@ -73,7 +73,7 @@ program
 program
     .command('update')
     .description('Update an auction item by _id')
-    .option('--key <_id>', '_id of the item to update')
+    .requiredOption('--key <_id>', '_id of the item to update')
     .option('--title <title>', 'Title of the auction item')
     .option('--description <description>', 'Description of the auction item')
     .option('--start_price <start_price>', 'Starting price of the auction item', (val) => parseFloat(val))

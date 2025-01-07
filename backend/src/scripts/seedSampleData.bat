@@ -1,4 +1,22 @@
 @echo off
+
+
+timeout /t 1
+call trademe-cli add ^
+--title "Blue SAPPHIRE" ^
+--description "A new SAPPHIRE" ^
+--start_price 61 ^
+--sold false ^
+--location "Auckland" ^
+--date "1hr 5 mins" ^
+--closing false ^
+--reserve null ^
+--onedollar false ^
+--favourite true ^
+--price_detail "Asking price: $1,4500.00" ^
+--current_bid 61 ^
+--picture_path "C:\Study\Class\M5-G5-P2\backend\src\assets\blue-sapphire.jpg"
+
 call trademe-cli add ^
 --title "Vintage Vinyl Record" ^
 --description "A rare vinyl record from the 1960s, featuring iconic music in pristine condition." ^
@@ -127,6 +145,4 @@ call trademe-cli add ^
 --price_detail '$23.00' ^
 --current_bid 23 ^
 --picture_path "C:\Study\Class\M5-G5-P2\backend\src\assets\casio-watch.jpg"
-
-
 
