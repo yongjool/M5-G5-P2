@@ -1,6 +1,5 @@
 .productAtGlanceContainer {
-  padding: 16px;
-  margin: 16px 0;
+  padding: 1rem;
   gap: 1rem;
   display: flex;
   flex-direction: column;
@@ -8,8 +7,9 @@
 
 .sectionHeader {
   cursor: pointer;
-  padding: 8px;
+  padding: 0.5rem 1rem;
   border: 1px solid #0076bc;
+  color: #0076bc;
   border-radius: 2rem;
   display: flex;
   justify-content: space-between;
@@ -17,13 +17,13 @@
 }
 
 .sectionContent {
-  padding: 8px;
+  padding: 0.5rem 1rem;
   border: 1px solid #44413d;
   border-radius: 0.5rem;
 }
 
 .icon {
-  margin-left: 8px;
+  padding-right: 0.5rem;
 }
 
 .title {
