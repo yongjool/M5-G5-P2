@@ -329,7 +329,7 @@ const ListingPage: React.FC = () => {
             <a>View All (X)</a>
           </div>
         </div>
-        <div>
+        <div className={styles.otherListingsCarousel}>
           {/* TODO: add other listing card carousel where the listing hero image is 75% vertical height of the card and the bottom 25% has sone listing details like the location, listed: date, title and starting price  */}
         </div>
       </div>
