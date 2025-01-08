@@ -16,13 +16,19 @@
     display: flex;
     justify-content: space-between;
 
-    gap: 40px;
-
     min-width: 760px;
     max-width: 1200px;
 
+    gap: 40px;
+
     height: 100%;
     width: 100%;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    flex-wrap: nowrap;
+
+    cursor: grab;
 }
 
 @media (max-width: 400px) {
@@ -30,13 +36,13 @@
         display: none;
     }
 
-    .AuctionCardsContainer {
-        min-width: 280px;
+    .AuctionCards {
+        height: 400px;
     }
 
-    .AuctionCards {
-        height: 380px;
-
+    .AuctionCardsContainer {
         margin-left: 28px;
+        min-width: 320px;
+        max-width: 100%;
     }
 }
