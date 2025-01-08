@@ -114,11 +114,13 @@
     font-family: 'Inter', sans-serif;
     white-space: nowrap;
     font-size: 12px;
+    margin: 4px;
 }
 
 @media (max-width: 1024px) {
     .bottomItemContainer {
         flex-direction: column;
+        justify-content: end;
     }
     .iconContainer {
         order: 1;
