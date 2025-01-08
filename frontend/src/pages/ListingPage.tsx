@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Add this import
 import styles from "./ListingPage.module.css";
 import Header from "../components/Header/Header";
 import Navbar from "../components/Navigation/Navbar";
@@ -89,6 +90,7 @@ const listing: Listing = {
 };
 
 const ListingPage: React.FC = () => {
+  const navigate = useNavigate(); // Add this line
   const [selectedImage, setSelectedImage] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
@@ -141,13 +143,23 @@ const ListingPage: React.FC = () => {
     // TODO: set up logic for making an offer;
   };
 
+  const handleBreadcrumbClick = (
+    breadcrumb: string,
+    index: number,
+    breadcrumbs: string[]
+  ) => {
+    const selectedBreadcrumbs = breadcrumbs.slice(0, index + 1).join("/");
+    const query = selectedBreadcrumbs.replace(/\s+/g, "-");
+    navigate(`/search?query=${query}`);
+  };
+
   return (
     <div className={styles.listingPage}>
       <header className={styles.header}>
         <Header />
         <Navbar />
       </header>
-      <Breadcrumbs />
+      <Breadcrumbs onBreadcrumbClick={handleBreadcrumbClick} />
       <div className={styles.listingDetails}>
         {selectedImage && (
           <img className={styles.heroImage} src={selectedImage} alt="Hero" />

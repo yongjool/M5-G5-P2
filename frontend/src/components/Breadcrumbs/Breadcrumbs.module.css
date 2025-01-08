@@ -2,3 +2,13 @@
   display: flex;
   align-items: flex-start;
 }
+
+.breadcrumbs span {
+  cursor: pointer;
+  color: blue;
+  margin-right: 0.5rem; /* Add this line */
+}
+
+.breadcrumbs span:hover {
+  text-decoration: underline;
+}
