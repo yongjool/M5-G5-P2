@@ -163,7 +163,7 @@ const ListingPage: React.FC = () => {
             />
           ))}
         </div>
-        <h2>{listing.title}</h2>
+        <div className={styles.listingTitle}>{listing.title}</div>
       </div>
       <div className={styles.bidContainer}>
         <div>Starting price</div>
@@ -199,7 +199,7 @@ const ListingPage: React.FC = () => {
           />
           Closing in X days/ hours + date and time (posted / ends??)
         </div>
-        <button className={`${styles.watchlistYellow} ${styles.lrgBtn}`}>
+        <button className={`${styles.watchlistYellow} ${styles.watchlistBtn}`}>
           <img
             className={styles.miniBrandLogo}
             src={watchlistIcon}
@@ -332,26 +332,26 @@ const ListingPage: React.FC = () => {
       </div>
       <div className={styles.upgradeNotice}>
         We're upgrading some of our systems.
-        <div>
+        <div className={styles.informationContainer}>
           <img
-            className={styles.miniBrandLogo}
+            className={styles.xSmallLogo}
             src={infoCircle}
             alt="Info circle"
           />
+
           <a>Learn more</a>
         </div>
-        <div>
-          <a>
-            <img
-              className={styles.miniBrandLogo}
-              src={commentBubble}
-              alt="Comment speach bubble"
-            />
-            Tell us what you think
-          </a>
+        <div className={styles.commentContainer}>
+          <img
+            className={styles.xSmallLogo}
+            src={commentBubble}
+            alt="Comment speach bubble"
+          />
+
+          <a>Tell us what you think</a>
         </div>
       </div>
-      <footer className={styles.footer}>
+      <div className={styles.footer}>
         <div className={styles.navContainer}>
           <div>Desktop site</div>
           <div>Help</div>
@@ -359,29 +359,33 @@ const ListingPage: React.FC = () => {
           <div>Terms & conditions</div>
         </div>
         <div className={styles.infoContainer}>
-          <div>© 2024 Trade Me Limited</div>
+          <div className={styles.copyrightText}>
+            © 2024 Trade Me <br />
+            Limited
+          </div>
           <img
-            className={styles.miniBrandLogo}
+            className={styles.darkLightMode}
             src={darkLightMode}
             alt="Dark / Light mode toggle"
           />
-
-          <img
-            className={styles.miniBrandLogo}
-            src={facebookF}
-            alt="Facebook"
-          />
-          <img
-            className={styles.miniBrandLogo}
-            src={twitterLogo}
-            alt="Twitter"
-          />
+          <div className={styles.socialMediaContainer}>
+            <img
+              className={styles.miniBrandLogo}
+              src={facebookF}
+              alt="Facebook"
+            />
+            <img
+              className={styles.miniBrandLogo}
+              src={twitterLogo}
+              alt="Twitter"
+            />
+          </div>
         </div>
         <div className={styles.loginContainer}>
           <div>Register</div>
           <div>Log in</div>
         </div>
-      </footer>
+      </div>
 
       {/* ---------- MODAL WINDOW ---------- */}
       {isModalOpen && (

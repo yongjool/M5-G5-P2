@@ -14,7 +14,7 @@ const ProductAtGlance: React.FC = () => {
 
   return (
     <div className={styles.productAtGlanceContainer}>
-      <h2>Product at a Glance</h2>
+      <div className={styles.title}>Product at a Glance</div>
       <div
         onClick={() => toggleSection("aboutProduct")}
         className={styles.sectionHeader}
