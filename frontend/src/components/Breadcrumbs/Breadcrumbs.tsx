@@ -2,11 +2,7 @@ import React from "react";
 import styles from "./Breadcrumbs.module.css";
 
 interface BreadcrumbsProps {
-  onBreadcrumbClick: (
-    breadcrumb: string,
-    index: number,
-    breadcrumbs: string[]
-  ) => void;
+  onBreadcrumbClick: (index: number, breadcrumbs: string[]) => void;
 }
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ onBreadcrumbClick }) => {
@@ -19,7 +15,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ onBreadcrumbClick }) => {
           return (
             <span
               key={index}
-              onClick={() => onBreadcrumbClick(breadcrumb, index, breadcrumbs)}
+              onClick={() => onBreadcrumbClick(index, breadcrumbs)}
             >
               {breadcrumb}
               {index < breadcrumbs.length - 1 && " / "}
@@ -29,7 +25,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ onBreadcrumbClick }) => {
           return (
             <span
               key={index}
-              onClick={() => onBreadcrumbClick(breadcrumb, index, breadcrumbs)}
+              onClick={() => onBreadcrumbClick(index, breadcrumbs)}
             >
               ...{index < breadcrumbs.length - 1 && " / "}
             </span>

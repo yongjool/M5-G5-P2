@@ -143,11 +143,7 @@ const ListingPage: React.FC = () => {
     // TODO: set up logic for making an offer;
   };
 
-  const handleBreadcrumbClick = (
-    breadcrumb: string,
-    index: number,
-    breadcrumbs: string[]
-  ) => {
+  const handleBreadcrumbClick = (index: number, breadcrumbs: string[]) => {
     const selectedBreadcrumbs = breadcrumbs.slice(0, index + 1).join("/");
     const query = selectedBreadcrumbs.replace(/\s+/g, "-");
     navigate(`/search?query=${query}`);
@@ -247,7 +243,7 @@ const ListingPage: React.FC = () => {
         <h2>Payment Options</h2>
         <div className={styles.pingContainer}>
           <img
-            className={`${styles.miniBrandLogo} ${styles.paymentLogo}`}
+            className={styles.miniBrandLogo}
             src={pingLogo}
             alt="ping by TradeMe logo"
           ></img>
