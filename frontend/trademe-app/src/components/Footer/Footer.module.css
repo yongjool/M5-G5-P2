@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
+    margin-top: 20px;
 }
 
 .emptyBox {
@@ -70,6 +71,9 @@
 
     margin-left: 1vw;
     margin: 4px;
+
+    user-select: none;
+    cursor: pointer;
 }
 
 .logoContainer {
@@ -97,6 +101,10 @@
     max-width: none; /* Disable any maximum width constraints */
     max-height: none; /* Disable any maximum height constraints */
     font-size: 12px;
+}
+
+.textItem:hover {
+    text-decoration: underline; /* Adds underline on hover */
 }
 
 .desktop {

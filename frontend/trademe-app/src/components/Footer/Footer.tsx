@@ -20,7 +20,12 @@ const Footer: React.FC = () => {
                 <div className={styles.emptyBox}></div>
                 <div className={styles.FooterBodyContainer}>
                     <div
-                        style={{ fontSize: '14px', marginRight: '4vw' }}
+                        style={{
+                            fontSize: '14px',
+                            marginRight: '4vw',
+                            cursor: 'default',
+                            textDecoration: 'none',
+                        }}
                         className={styles.textItem}
                     >
                         We are upgrading some of our systems
@@ -73,6 +78,8 @@ const Footer: React.FC = () => {
                                 fontSize: '14px',
                                 color: '#528EE1',
                                 marginLeft: '8px',
+                                cursor: 'default',
+                                textDecoration: 'none',
                             }}
                             className={styles.textItem}
                         >
@@ -291,7 +298,12 @@ const Footer: React.FC = () => {
                             <img src={copyright_icon} alt="copyright_icon" />
                         )}
                     </div>
-                    <div className={styles.textItem}>2024 Trade Me Limited</div>
+                    <div
+                        style={{ cursor: 'default', textDecoration: 'none' }}
+                        className={styles.textItem}
+                    >
+                        2024 Trade Me Limited
+                    </div>
                 </div>
                 <div className={styles.BodyContainer}>
                     <div
@@ -343,7 +355,13 @@ const Footer: React.FC = () => {
                                 />
                             )}
                         </div>
-                        <div className={styles.textItem}>
+                        <div
+                            style={{
+                                cursor: 'default',
+                                textDecoration: 'none',
+                            }}
+                            className={styles.textItem}
+                        >
                             2024 Trade Me Limited
                         </div>
                     </div>
@@ -405,7 +423,7 @@ const Footer: React.FC = () => {
 
                 <div
                     style={{ backgroundColor: '#f7f5f4', paddingLeft: '6vw' }}
-                    className={styles.BodyContainer}
+                    className={`${styles.BodyContainer} ${styles.mobile}`}
                 >
                     <div className={styles.textItem}>Register</div>
                     <div
