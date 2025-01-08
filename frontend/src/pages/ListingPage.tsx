@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Add this import
+import { useNavigate } from "react-router-dom";
 import styles from "./ListingPage.module.css";
 import Header from "../components/Header/Header";
 import Navbar from "../components/Navigation/Navbar";
@@ -21,6 +21,8 @@ import favouriteIcon from "../assets/heartPlus.svg";
 import watchlistIcon from "../assets/watchlistBtnBinoculars.svg";
 import clockIcon from "../assets/clock.svg";
 import toggleIcon from "../assets/toggleOffOn.svg";
+
+// Define interfaces for Listing, user, and Bid
 interface Listing {
   title: string;
   seller: user;
@@ -54,6 +56,7 @@ interface Bid {
   listingId: string;
 }
 
+// Sample bid data
 const bid: Bid = {
   amount: 100,
   bidderName: "TradeMeGuy7",
@@ -62,6 +65,7 @@ const bid: Bid = {
   listingId: "1234567890",
 };
 
+// Sample listing data
 const listing: Listing = {
   title: "Computer Monitor",
   seller: {
@@ -96,53 +100,65 @@ const ListingPage: React.FC = () => {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
   const [bidAmount, setBidAmount] = useState<string>("");
 
+  // Set the initial selected image when the component mounts
   React.useEffect(() => {
     if (listing.images && listing.images.length > 0) {
       setSelectedImage(listing.images[0]);
     }
-  }, [listing.images]);
+  }, [listing.images]); // eslint-disable-line react-hooks/exhaustive-deps
+  // TODO: FIX disabled warning: React Hook useEffect has a missing dependency: 'listing.images'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
 
+  // Handle image click to change the selected image
   const handleImageClick = (image: string) => {
     setSelectedImage(image);
   };
 
+  // Open the bid modal
   const handlePlaceBid = () => {
     setIsModalOpen(true);
   };
 
+  // Close the modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setIsConfirmModalOpen(false);
   };
 
+  // Handle bid amount change
   const handleBidChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBidAmount(event.target.value);
   };
 
+  // Submit the bid and open the confirmation modal
   const handleSubmitBid = () => {
     setIsModalOpen(false);
     setIsConfirmModalOpen(true);
   };
 
+  // Confirm the bid
   const handleConfirmBid = () => {
     // Logic to submit the bid
     setIsConfirmModalOpen(false);
   };
 
+  // Go back to the bid modal from the confirmation modal
   const handleGoBack = () => {
     setIsConfirmModalOpen(false);
     setIsModalOpen(true);
   };
 
+  // Handle buy now action
   const handleBuyNow = () => {
     // set up logic for buying now;
     // TODO: redirect to payment page
   };
 
+  // Handle make offer action
   const handleMakeOffer = () => {
     // TODO: set up logic for making an offer;
   };
 
+  // Handle breadcrumb click to navigate to the selected breadcrumb
   const handleBreadcrumbClick = (index: number, breadcrumbs: string[]) => {
     const selectedBreadcrumbs = breadcrumbs.slice(0, index + 1).join("/");
     const query = selectedBreadcrumbs.replace(/\s+/g, "-");

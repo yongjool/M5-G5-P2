@@ -355,7 +355,7 @@ label {
   appearance: none; /* Removes the default styling */
   -webkit-appearance: none; /* Safari support */
   -moz-appearance: none; /* Firefox support */
-  border: 2px solid #000; /* Add a border for visibility */
+  border: 1px solid #44413d; /* Add a border for visibility */
   border-radius: 50%; /* Makes it circular like a radio button */
   width: 20px; /* Set width */
   height: 20px; /* Set height */
@@ -365,7 +365,7 @@ label {
 }
 
 .shippingRadio:checked {
-  background-color: red; /* Optional: Add a fill when selected */
+  background-color: #44413d; /* Optional: Add a fill when selected */
 }
 
 .listingPrewiew {
@@ -426,7 +426,7 @@ input[type="checkbox"] {
   -moz-appearance: none; /* Firefox support */
   width: 1.5rem; /* Set size of the checkbox */
   height: 1.5rem;
-  border: 2px solid #000; /* Add a border */
+  border: 2px solid #44413d; /* Add a border */
   border-radius: 3px; /* Optional: Slight rounding for a modern look */
   background-color: transparent; /* Make the background transparent */
   cursor: pointer;
@@ -434,8 +434,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-  background-color: red; /* Optional: Add a solid color when checked */
-  border-color: #000;
+  background-color: #44413d; /* Optional: Add a solid color when checked */
   display: flex;
   align-items: center;
   justify-content: center;
