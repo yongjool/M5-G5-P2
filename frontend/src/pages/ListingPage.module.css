@@ -482,6 +482,7 @@ input[type="checkbox"]:checked::after {
 }
 
 .paymentLogo {
+  width: auto;
   max-width: fit-content;
 }
 

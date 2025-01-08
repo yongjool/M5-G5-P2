@@ -6,7 +6,13 @@ interface BreadcrumbsProps {
 }
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ onBreadcrumbClick }) => {
-  const breadcrumbs = ["Home", "path", "to", "items", "Laptops & PCs"];
+  const breadcrumbs = [
+    "Home",
+    "Marketplace",
+    "Computers",
+    "Monitors",
+    "Samsung",
+  ];
 
   return (
     <div className={styles.breadcrumbs}>
@@ -27,7 +33,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ onBreadcrumbClick }) => {
               key={index}
               onClick={() => onBreadcrumbClick(index, breadcrumbs)}
             >
-              ...{index < breadcrumbs.length - 1 && " / "}
+              ..{index < breadcrumbs.length - 1 && " / "}
             </span>
           );
         }

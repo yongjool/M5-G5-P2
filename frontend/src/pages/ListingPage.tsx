@@ -149,8 +149,7 @@ const ListingPage: React.FC = () => {
 
   // Handle buy now action
   const handleBuyNow = () => {
-    // set up logic for buying now;
-    // TODO: redirect to payment page
+    navigate("/payment");
   };
 
   // Handle make offer action
@@ -160,9 +159,14 @@ const ListingPage: React.FC = () => {
 
   // Handle breadcrumb click to navigate to the selected breadcrumb
   const handleBreadcrumbClick = (index: number, breadcrumbs: string[]) => {
-    const selectedBreadcrumbs = breadcrumbs.slice(0, index + 1).join("/");
-    const query = selectedBreadcrumbs.replace(/\s+/g, "-");
-    navigate(`/search?query=${query}`);
+    let path = "/";
+    if (index > 0) {
+      path += breadcrumbs
+        .slice(1, index + 1)
+        .join("/")
+        .replace(/\s+/g, "-");
+    }
+    navigate(path);
   };
 
   return (
@@ -259,7 +263,7 @@ const ListingPage: React.FC = () => {
         <h2>Payment Options</h2>
         <div className={styles.pingContainer}>
           <img
-            className={styles.miniBrandLogo}
+            className={`${styles.miniBrandLogo} ${styles.paymentLogo}`}
             src={pingLogo}
             alt="ping by TradeMe logo"
           ></img>
