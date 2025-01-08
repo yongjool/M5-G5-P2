@@ -148,7 +148,6 @@ const ListingPage: React.FC = () => {
         <Navbar />
       </header>
       <Breadcrumbs />
-
       <div className={styles.listingDetails}>
         {selectedImage && (
           <img className={styles.heroImage} src={selectedImage} alt="Hero" />
@@ -222,7 +221,10 @@ const ListingPage: React.FC = () => {
               {listing.seller.name} ({listing.seller.totalRatings})
             </a>
           </div>
-          <div>{listing.seller.rating}% positive feedback</div>
+          <div>
+            <span className={styles.bold}>{listing.seller.rating}</span>%
+            positive feedback
+          </div>
           <div>Seller located in {listing.seller.location}</div>
         </div>
       </div>
@@ -244,7 +246,7 @@ const ListingPage: React.FC = () => {
         </div>
         <div className={styles.afterPayContainer}>
           <img
-            className={styles.miniBrandLogo}
+            className={`${styles.miniBrandLogo} ${styles.afterPayLogo}`}
             src={afterpayLogo}
             alt="Afterpay logo"
           ></img>
@@ -256,58 +258,61 @@ const ListingPage: React.FC = () => {
           </div>
         </div>
         <div className={styles.otherPaymentOptionsContainer}>
-          <div>Other options</div>
+          <div className={styles.bold}>Other options</div>
           <div>Cash, NZ Bank Deposit</div>
         </div>
       </div>
       <QuestionsAnswers />
       <div className={styles.aboutSellerContainer}>
-        <h2 className={styles.aboutSellerTitle}>About the seller</h2>
+        <div className={styles.aboutSellerTitle}>About the seller</div>
         <div>{listing.seller.profilePic}</div>
         <div>{listing.seller.name}</div>
         <div>
           {listing.seller.rating}% positive feedback (
           {listing.seller.totalRatings})
         </div>
-        <div className={styles.sellerLocation}>
-          <div>Location</div>
-          <div>{listing.seller.location}</div>
+        <div className={styles.sellerLocationContainer}>
+          <div className={styles.locationText}>Location</div>
+          <div className={styles.sellerLocation}>{listing.seller.location}</div>
         </div>
         <hr />
         <div className={styles.sellerMemberSince}>
-          <div>Member since</div>
-          <div>{listing.seller.createdAt.toDateString()}</div>
+          <div className={styles.memberSinceText}>Member since</div>
+          <div className={styles.sellerCreatedAt}>
+            {listing.seller.createdAt.toDateString()}
+          </div>
         </div>
         <hr />
-        <div className={styles.sellerOtherListings}>
-          <div>View seller's other listings</div>
-          <div>&gt;</div>
-        </div>
+        <a className={styles.sellerOtherListings}>
+          <div className={styles.sellerOtherListingsText}>
+            View seller's other listings
+          </div>
+          <div className={styles.dropDownArrow}>&gt;</div>
+        </a>
+
         <hr />
-        <button className={`${styles.blue} ${styles.lrgBtn}`}>
-          <img
-            className={styles.miniBrandLogo}
-            src={favouriteIcon}
-            alt="Favourite"
-          />
-          Add to favourite sellers
-        </button>
-        <div>
-          <a>Read our safe buying advice guide</a>
-        </div>
-        <div>
-          <a>
+        <div className={styles.favouriteSellerContainer}>
+          <button className={`${styles.blue} ${styles.favouriteSellerBtn}`}>
             <img
               className={styles.miniBrandLogo}
-              src={shareNodes}
-              alt="Share"
+              src={favouriteIcon}
+              alt="Favourite"
             />
-            Share this listing
-          </a>
+            Add to favourite sellers
+          </button>
         </div>
-        <div>Page views: {listing.viewCount}</div>
-        <div>Listing #{listing.id}</div>
-        <div>
+        <div className={styles.safeBuyingAdvice}>
+          <a>Read our safe buying advice guide</a>
+        </div>
+      </div>
+      <div className={styles.shareContainer}>
+        <a className={styles.shareLink}>
+          <img className={styles.miniBrandLogo} src={shareNodes} alt="Share" />
+          Share this listing
+        </a>
+        <div className={styles.pageViews}>Page views: {listing.viewCount}</div>
+        <div className={styles.listingId}>Listing #{listing.id}</div>
+        <div className={styles.communityWatch}>
           <img
             className={styles.miniBrandLogo}
             src={communityWatch}
@@ -377,6 +382,8 @@ const ListingPage: React.FC = () => {
           <div>Log in</div>
         </div>
       </footer>
+
+      {/* ---------- MODAL WINDOW ---------- */}
       {isModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalWindow}>
@@ -400,13 +407,15 @@ const ListingPage: React.FC = () => {
                 <div className={styles.bold}>{listing.title}</div>
                 <div>No reserve, no bid</div>
                 {/* PLACEHOLDER TEXT ADD DYNAMIC VALUES ^^^*/}
-                <div>${listing.highestBid()?.amount}</div>
+                <div className={styles.bold}>
+                  ${listing.highestBid()?.amount}
+                </div>
               </div>
             </div>
             <div className={styles.bidInputContainer}>
-              <div>Your bid</div>
+              <div className={styles.padding1}>Your bid</div>
               <input
-                className={styles.bidInput}
+                className={`${styles.bidInput} ${styles.padding1}`}
                 type="text"
                 value={bidAmount}
                 onChange={handleBidChange}
@@ -420,7 +429,7 @@ const ListingPage: React.FC = () => {
                 Auto-bid <a>More info &#x25BC;</a>
               </div>
             </div>
-            <div className={styles.bold}>Shipping</div>
+            <div className={`${styles.bold} ${styles.padding1}`}>Shipping</div>
             <div className={styles.shippingInfoContainer}>
               <div className={styles.shippingOptions}>
                 <input
@@ -470,7 +479,9 @@ const ListingPage: React.FC = () => {
                 </label>
               </div>
               <div className={styles.sellerPaymentOptions}>
-                <div className={styles.bold}>Seller accepts payment by</div>
+                <div className={`${styles.bold} ${styles.padding1}`}>
+                  Seller accepts payment by
+                </div>
                 <div className={styles.sellerTransferPref}>
                   Ping, Afterpay, NZ Bank Deposit
                 </div>
@@ -481,8 +492,12 @@ const ListingPage: React.FC = () => {
                 </div>
               </div>
               <div className={styles.remindersContainer}>
-                <div className={styles.bold}>Reminders</div>
-                <div className={styles.reminderCheckboxContainer}>
+                <div className={`${styles.bold} ${styles.padding1}`}>
+                  Reminders
+                </div>
+                <div
+                  className={`${styles.reminderCheckboxContainer} ${styles.padding1Bottom}`}
+                >
                   <input type="checkbox" id="emailReminderCheckbox"></input>
                   <label htmlFor="emailReminderCheckbox">
                     Email me if I'm outbid
@@ -511,7 +526,9 @@ const ListingPage: React.FC = () => {
               </button>
             </div>
             <div className={styles.listingInfoContainer}>
-              <div className={styles.heroImage}>{listing.heroImage}</div>
+              <div className={`${styles.heroImage} ${styles.heroImagePreview}`}>
+                {listing.heroImage}
+              </div>
               <div className={styles.listingInfo}>
                 <div>{listing.seller.location}</div>
                 <div>

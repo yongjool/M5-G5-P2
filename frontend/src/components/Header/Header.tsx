@@ -10,34 +10,40 @@ import userIcon from "../../assets/userIcon.svg";
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
-      <img
-        className={styles.miniBrandLogo}
-        src={trademeLogoSpotlight}
-        alt="Trade Me Logo"
-      />
-      <div>
-        <img
-          className={styles.miniBrandLogo}
-          src={magnifyingGlass}
-          alt="Search bar"
-        />
-        Search bar PH
+      <div className={styles.leftContainer}>
+        <div className={styles.brandLogo}>
+          <img
+            className={styles.miniBrandLogo}
+            src={trademeLogoSpotlight}
+            alt="Trade Me Logo"
+          />
+        </div>
+        <div className={styles.searchBarContainer}>
+          <img
+            className={styles.miniBrandLogo}
+            src={magnifyingGlass}
+            alt="Search bar"
+          />
+          <div> Search</div>
+        </div>
       </div>
-      <div>
-        <img
-          className={styles.miniBrandLogo}
-          src={watchlistIcon}
-          alt="Watchlist"
-        />
-        Watchlist
-      </div>
-      <div>
-        <img
-          className={styles.miniBrandLogo}
-          src={userIcon}
-          alt="User profile"
-        />
-        Profile icon
+      <div className={styles.rightContainer}>
+        <div className={styles.watchlist}>
+          <img
+            className={styles.miniBrandLogo}
+            src={watchlistIcon}
+            alt="Watchlist"
+          />
+          Watchlist
+        </div>
+        <div className={styles.userProfile}>
+          <img
+            className={styles.miniBrandLogo}
+            src={userIcon}
+            alt="User profile"
+          />
+          My Trade Me
+        </div>
       </div>
     </header>
   );

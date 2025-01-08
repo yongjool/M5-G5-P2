@@ -4,4 +4,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.xSmallText {
+  font-size: x-small;
 }

@@ -2,9 +2,45 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
+  width: 100%;
+  padding: 0 0 0.5rem 0;
 }
 
 .miniBrandLogo {
   height: 1.5rem;
+}
+
+.leftContainer {
+  display: flex;
+  align-items: center;
+  flex: 75%;
+  gap: 1rem;
+  padding: 0 1rem 0 1rem;
+}
+
+.rightContainer {
+  display: flex;
+  align-items: center;
+  flex: 25%;
+  gap: 1rem;
+  padding: 0 1rem 0 0;
+}
+
+.searchBarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.watchlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-wrap: nowrap;
 }
