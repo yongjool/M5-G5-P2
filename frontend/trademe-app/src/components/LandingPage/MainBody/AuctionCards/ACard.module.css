@@ -10,9 +10,6 @@
 
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-
-    pointer-events: none;
-    user-select: none;
 }
 
 .ImgContainer {
@@ -27,6 +24,8 @@
     width: 100%; /* Fits the container's width */
     height: 100%; /* Fits the container's height */
     z-index: 1; /* Background layer */
+    pointer-events: none;
+    user-select: none;
 }
 
 .iconImage {
@@ -39,6 +38,7 @@
 }
 .iconImage:hover {
     filter: brightness(1.1);
+    cursor: pointer;
 }
 
 .TextContainer {
@@ -54,6 +54,9 @@
     padding: 8px;
     height: 30%;
     background-color: #ffffff;
+
+    pointer-events: none;
+    user-select: none;
 }
 
 .TopTextContainer {
