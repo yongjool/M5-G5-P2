@@ -1,0 +1,30 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon ./src/api/server.js",
+        "start": "node ./src/api/server.js",
+        "test": "jest"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bin": {
+        "trademe-cli": "./src/cli/index.js"
+    },
+    "description": "",
+    "dependencies": {
+        "chalk": "^5.4.1",
+        "commander": "^12.1.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "mongoose": "^8.9.2"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0",
+        "mongodb-memory-server": "^10.1.2",
+        "supertest": "^7.0.0"
+    }
+}

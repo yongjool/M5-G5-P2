@@ -1,0 +1,81 @@
+.trendingCardsBody {
+    display: flex;
+    justify-content: space-between;
+    background-color: #5554d4;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.trendingCardsImg {
+    display: flex;
+    width: 50%;
+}
+
+.trendingCardsTextBox {
+    display: flex;
+    width: 45%;
+    flex-direction: column;
+}
+
+.trendingCardsTitle {
+    display: flex;
+    padding: 12px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.trendingCardsText {
+    display: flex;
+    padding: 12px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.trendingCardsButton {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #5554d4;
+
+    border: none;
+    width: auto;
+    white-space: nowrap;
+    align-self: flex-start;
+
+    padding: 8px;
+    margin: 8px;
+}
+
+@media (max-width: 400px) {
+    .trendingCardsBody {
+        justify-content: flex-start;
+        flex-grow: 0; /* Remove even width distribution */
+        flex-shrink: 0; /* Prevent shrinking */
+        flex-basis: auto; /* Allow each item to take its natural width */
+
+        width: 280px;
+        margin: 0 auto;
+
+        overflow: hidden;
+    }
+
+    .trendingCardsImg {
+        width: 30%;
+    }
+
+    .trendingCardsTextBox {
+        width: 70%;
+    }
+}
