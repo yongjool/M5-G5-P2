@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font
-    Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License -
-    https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-    <path
-        d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8 15.3996C13.8 14.1266 13.2942 12.9057 12.3941 12.0055C11.4939 11.1053 10.273 10.5996 8.99995 10.5996C7.72691 10.5996 6.50601 11.1053 5.60584 12.0055C4.70566 12.9057 4.19995 14.1266 4.19995 15.3996" stroke="#8A8685" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.00005 10.5992C10.7674 10.5992 12.2 9.16653 12.2 7.39922C12.2 5.63191 10.7674 4.19922 9.00005 4.19922C7.23274 4.19922 5.80005 5.63191 5.80005 7.39922C5.80005 9.16653 7.23274 10.5992 9.00005 10.5992Z" stroke="#8A8685" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#8A8685" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

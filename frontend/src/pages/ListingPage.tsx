@@ -8,19 +8,19 @@ import ProductAtGlance from "../components/ProductAtGlance/ProductAtGlance";
 import QuestionsAnswers from "../components/QuestionsAnswers/QuestionsAnswers";
 
 // assets
-import pingLogo from "../assets/ping.svg";
+import pingLogo from "../assets/ping1.svg";
 import afterpayLogo from "../assets/afterpay.svg";
 import facebookF from "../assets/facebookF.svg";
-import darkLightMode from "../assets/dark-mode.png";
+import darkLightMode from "../assets/darkMode.svg";
 import twitterLogo from "../assets/twitterLogo.svg";
-import commentBubble from "../assets/commentBubble.svg";
-import infoCircle from "../assets/info-circle-svgrepo-com.svg";
+import commentBubble from "../assets/messageSquare.svg";
+import infoCircle from "../assets/infoCircle.svg";
 import shareNodes from "../assets/shareNodes.svg";
-import communityWatch from "../assets/communityWatch.svg";
-import favouriteIcon from "../assets/favouriteIcon.svg";
-import watchlistIcon from "../assets/binoculars-svgrepo-com.svg";
-import clockIcon from "../assets/clockIcon.svg";
-import toggleIcon from "../assets/toggleIcon.svg";
+import communityWatchStar from "../assets/communityWatchStar.svg";
+import favouriteIcon from "../assets/heartPlus.svg";
+import watchlistIcon from "../assets/watchlistBtnBinoculars.svg";
+import clockIcon from "../assets/clock.svg";
+import toggleIcon from "../assets/toggleOffOn.svg";
 interface Listing {
   title: string;
   seller: user;
@@ -90,7 +90,7 @@ const listing: Listing = {
 };
 
 const ListingPage: React.FC = () => {
-  const navigate = useNavigate(); // Add this line
+  const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
@@ -247,7 +247,7 @@ const ListingPage: React.FC = () => {
         <h2>Payment Options</h2>
         <div className={styles.pingContainer}>
           <img
-            className={styles.miniBrandLogo}
+            className={`${styles.miniBrandLogo} ${styles.paymentLogo}`}
             src={pingLogo}
             alt="ping by TradeMe logo"
           ></img>
@@ -258,7 +258,7 @@ const ListingPage: React.FC = () => {
         </div>
         <div className={styles.afterPayContainer}>
           <img
-            className={`${styles.miniBrandLogo} ${styles.afterPayLogo}`}
+            className={`${styles.miniBrandLogo} ${styles.paymentLogo}`}
             src={afterpayLogo}
             alt="Afterpay logo"
           ></img>
@@ -327,7 +327,7 @@ const ListingPage: React.FC = () => {
         <div className={styles.communityWatch}>
           <img
             className={styles.miniBrandLogo}
-            src={communityWatch}
+            src={communityWatchStar}
             alt="Community Watch"
           />
           Community Watch: <a>Report this listing</a>

@@ -1,14 +1,18 @@
 .breadcrumbs {
   display: flex;
   align-items: flex-start;
+  padding: 1rem;
 }
 
 .breadcrumbs span {
   cursor: pointer;
-  color: blue;
-  margin-right: 0.5rem; /* Add this line */
+  color: #44413d;
 }
 
 .breadcrumbs span:hover {
   text-decoration: underline;
+}
+
+.hiddenBreadcrumb {
+  display: none;
 }

@@ -482,7 +482,7 @@ input[type="checkbox"]:checked::after {
   gap: 0.25rem;
 }
 
-.afterPayLogo {
+.paymentLogo {
   max-width: fit-content;
 }
 

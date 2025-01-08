@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./Header.module.css";
 
 //assets
-import trademeLogoSpotlight from "../../assets/trademe-logo-spotlight.png";
+import trademeLogoSpotlight from "../../assets/tradeMeLogo.svg";
 import magnifyingGlass from "../../assets/magnifyingGlass.svg";
-import watchlistIcon from "../../assets/binoculars-svgrepo-com.svg";
+import watchlistIcon from "../../assets/binoculars.svg";
 import userIcon from "../../assets/userIcon.svg";
 
 const Header: React.FC = () => {
