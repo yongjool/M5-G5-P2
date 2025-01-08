@@ -167,7 +167,7 @@ const ListingPage: React.FC = () => {
       </div>
       <div className={styles.bidContainer}>
         <div>Starting price</div>
-        <h2>${listing.highestBid()?.amount}</h2>
+        <div className={styles.bold}>${listing.highestBid()?.amount}</div>
         <button
           className={`${styles.blue} ${styles.lrgBtn}`}
           onClick={handlePlaceBid}
@@ -308,7 +308,7 @@ const ListingPage: React.FC = () => {
       <div className={styles.shareContainer}>
         <a className={styles.shareLink}>
           <img className={styles.miniBrandLogo} src={shareNodes} alt="Share" />
-          Share this listing
+          <div className={styles.shareLinkText}>Share this listing</div>
         </a>
         <div className={styles.pageViews}>Page views: {listing.viewCount}</div>
         <div className={styles.listingId}>Listing #{listing.id}</div>
@@ -328,6 +328,9 @@ const ListingPage: React.FC = () => {
           <div className={styles.otherListingsCount}>
             <a>View All (X)</a>
           </div>
+        </div>
+        <div>
+          {/* TODO: add other listing card carousel where the listing hero image is 75% vertical height of the card and the bottom 25% has sone listing details like the location, listed: date, title and starting price  */}
         </div>
       </div>
       <div className={styles.upgradeNotice}>
@@ -433,7 +436,9 @@ const ListingPage: React.FC = () => {
                 Auto-bid <a>More info &#x25BC;</a>
               </div>
             </div>
-            <div className={`${styles.bold} ${styles.padding1}`}>Shipping</div>
+            <div className={`${styles.bold} ${styles.padding1Left}`}>
+              Shipping
+            </div>
             <div className={styles.shippingInfoContainer}>
               <div className={styles.shippingOptions}>
                 <input

@@ -281,12 +281,19 @@
 
 .modalWindow {
   background: white;
-  padding: 20px;
+  padding: 1rem;
   width: 100%;
   max-width: 900px;
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .closeButton {
@@ -308,7 +315,6 @@
 .shippingInfoContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Add spacing between options */
 }
 
 .shippingOptions {
@@ -378,12 +384,6 @@ label {
   justify-content: space-between;
   padding: 1rem;
   width: 75%; /* Take up 3/4 of the parent div */
-}
-
-.modalHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .bold {
@@ -518,6 +518,12 @@ input[type="checkbox"]:checked::after {
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
+}
+
+.shareLinkText {
+  display: flex;
+  align-self: center;
+  padding-right: 0.75rem;
 }
 
 .listingId {
