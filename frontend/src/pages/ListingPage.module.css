@@ -1,22 +1,36 @@
 .listingPage {
-  color: #44413d;
+  color: #8a8685;
   background-color: #ffffff;
   font-family: Arial, sans-serif;
 }
 
+h1 {
+  color: #000000;
+}
+
+h2 {
+  margin: 0.5rem 0 1rem 0;
+  color: #000000;
+}
+
+.blackText {
+  color: #000000;
+}
+
 .blue {
-  background-color: #0076bc;
+  background-color: #3e74cb;
+  color: #ffffff;
 }
 
 .offWhite {
   background-color: #f7f5f4;
-  color: #528ee1;
+  color: #3e74cb;
 }
 
 .white {
   background-color: #ffffff;
   color: #528ee1;
-  border: 1px solid #528ee1;
+  border: 1px solid #3e74cb;
 }
 
 .blueText {
@@ -24,12 +38,14 @@
 }
 
 .watchlistYellow {
-  background-color: rgb(252, 187, 29);
-  color: rgb(136, 52, 0);
+  background-color: #fcc31f;
+  color: #933c00;
 }
 
-.lrgBtn {
+.lrgBtn,
+button.lrgBtn {
   width: 100%;
+  text-align: center;
 }
 
 .header {
@@ -79,7 +95,7 @@
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin: 1rem;
+  margin: 1rem 1rem 0 1rem;
 }
 
 .closingInfoContainer {
@@ -92,17 +108,24 @@
 }
 
 .closingTime {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
   text-align: left;
   width: 100%;
+}
+
+.clockImg {
+  align-self: center;
 }
 
 .sellerProfileContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   gap: 1rem;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
   margin: 1rem;
   border: 1px solid #0076bc;
   border-radius: 4px;
@@ -110,13 +133,14 @@
 
 .sellerProfilePic {
   border-radius: 50%;
-  flex: 1;
+  max-width: 4rem;
+  max-height: 4rem;
 }
 
 .sellerProfileText {
-  flex: 4;
   display: flex;
   flex-direction: column;
+  text-align: start;
   gap: 0.5rem;
 }
 
@@ -260,6 +284,7 @@
   display: flex;
   overflow-x: scroll;
   gap: 8px;
+  justify-content: center;
 }
 
 .carouselImage {
@@ -601,4 +626,28 @@ input[type="checkbox"]:checked::after {
   height: 0.75rem;
   display: flex;
   align-self: center;
+}
+
+.autoBidInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.reserveInfoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sellerProflie,
+.sellerProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }

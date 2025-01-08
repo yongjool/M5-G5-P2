@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #c64a3d;
+  background-color: #d93a3f;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -12,12 +12,14 @@
   align-items: center;
   padding: 1rem;
   gap: 0.5rem;
+  font-weight: 700;
 }
 
 .navRight {
   display: flex;
   align-items: center;
   padding: 1rem;
+  font-weight: 700;
 }
 
 .xSmallText {

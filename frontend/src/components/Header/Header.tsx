@@ -9,7 +9,7 @@ import userIcon from "../../assets/userIcon.svg";
 
 const Header: React.FC = () => {
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} inter-regular-12`}>
       <div className={styles.leftContainer}>
         <div className={styles.brandLogo}>
           <img
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
             src={magnifyingGlass}
             alt="Search bar"
           />
-          <div> Search</div>
+          Search
         </div>
       </div>
       <div className={styles.rightContainer}>

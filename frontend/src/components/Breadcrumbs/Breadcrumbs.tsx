@@ -15,7 +15,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ onBreadcrumbClick }) => {
   ];
 
   return (
-    <div className={styles.breadcrumbs}>
+    <div className={`${styles.breadcrumbs} inter-regular-12`}>
       {breadcrumbs.map((breadcrumb, index) => {
         if (index === 0 || index === breadcrumbs.length - 1) {
           return (

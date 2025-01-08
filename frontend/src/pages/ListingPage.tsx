@@ -21,6 +21,8 @@ import favouriteIcon from "../assets/heartPlus.svg";
 import watchlistIcon from "../assets/watchlistBtnBinoculars.svg";
 import clockIcon from "../assets/clock.svg";
 import toggleIcon from "../assets/toggleOffOn.svg";
+import arrow from "../assets/arrow.svg";
+import downArrow from "../assets/downArrow.svg";
 
 // Define interfaces for Listing, user, and Bid
 interface Listing {
@@ -191,43 +193,52 @@ const ListingPage: React.FC = () => {
             />
           ))}
         </div>
-        <div className={styles.listingTitle}>{listing.title}</div>
+        <div className={styles.listingTitle}>
+          <h1>{listing.title}</h1>
+        </div>
       </div>
       <div className={styles.bidContainer}>
-        <div>Starting price</div>
-        <div className={styles.bold}>${listing.highestBid()?.amount}</div>
+        <div className="inter-regular-12">Starting price</div>
+        <h1>${listing.highestBid()?.amount}</h1>
         <button
-          className={`${styles.blue} ${styles.lrgBtn}`}
+          className={`inter-regular-16 ${styles.blue} ${styles.lrgBtn} `}
           onClick={handlePlaceBid}
         >
           Place bid
         </button>
         <button
-          className={`${styles.blue} ${styles.lrgBtn}`}
+          className={`inter-regular-16 ${styles.blue} ${styles.lrgBtn}`}
           onClick={handleBuyNow}
         >
           Buy now
         </button>
         <button
-          className={`${styles.offWhite} ${styles.lrgBtn}`}
+          className={`inter-regular-16 ${styles.offWhite} ${styles.lrgBtn}`}
           onClick={handleMakeOffer}
         >
           Make offer
         </button>
-        <div>Reserve status</div>
-        <div>Bid Status</div>
+        <div className={`inter-regular-12 ${styles.reserveInfoContainer}`}>
+          <div>No reserve</div>
+          <div>No bids</div>
+        </div>
       </div>
 
       <div className={styles.closingInfoContainer}>
         <div className={styles.closingTime}>
           <img
-            className={styles.miniBrandLogo}
+            className={`${styles.clockImg} ${styles.miniBrandLogo}`}
             src={clockIcon}
             alt="Acution exporation date"
           />
-          Closing in X days/ hours + date and time (posted / ends??)
+          <div className="inter-regular-12">
+            Closes: 11 hrs <br />
+            Wed 18 Dec, 8:30pm
+          </div>
         </div>
-        <button className={`${styles.watchlistYellow} ${styles.watchlistBtn}`}>
+        <button
+          className={`inter-regular-16 ${styles.watchlistYellow} ${styles.watchlistBtn}`}
+        >
           <img
             className={styles.miniBrandLogo}
             src={watchlistIcon}
@@ -235,7 +246,7 @@ const ListingPage: React.FC = () => {
           />
           Add to Watchlist
         </button>
-        <div className={styles.watchlistCount}>
+        <div className={`inter-regular-12 ${styles.watchlistCount}`}>
           {listing.watchlistCount} others watchlisted
         </div>
       </div>
@@ -243,15 +254,17 @@ const ListingPage: React.FC = () => {
         <div className={styles.sellerProfilePic}>
           <img src={listing.seller.profilePic} alt="seller profile pic" />
         </div>
-        <div className={styles.sellerProfileText}>
+        <div className={`inter-regular-12 ${styles.sellerProfileText}`}>
           <div>
             <a>
               {listing.seller.name} ({listing.seller.totalRatings})
             </a>
           </div>
           <div>
-            <span className={styles.bold}>{listing.seller.rating}</span>%
-            positive feedback
+            <span className={`${styles.blackText} ${styles.bold}`}>
+              {listing.seller.rating}
+            </span>
+            % positive feedback
           </div>
           <div>Seller located in {listing.seller.location}</div>
         </div>
@@ -259,7 +272,7 @@ const ListingPage: React.FC = () => {
       <div className={styles.productAtGlanceContainer}>
         <ProductAtGlance />
       </div>
-      <div className={styles.paymentOptions}>
+      <div className={`inter-regular-14 ${styles.paymentOptions}`}>
         <h2>Payment Options</h2>
         <div className={styles.pingContainer}>
           <img
@@ -286,18 +299,22 @@ const ListingPage: React.FC = () => {
           </div>
         </div>
         <div className={styles.otherPaymentOptionsContainer}>
-          <div className={styles.bold}>Other options</div>
-          <div>Cash, NZ Bank Deposit</div>
+          <div className="inter-bold-16">Other options</div>
+          <div>Cash, NZ Bank Deposit.</div>
         </div>
       </div>
       <QuestionsAnswers />
-      <div className={styles.aboutSellerContainer}>
-        <div className={styles.aboutSellerTitle}>About the seller</div>
-        <div>{listing.seller.profilePic}</div>
-        <div>{listing.seller.name}</div>
-        <div>
-          {listing.seller.rating}% positive feedback (
-          {listing.seller.totalRatings})
+      <div className={`inter-regular-14 ${styles.aboutSellerContainer}`}>
+        <div className={styles.aboutSellerTitle}>
+          <h2>About the seller</h2>
+        </div>
+        <div className={styles.sellerProfile}>
+          <div>{listing.seller.profilePic}</div>
+          <div className="inter-bold-14">{listing.seller.name}</div>
+          <div>
+            {listing.seller.rating}% positive feedback (
+            {listing.seller.totalRatings})
+          </div>
         </div>
         <div className={styles.sellerLocationContainer}>
           <div className={styles.locationText}>Location</div>
@@ -315,25 +332,29 @@ const ListingPage: React.FC = () => {
           <div className={styles.sellerOtherListingsText}>
             View seller's other listings
           </div>
-          <div className={styles.dropDownArrow}>&gt;</div>
+          <div className={styles.dropDownArrow}>
+            <img src={arrow} alt="Drop down arrow" />
+          </div>
         </a>
 
         <hr />
         <div className={styles.favouriteSellerContainer}>
-          <button className={`${styles.blue} ${styles.favouriteSellerBtn}`}>
+          <button
+            className={`inter-regular-16 ${styles.blue} ${styles.favouriteSellerBtn}`}
+          >
             <img
               className={styles.miniBrandLogo}
               src={favouriteIcon}
               alt="Favourite"
             />
-            Add to favourite sellers
+            Add to Favourite Sellers
           </button>
         </div>
         <div className={styles.safeBuyingAdvice}>
-          <a>Read our safe buying advice guide</a>
+          <a>Read our safe buying advice</a>
         </div>
       </div>
-      <div className={styles.shareContainer}>
+      <div className={`inter-regular-14 ${styles.shareContainer}`}>
         <a className={styles.shareLink}>
           <img className={styles.miniBrandLogo} src={shareNodes} alt="Share" />
           <div className={styles.shareLinkText}>Share this listing</div>
@@ -353,7 +374,7 @@ const ListingPage: React.FC = () => {
       <div className={styles.otherListings}>
         <div className={styles.otherListingsTitleContainer}>
           <h2>Seller's other listings</h2>
-          <div className={styles.otherListingsCount}>
+          <div className={`inter-regular-16 ${styles.otherListingsCount}`}>
             <a>View All (X)</a>
           </div>
         </div>
@@ -361,7 +382,7 @@ const ListingPage: React.FC = () => {
           {/* TODO: add other listing card carousel where the listing hero image is 75% vertical height of the card and the bottom 25% has sone listing details like the location, listed: date, title and starting price  */}
         </div>
       </div>
-      <div className={styles.upgradeNotice}>
+      <div className={`inter-regular-12 ${styles.upgradeNotice}`}>
         We're upgrading some of our systems.
         <div className={styles.informationContainer}>
           <img
@@ -382,7 +403,7 @@ const ListingPage: React.FC = () => {
           <a>Tell us what you think</a>
         </div>
       </div>
-      <div className={styles.footer}>
+      <div className={`inter-regular-12 ${styles.footer}`}>
         <div className={styles.navContainer}>
           <div>Desktop site</div>
           <div>Help</div>
@@ -461,7 +482,10 @@ const ListingPage: React.FC = () => {
                   src={toggleIcon}
                   alt="Auto-bid toggle"
                 />
-                Auto-bid <a>More info &#x25BC;</a>
+                Auto-bid{" "}
+                <a className={styles.autoBidInfo}>
+                  More info <img src={downArrow} alt="down arrow" />
+                </a>
               </div>
             </div>
             <div className={`${styles.bold} ${styles.padding1Left}`}>

@@ -13,8 +13,8 @@ const ProductAtGlance: React.FC = () => {
   };
 
   return (
-    <div className={styles.productAtGlanceContainer}>
-      <div className={styles.title}>Product at a Glance</div>
+    <div className={`inter-regular-14 ${styles.productAtGlanceContainer}`}>
+      <h2>Product at a Glance</h2>
       <div
         onClick={() => toggleSection("aboutProduct")}
         className={styles.sectionHeader}
