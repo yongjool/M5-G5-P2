@@ -273,18 +273,12 @@ button.lrgBtn {
   height: 1.5rem;
 }
 
-.heroImage {
-  width: auto;
-  height: 100%;
-  background-color: #dcdcdc;
-  width: 25%; /* Take up 1/4 of the parent div */
-}
-
 .imageCarousel {
   display: flex;
   overflow-x: scroll;
   gap: 8px;
   justify-content: center;
+  margin: 1rem;
 }
 
 .carouselImage {
@@ -380,7 +374,7 @@ label {
   appearance: none; /* Removes the default styling */
   -webkit-appearance: none; /* Safari support */
   -moz-appearance: none; /* Firefox support */
-  border: 1px solid #44413d; /* Add a border for visibility */
+  border: 1px solid #8a8685; /* Add a border for visibility */
   border-radius: 50%; /* Makes it circular like a radio button */
   width: 20px; /* Set width */
   height: 20px; /* Set height */
@@ -390,12 +384,7 @@ label {
 }
 
 .shippingRadio:checked {
-  background-color: #44413d; /* Optional: Add a fill when selected */
-}
-
-.listingPrewiew {
-  display: flex;
-  flex-direction: row;
+  background-color: #8a8685; /* Optional: Add a fill when selected */
 }
 
 .listingInfoContainer {
@@ -405,20 +394,20 @@ label {
 }
 
 .listingInfo {
+  margin-left: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
-  width: 75%; /* Take up 3/4 of the parent div */
+  padding: 0.5rem 0;
 }
 
 .bold {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .bidInput {
   width: 100%;
-  height: 1.5rem;
+  padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: transparent;
@@ -434,10 +423,6 @@ label {
   padding: 1rem 0;
 }
 
-.buyerLegalReminder {
-  font-size: x-small;
-}
-
 .reminderCheckboxContainer {
   display: flex;
   flex-direction: row;
@@ -451,7 +436,7 @@ input[type="checkbox"] {
   -moz-appearance: none; /* Firefox support */
   width: 1.5rem; /* Set size of the checkbox */
   height: 1.5rem;
-  border: 2px solid #44413d; /* Add a border */
+  border: 2px solid #8a8685; /* Add a border */
   border-radius: 3px; /* Optional: Slight rounding for a modern look */
   background-color: transparent; /* Make the background transparent */
   cursor: pointer;
@@ -459,7 +444,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-  background-color: #44413d; /* Optional: Add a solid color when checked */
+  background-color: #8a8685; /* Optional: Add a solid color when checked */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -650,4 +635,30 @@ input[type="checkbox"]:checked::after {
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+.heroImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 2rem);
+  max-width: 900px;
+
+  height: auto;
+  margin: 1rem;
+  background-color: transparent;
+}
+
+.heroImagePreview {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 10rem;
+  height: auto;
+}
+
+.heroImage {
+  width: auto;
+  height: 100%;
+  background-color: transparent;
 }

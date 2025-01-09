@@ -23,7 +23,7 @@ import clockIcon from "../assets/clock.svg";
 import toggleIcon from "../assets/toggleOffOn.svg";
 import arrow from "../assets/arrow.svg";
 import downArrow from "../assets/downArrow.svg";
-
+import PHIMAGE from "../assets/PHIMAGE.jpg";
 // Define interfaces for Listing, user, and Bid
 interface Listing {
   title: string;
@@ -36,7 +36,6 @@ interface Listing {
   highestBid: () => Bid | null;
   viewCount: number;
   images: string[];
-  heroImage: string;
   createdAt: Date;
   //   reserveStatus: string;
 }
@@ -90,8 +89,7 @@ const listing: Listing = {
   },
   bids: [bid],
   viewCount: 1234,
-  images: ["image1.jpg", "image2.jpg", "image3.jpg"],
-  heroImage: "heroImage.jpg",
+  images: [PHIMAGE, twitterLogo, PHIMAGE],
   createdAt: new Date(),
 };
 
@@ -179,9 +177,11 @@ const ListingPage: React.FC = () => {
       </header>
       <Breadcrumbs onBreadcrumbClick={handleBreadcrumbClick} />
       <div className={styles.listingDetails}>
-        {selectedImage && (
-          <img className={styles.heroImage} src={selectedImage} alt="Hero" />
-        )}
+        <div className={styles.heroImageContainer}>
+          {selectedImage && (
+            <img className={styles.heroImage} src={selectedImage} alt="Hero" />
+          )}
+        </div>
         <div className={styles.imageCarousel}>
           {listing.images.map((image, index) => (
             <img
@@ -379,7 +379,7 @@ const ListingPage: React.FC = () => {
           </div>
         </div>
         <div className={styles.otherListingsCarousel}>
-          {/* TODO: add other listing card carousel where the listing hero image is 75% vertical height of the card and the bottom 25% has sone listing details like the location, listed: date, title and starting price  */}
+          {/* TODO: add other listing card carousel */}
         </div>
       </div>
       <div className={`inter-regular-12 ${styles.upgradeNotice}`}>
@@ -443,15 +443,21 @@ const ListingPage: React.FC = () => {
       {isModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalWindow}>
+            {/* Modal Header */}
             <div className={styles.modalHeader}>
-              <div className={styles.bold}>Place a bid</div>
+              <div className={`${styles.blackText} ${styles.bold}`}>
+                <h1>Place a bid</h1>
+              </div>
               <button className={styles.closeButton} onClick={handleCloseModal}>
                 <span className={styles.blueText}>X</span>
               </button>
             </div>
+            {/* Listing Info */}
             <div className={styles.listingInfoContainer}>
-              <div className={styles.heroImage}>{listing.heroImage}</div>
-              <div className={styles.listingInfo}>
+              <div className={styles.heroImagePreview}>
+                <img src={listing.images[0]} />
+              </div>
+              <div className={`${styles.listingInfo} inter-regular-12`}>
                 <div>{listing.seller.location}</div>
                 <div>
                   Closes:
@@ -460,18 +466,23 @@ const ListingPage: React.FC = () => {
                       7 * 24 * 60 * 60 * 1000
                   ).toDateString()}
                 </div>
-                <div className={styles.bold}>{listing.title}</div>
+                <div className={`${styles.blackText} ${styles.bold}`}>
+                  {listing.title}
+                </div>
                 <div>No reserve, no bid</div>
                 {/* PLACEHOLDER TEXT ADD DYNAMIC VALUES ^^^*/}
-                <div className={styles.bold}>
+                <div className={`${styles.blackText} ${styles.bold}`}>
                   ${listing.highestBid()?.amount}
                 </div>
               </div>
             </div>
-            <div className={styles.bidInputContainer}>
-              <div className={styles.padding1}>Your bid</div>
+            {/* Bid Input */}
+            <div className={`${styles.bidInputContainer} inter-regular-16`}>
+              <div className={`${styles.padding1} ${styles.bold}`}>
+                Your bid
+              </div>
               <input
-                className={`${styles.bidInput} ${styles.padding1}`}
+                className={styles.bidInput}
                 type="text"
                 value={bidAmount}
                 onChange={handleBidChange}
@@ -488,10 +499,11 @@ const ListingPage: React.FC = () => {
                 </a>
               </div>
             </div>
+            {/* Shipping Info */}
             <div className={`${styles.bold} ${styles.padding1Left}`}>
               Shipping
             </div>
-            <div className={styles.shippingInfoContainer}>
+            <div className={`${styles.shippingInfoContainer} inter-regular-16`}>
               <div className={styles.shippingOptions}>
                 <input
                   className={styles.shippingRadio}
@@ -547,9 +559,9 @@ const ListingPage: React.FC = () => {
                   Ping, Afterpay, NZ Bank Deposit
                 </div>
                 {/* placeholder text*/}
-                <div className={styles.buyerLegalReminder}>
-                  If you win the auction, you are legally obligated to complete
-                  your purchase
+                <div className="inter-regular-12">
+                  If you win, you are legally obligated to complete your
+                  purchase
                 </div>
               </div>
               <div className={styles.remindersContainer}>
@@ -566,6 +578,7 @@ const ListingPage: React.FC = () => {
                 </div>
               </div>
             </div>
+            {/* Modal Buttons */}
             <div className={styles.modalButtons}>
               <button className={`${styles.blue}`} onClick={handleSubmitBid}>
                 Place bid
@@ -580,17 +593,21 @@ const ListingPage: React.FC = () => {
       {isConfirmModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalWindow}>
+            {/* Confirm Modal Header */}
             <div className={styles.modalHeader}>
-              <div className={styles.bold}>Confirm your bid</div>
+              <div className={`${styles.bold} ${styles.blackText}`}>
+                Confirm your bid
+              </div>
               <button className={styles.closeButton} onClick={handleCloseModal}>
                 <span className={styles.blueText}>X</span>
               </button>
             </div>
+            {/* Confirm Listing Info */}
             <div className={styles.listingInfoContainer}>
               <div className={`${styles.heroImage} ${styles.heroImagePreview}`}>
-                {listing.heroImage}
+                <img src={listing.images[0]} />
               </div>
-              <div className={styles.listingInfo}>
+              <div className={`${styles.listingInfo} inter-regular-12`}>
                 <div>{listing.seller.location}</div>
                 <div>
                   Closes:{" "}
@@ -599,19 +616,26 @@ const ListingPage: React.FC = () => {
                       7 * 24 * 60 * 60 * 1000
                   ).toDateString()}
                 </div>
-                <div className={styles.bold}>{listing.title}</div>
+                <div className={`${styles.bold} ${styles.blackText}`}>
+                  {listing.title}
+                </div>
                 <div>No reserve, no bid</div>
                 {/* PLACEHOLDER TEXT ADD DYNAMIC VALUES */}
-                <div className={styles.bold}>
+                <div className={`${styles.bold} ${styles.blackText}`}>
                   ${listing.highestBid()?.amount}
                 </div>
               </div>
             </div>
+            {/* Confirm Bid Value */}
             <div className={styles.bidValueConfirmation}>
-              <div>Do you want to make a bid for</div>
-              <div className={styles.bold}>${bidAmount}?</div>
-              {/* ^^^^^ Need to add space between them ^^^^^ */}
+              <div className={styles.blackText}>
+                Do you want to make a bid for
+              </div>
+              <div className={`${styles.bold} ${styles.blackText}`}>
+                &nbsp;${bidAmount}?
+              </div>
             </div>
+            {/* Confirm Modal Buttons */}
             <div className={styles.modalButtons}>
               <button className={`${styles.blue}`} onClick={handleConfirmBid}>
                 Yes, place bid
