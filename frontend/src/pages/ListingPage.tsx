@@ -171,11 +171,14 @@ const ListingPage: React.FC = () => {
 
   return (
     <div className={styles.listingPage}>
+      {/* Header */}
       <header className={styles.header}>
         <Header />
         <Navbar />
       </header>
+      {/* Breadcrumbs */}
       <Breadcrumbs onBreadcrumbClick={handleBreadcrumbClick} />
+      {/* Listing Details */}
       <div className={styles.listingDetails}>
         <div className={styles.heroImageContainer}>
           {selectedImage && (
@@ -197,6 +200,7 @@ const ListingPage: React.FC = () => {
           <h1>{listing.title}</h1>
         </div>
       </div>
+      {/* Bid Container */}
       <div className={styles.bidContainer}>
         <div className="inter-regular-12">Starting price</div>
         <h1>${listing.highestBid()?.amount}</h1>
@@ -223,13 +227,13 @@ const ListingPage: React.FC = () => {
           <div>No bids</div>
         </div>
       </div>
-
+      {/* Closing Info */}
       <div className={styles.closingInfoContainer}>
         <div className={styles.closingTime}>
           <img
             className={`${styles.clockImg} ${styles.miniBrandLogo}`}
             src={clockIcon}
-            alt="Acution exporation date"
+            alt="Auction expiration date"
           />
           <div className="inter-regular-12">
             Closes: 11 hrs <br />
@@ -250,6 +254,7 @@ const ListingPage: React.FC = () => {
           {listing.watchlistCount} others watchlisted
         </div>
       </div>
+      {/* Seller Profile */}
       <div className={styles.sellerProfileContainer}>
         <div className={styles.sellerProfilePic}>
           <img src={listing.seller.profilePic} alt="seller profile pic" />
@@ -269,9 +274,11 @@ const ListingPage: React.FC = () => {
           <div>Seller located in {listing.seller.location}</div>
         </div>
       </div>
+      {/* Product At Glance */}
       <div className={styles.productAtGlanceContainer}>
         <ProductAtGlance />
       </div>
+      {/* Payment Options */}
       <div className={`inter-regular-14 ${styles.paymentOptions}`}>
         <h2>Payment Options</h2>
         <div className={styles.pingContainer}>
@@ -303,7 +310,9 @@ const ListingPage: React.FC = () => {
           <div>Cash, NZ Bank Deposit.</div>
         </div>
       </div>
+      {/* Questions and Answers */}
       <QuestionsAnswers />
+      {/* About Seller */}
       <div className={`inter-regular-14 ${styles.aboutSellerContainer}`}>
         <div className={styles.aboutSellerTitle}>
           <h2>About the seller</h2>
@@ -336,7 +345,6 @@ const ListingPage: React.FC = () => {
             <img src={arrow} alt="Drop down arrow" />
           </div>
         </a>
-
         <hr />
         <div className={styles.favouriteSellerContainer}>
           <button
@@ -354,6 +362,7 @@ const ListingPage: React.FC = () => {
           <a>Read our safe buying advice</a>
         </div>
       </div>
+      {/* Share Container */}
       <div className={`inter-regular-14 ${styles.shareContainer}`}>
         <a className={styles.shareLink}>
           <img className={styles.miniBrandLogo} src={shareNodes} alt="Share" />
@@ -370,7 +379,7 @@ const ListingPage: React.FC = () => {
           Community Watch: <a>Report this listing</a>
         </div>
       </div>
-
+      {/* Other Listings */}
       <div className={styles.otherListings}>
         <div className={styles.otherListingsTitleContainer}>
           <h2>Seller's other listings</h2>
@@ -382,6 +391,7 @@ const ListingPage: React.FC = () => {
           {/* TODO: add other listing card carousel */}
         </div>
       </div>
+      {/* Upgrade Notice */}
       <div className={`inter-regular-12 ${styles.upgradeNotice}`}>
         We're upgrading some of our systems.
         <div className={styles.informationContainer}>
@@ -390,19 +400,18 @@ const ListingPage: React.FC = () => {
             src={infoCircle}
             alt="Info circle"
           />
-
           <a>Learn more</a>
         </div>
         <div className={styles.commentContainer}>
           <img
             className={styles.xSmallLogo}
             src={commentBubble}
-            alt="Comment speach bubble"
+            alt="Comment speech bubble"
           />
-
           <a>Tell us what you think</a>
         </div>
       </div>
+      {/* Footer */}
       <div className={`inter-regular-12 ${styles.footer}`}>
         <div className={styles.navContainer}>
           <div>Desktop site</div>
