@@ -179,7 +179,7 @@ const ListingPage: React.FC = () => {
       {/* Breadcrumbs */}
       <Breadcrumbs onBreadcrumbClick={handleBreadcrumbClick} />
       {/* Listing Details */}
-      <div className={styles.listingDetails}>
+      <div className={styles.listingImageContainer}>
         <div className={styles.heroImageContainer}>
           {selectedImage && (
             <img className={styles.heroImage} src={selectedImage} alt="Hero" />

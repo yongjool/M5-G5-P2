@@ -643,7 +643,6 @@ input[type="checkbox"]:checked::after {
   align-items: center;
   width: calc(100% - 2rem);
   max-width: 900px;
-
   height: auto;
   margin: 1rem;
   background-color: transparent;
@@ -661,4 +660,11 @@ input[type="checkbox"]:checked::after {
   width: auto;
   height: 100%;
   background-color: transparent;
+}
+
+.listingImageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
