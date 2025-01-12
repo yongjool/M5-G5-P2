@@ -4,7 +4,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "nodemon ./src/api/server.js",
-        "start": "node ./src/sccripts/seedScript.js && node ./src/api/server.js",
+        "start": "node ./src/scripts/seedScript.js && node ./src/api/server.js",
         "test": "jest"
     },
     "keywords": [],
@@ -15,6 +15,7 @@
     },
     "description": "",
     "dependencies": {
+        "@faker-js/faker": "^9.3.0",
         "chalk": "^5.4.1",
         "commander": "^12.1.0",
         "cors": "^2.8.5",
