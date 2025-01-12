@@ -1,0 +1,37 @@
+.PopulaSearches {
+    display: none;
+    flex-direction: column;
+
+    width: 100%;
+    flex: 1;
+    margin-top: 28px;
+}
+
+.populaSearchesItem {
+    display: flex;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+
+    border: none;
+    color: #528ee1;
+
+    margin-left: 3vw;
+    margin-right: 3vw;
+
+    padding: 1.5vw;
+    padding-left: 4vw;
+
+    border-bottom: 1px solid #b9b7c1;
+}
+
+.iconImage {
+    margin-left: auto;
+}
+
+@media (max-width: 400px) {
+    .PopulaSearches {
+        display: flex;
+        width: 100%;
+    }
+}

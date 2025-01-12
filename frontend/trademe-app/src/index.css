@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* Ensure the body fills the entire viewport */
+body,
+html {
+    height: 100%; /* Full height for the body */
+    width: 100%; /* Full width for the body */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    background-color: #f7f5f4;
+    margin: 0;
+    padding: 0;
+}

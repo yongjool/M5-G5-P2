@@ -1,0 +1,161 @@
+.menu {
+    display: flex;
+    width: 100%;
+}
+
+.menuBodyContainer {
+    display: flex;
+    width: 100%;
+    height: 64px;
+    min-width: 760px;
+    max-width: 1200px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    border-radius: 4px;
+    background-color: #f7f5f4;
+}
+
+.emptyBox {
+    display: flex;
+    flex: 1;
+    min-width: 20px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.menuBody {
+    display: flex;
+    width: 100%;
+    margin: 8px;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.menuItem {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    color: #ffffff;
+}
+
+.menuItem:hover {
+    filter: brightness(1.1);
+}
+
+.extra {
+    display: none;
+}
+
+.icon {
+    display: none; /* Show icon */
+}
+
+.menuItem:nth-child(1) {
+    background-color: #c64a3d;
+}
+
+.menuItem:nth-child(2) {
+    background-color: #df702e;
+}
+
+.menuItem:nth-child(3) {
+    background-color: #626e86;
+}
+
+.menuItem:nth-child(4) {
+    background-color: #52a45a;
+}
+
+.menuItem:nth-child(5) {
+    background-color: #555555;
+}
+
+@media (max-width: 400px) {
+    .emptyBox {
+        display: none;
+    }
+
+    .menuBodyContainer {
+        min-width: 280px;
+        max-width: 400px;
+
+        height: auto;
+        padding: 5vw;
+    }
+
+    .icon {
+        display: inline; /* Show icon */
+    }
+
+    .text {
+        margin-left: 4px;
+    }
+
+    .menuBody {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 8px;
+
+        box-shadow: none;
+    }
+
+    .menuItem {
+        flex: 1 1 calc(40%);
+        font-weight: normal;
+        border-radius: 4px;
+        justify-content: left;
+        text-align: left;
+        align-content: center;
+        height: 52px;
+
+        border: 1px solid #b9b7c1;
+    }
+
+    .extra {
+        display: flex; /* Show the button on mobile */
+        padding-left: 12px;
+        padding-right: 12px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .menuItem:hover {
+        filter: brightness(1);
+        text-decoration: underline;
+    }
+
+    /*buttons */
+    .menuItem:nth-child(1) {
+        background-color: #ffffff;
+        color: #c64a3d;
+    }
+
+    .menuItem:nth-child(2) {
+        background-color: #ffffff;
+        color: #df702e;
+    }
+
+    .menuItem:nth-child(3) {
+        background-color: #ffffff;
+        color: #626e86;
+    }
+
+    .menuItem:nth-child(4) {
+        background-color: #ffffff;
+        color: #52a45a;
+    }
+
+    .menuItem:nth-child(5) {
+        background-color: #ffffff;
+        color: #555555;
+    }
+
+    .menuItem:nth-child(6) {
+        background-color: #ffffff;
+        color: #528ee1;
+    }
+}

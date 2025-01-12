@@ -1,0 +1,148 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    margin-top: 20px;
+}
+
+.emptyBox {
+    display: flex;
+    flex: 1;
+    min-width: 20px;
+}
+
+.FooterContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 1px;
+}
+.bottomFooterContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 1px;
+}
+
+.FooterBodyContainer {
+    display: flex;
+    width: 100%;
+    min-width: 760px;
+    max-width: 1200px;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+.seperator {
+    display: flex;
+    width: 100%;
+    height: 8px;
+    background-color: #ecb537;
+}
+
+.subSeperator {
+    display: flex;
+    width: 100%;
+    height: 1px;
+    background-color: #b9b7c1;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.BodyContainer {
+    display: flex;
+    width: auto;
+}
+
+.BottomTextContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 3vw;
+}
+
+.textItem {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #b9b7c1;
+
+    margin-left: 1vw;
+    margin: 4px;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.logoContainer {
+    display: flex;
+    width: 170px;
+    padding: 1px 12px;
+}
+
+.logoContainer img {
+    transform: scale(0.5); /* Scale the image to 80% of its original size */
+    transform-origin: left; /* Ensure the scaling is from the center */
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 4px;
+}
+
+.iconContainer img {
+    width: auto; /* Keep the original width */
+    height: auto; /* Keep the original height */
+    max-width: none; /* Disable any maximum width constraints */
+    max-height: none; /* Disable any maximum height constraints */
+    font-size: 12px;
+}
+
+.textItem:hover {
+    text-decoration: underline; /* Adds underline on hover */
+}
+
+.desktop {
+    display: flex;
+}
+
+.mobile {
+    display: none;
+}
+
+@media (max-width: 400px) {
+    .emptyBox {
+        display: none;
+    }
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+    }
+
+    .FooterBodyContainer {
+        flex-direction: column;
+        min-width: 320px;
+        max-width: 400px;
+
+        width: auto;
+    }
+
+    .FooterContainer {
+        padding-left: 6vw;
+        justify-content: flex-start;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .iconContainer {
+        justify-content: start;
+    }
+}
