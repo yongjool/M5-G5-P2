@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ListingPage.module.css";
-import Header from "../components/Header/Header";
+import Header from "../components/Header/Header"
 import Navbar from "../components/Navigation/Navbar";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ProductAtGlance from "../components/ProductAtGlance/ProductAtGlance";
