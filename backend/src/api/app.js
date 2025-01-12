@@ -10,8 +10,24 @@ const checkQueryLength = require('./middleware/checkQueryLength.js');
 const errorMiddleware = require('./middleware/errorMiddleware.js');
 
 const app = express();
-app.use(expressWinston.logger({ transports: [new winston.transports.Console()] }));
-app.use(expressWinston.errorLogger({ transports : [new winston.transports.Console()] }));
+app.use(expressWinston.logger({
+    transports: [
+      new winston.transports.Console()
+    ],
+    format: winston.format.combine(
+      winston.format.colorize(),
+      winston.format.json()
+    )
+  }));
+app.use(expressWinston.errorLogger({
+    transports: [
+      new winston.transports.Console()
+    ],
+    format: winston.format.combine(
+      winston.format.colorize(),
+      winston.format.json()
+    )
+  }));
 app.use(cors());
 
 app.use(express.json());
