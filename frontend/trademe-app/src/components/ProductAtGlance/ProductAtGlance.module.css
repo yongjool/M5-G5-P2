@@ -1,0 +1,28 @@
+.productAtGlanceContainer {
+  padding: 0 1rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionHeader {
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #0076bc;
+  color: #0076bc;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionContent {
+  padding: 0.5rem 1rem;
+  border: 1px solid #44413d;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  padding-right: 0.5rem;
+}

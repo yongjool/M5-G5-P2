@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Navbar.module.css'; // Import styles as an object
+import styles from './NavBar.module.css'; // Import styles as an object
 import logo from '../../assets/TrademeLogo.png'; // Import the logo image
 import LogoMobile from '../../assets/LogoMobile.png'; // Import the logo image
 
