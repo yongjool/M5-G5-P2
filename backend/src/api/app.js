@@ -14,19 +14,14 @@ app.use(expressWinston.logger({
     transports: [
       new winston.transports.Console()
     ],
-    format: winston.format.combine(
-      winston.format.colorize(),
-      winston.format.json()
-    )
+    format: winston.format.cli()
   }));
 app.use(expressWinston.errorLogger({
     transports: [
       new winston.transports.Console()
     ],
-    format: winston.format.combine(
-      winston.format.colorize(),
-      winston.format.json()
-    )
+    format: winston.format.cli()
+    
   }));
 app.use(cors());
 
