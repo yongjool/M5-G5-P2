@@ -8,16 +8,16 @@
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
 services:
-  frontend:
-    build:
-      context: ./frontend
   server:
     build:
       context: ./backend
     environment:
       NODE_ENV: production
+      MONGO_URI: mongodb://db:27017/app_development
     ports:
       - 4000:4000
+    depends_on:
+      - db
   db:
     image: mongo
     volumes:

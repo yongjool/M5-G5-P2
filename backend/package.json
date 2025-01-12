@@ -4,7 +4,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "nodemon ./src/api/server.js",
-        "start": "node ./src/api/server.js",
+        "start": "node ./src/sccripts/seedScript.js && node ./src/api/server.js",
         "test": "jest"
     },
     "keywords": [],
@@ -20,6 +20,7 @@
         "cors": "^2.8.5",
         "dotenv": "^16.4.7",
         "express": "^4.21.2",
+        "faker": "^6.6.6",
         "mongoose": "^8.9.2"
     },
     "devDependencies": {

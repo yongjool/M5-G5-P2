@@ -12,6 +12,8 @@ FROM node:${NODE_VERSION}-alpine
 
 # Use production node environment by default.
 ENV NODE_ENV production
+ENV MONGO_URI="db"
+
 
 
 WORKDIR /usr/src/app
