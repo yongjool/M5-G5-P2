@@ -76,6 +76,34 @@ async function seedDB() {
             sellers.push({ sellerName, profilePic, totalRatings, sellerRating, location });
         }
 
+// Function to generate a random breadcrumb trail
+function generateBreadcrumbs() {
+    const categories = [
+        faker.commerce.department(), 
+        faker.commerce.department(), 
+        faker.commerce.department()
+    ];
+
+    const page = faker.commerce.productName();
+
+    // Create the breadcrumb structure
+    const breadcrumbs = [
+        { name: "Home", url: "/" }, // Always include Home as the first breadcrumb
+        ...categories.map((category, index) => ({
+            name: category,
+            url: `/category/${category.toLowerCase().replace(/\s+/g, '-')}`,
+        }))
+    ];
+
+    // Add the current page to the breadcrumb
+    breadcrumbs.push({
+        name: page,
+        url: `/category/${categories[categories.length - 1].toLowerCase().replace(/\s+/g, '-')}/${page.toLowerCase().replace(/\s+/g, '-')}`,
+    });
+
+    return breadcrumbs;
+}
+
 let listingIdCounter = 1; // Start a counter for unique listing IDs
 
 sellers.forEach((seller) => {
@@ -85,10 +113,11 @@ sellers.forEach((seller) => {
         const title = faker.commerce.productName();
         const pageviews = faker.number.int({ min: 1, max: 5000 });
         const watchlistCount = faker.number.int({ min: 1, max: 200 });
-        const images = [faker.image.url(), faker.image.url(), faker.image.url()];
+        const images = [faker.image.urlPicsumPhotos(), faker.image.urlPicsumPhotos(), faker.image.urlPicsumPhotos()];
         const createdAt = faker.date.recent();
         const reserveMet = faker.datatype.boolean();
         const oneDollarReserve = faker.datatype.boolean();
+        const breadcrumbs = generateBreadcrumbs(); // Generate breadcrumbs for each listing
 
         const bids = [];
         const bidCount = faker.number.int({ min: 0, max: 4 });
@@ -125,6 +154,7 @@ sellers.forEach((seller) => {
             reserveMet,
             oneDollarReserve,
             bids,
+            breadcrumbs, // Add breadcrumbs to listing data
         });
     }
 });

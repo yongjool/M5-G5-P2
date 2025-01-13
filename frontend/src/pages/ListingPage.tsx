@@ -24,8 +24,13 @@ import clockIcon from "../assets/clock.svg";
 import toggleIcon from "../assets/toggleOffOn.svg";
 import arrow from "../assets/arrow.svg";
 import downArrow from "../assets/downArrow.svg";
+import { addDays, formatDistance } from "date-fns";
 
-// Define interfaces for Listing, user, and Bid
+// Define interfaces for Listing, user, Bid, and Breadcrumb
+interface Breadcrumb {
+  name: string;
+  url: string;
+}
 interface Listing {
   listingId: string;
   title: string;
@@ -42,7 +47,7 @@ interface Listing {
   reserveMet: boolean;
   oneDollarReserve: boolean;
   bids: Bid[];
-  
+  breadcrumbs: Breadcrumb[];
 }
 
 interface User {
@@ -137,11 +142,12 @@ const ListingPage: React.FC = () => {
   };
 
   // Handle breadcrumb click to navigate to the selected breadcrumb
-  const handleBreadcrumbClick = (index: number, breadcrumbs: string[]) => {
+  const handleBreadcrumbClick = (index: number, breadcrumbs: Breadcrumb[]) => {
     let path = "/";
     if (index > 0) {
       path += breadcrumbs
         .slice(1, index + 1)
+        .map(breadcrumb => breadcrumb.name)
         .join("/")
         .replace(/\s+/g, "-");
     }
@@ -159,7 +165,7 @@ if (isError) return <div>Error</div>;
         <Navbar />
       </header>
       {/* Breadcrumbs */}
-      <Breadcrumbs onBreadcrumbClick={handleBreadcrumbClick} />
+      <Breadcrumbs breadcrumbs={data.breadcrumbs} onBreadcrumbClick={handleBreadcrumbClick} />
       {/* Listing Details */}
       <div className={styles.listingImageContainer}>
         <div className={styles.heroImageContainer}>
@@ -452,7 +458,7 @@ if (isError) return <div>Error</div>;
                 <div>{data.location}</div>
                 <div>
                   Closes:
-                  {new Date(data.createdAt).setDate(data.createdAt.getDate() + 7)}
+                  {formatDistance(new Date(), addDays(data.createdAt, 7))}
                 </div>
                 <div className={`${styles.blackText} ${styles.bold}`}>
                   {data.title}
@@ -599,10 +605,7 @@ if (isError) return <div>Error</div>;
                 <div>{data.location}</div>
                 <div>
                   Closes:{" "}
-                  {new Date(
-                    new Date(data.createdAt).getTime() +
-                      7 * 24 * 60 * 60 * 1000
-                  ).toDateString()}
+                  {addDays(data.createdAt, 7).toLocaleDateString("en-NZ")}
                 </div>
                 <div className={`${styles.bold} ${styles.blackText}`}>
                   {data.title}
