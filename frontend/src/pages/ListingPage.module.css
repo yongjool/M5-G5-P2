@@ -46,6 +46,8 @@ h2 {
 button.lrgBtn {
   width: 100%;
   text-align: center;
+  border-radius: 4px;
+  padding: 0.5rem 0;
 }
 
 .header {
@@ -658,6 +660,11 @@ input[type="checkbox"]:checked::after {
   height: auto;
 }
 
+.heroImagePreview img {
+ width: 10rem;
+ height: 9rem;
+}
+
 .heroImage {
   width: 100%;
   max-height: 50rem;
@@ -669,4 +676,13 @@ input[type="checkbox"]:checked::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.borderRadius50 {
+  border-radius: 50%;
+}
+
+.smallPicture {
+  width: 4rem;
+  height: 4rem;
 }

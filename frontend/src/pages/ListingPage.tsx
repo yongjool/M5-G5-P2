@@ -229,7 +229,7 @@ if (isError) return <div>Error</div>;
           </div>
         </div>
         <button
-          className={`inter-regular-16 ${styles.watchlistYellow} ${styles.watchlistBtn}`}
+          className={`inter-regular-16 ${styles.watchlistYellow} ${styles.watchlistBtn} ${styles.lrgBtn}`}
         >
           <img
             className={styles.miniBrandLogo}
@@ -245,7 +245,7 @@ if (isError) return <div>Error</div>;
       {/* Seller Profile */}
       <div className={styles.sellerProfileContainer}>
         <div className={styles.sellerProfilePic}>
-          <img src={data.profilePic} alt="seller profile pic" />
+          <img src={data.profilePic} className={styles.borderRadius50} alt="seller profile pic" />
         </div>
         <div className={`inter-regular-12 ${styles.sellerProfileText}`}>
           <div>
@@ -306,7 +306,7 @@ if (isError) return <div>Error</div>;
           <h2>About the seller</h2>
         </div>
         <div className={styles.sellerProfile}>
-          <div>{data.profilePic}</div>
+          <img src={data.profilePic} className={`${styles.smallPicture} ${styles.borderRadius50}`} alt="seller profile pic" />
           <div className="inter-bold-14">{data.sellerName}</div>
           <div>
             {data.sellerRating}% positive feedback (
@@ -336,7 +336,7 @@ if (isError) return <div>Error</div>;
         <hr />
         <div className={styles.favouriteSellerContainer}>
           <button
-            className={`inter-regular-16 ${styles.blue} ${styles.favouriteSellerBtn}`}
+            className={`inter-regular-16 ${styles.blue} ${styles.favouriteSellerBtn} ${styles.lrgBtn}`}
           >
             <img
               className={styles.miniBrandLogo}
@@ -574,10 +574,10 @@ if (isError) return <div>Error</div>;
             </div>
             {/* Modal Buttons */}
             <div className={styles.modalButtons}>
-              <button className={`${styles.blue}`} onClick={handleSubmitBid}>
+              <button className={`${styles.blue} ${styles.lrgBtn}`} onClick={handleSubmitBid}>
                 Place bid
               </button>
-              <button className={`${styles.white}`} onClick={handleCloseModal}>
+              <button className={`${styles.white} ${styles.lrgBtn}`} onClick={handleCloseModal}>
                 Go back to listing
               </button>
             </div>
@@ -628,10 +628,10 @@ if (isError) return <div>Error</div>;
             </div>
             {/* Confirm Modal Buttons */}
             <div className={styles.modalButtons}>
-              <button className={`${styles.blue}`} onClick={handleConfirmBid}>
+              <button className={`${styles.blue} ${styles.lrgBtn}`} onClick={handleConfirmBid}>
                 Yes, place bid
               </button>
-              <button className={`${styles.white}`} onClick={handleGoBack}>
+              <button className={`${styles.white} ${styles.lrgBtn}`} onClick={handleGoBack}>
                 Go back
               </button>
             </div>
