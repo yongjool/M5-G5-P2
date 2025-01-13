@@ -226,16 +226,29 @@ button.lrgBtn {
   display: flex;
   direction: row;
   width: 100%;
+  align-content: end;
   justify-content: space-between;
+  padding: 0 1rem;
 }
 
 .otherListingsTitle {
-  align-content: center;
 }
 
 .otherListingsCount {
   align-content: center;
+  padding: 0;
+  margin: 0
 }
+
+/* .otherListingsCarousel {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  gap: 8px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+} */
 
 .footer {
   padding: 16px 0;

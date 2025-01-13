@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
+import { addDays, formatDistance } from "date-fns";
 import styles from "./ListingPage.module.css";
 import Header from "../components/Header/Header"
 import Navbar from "../components/Navigation/Navbar";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ProductAtGlance from "../components/ProductAtGlance/ProductAtGlance";
 import QuestionsAnswers from "../components/QuestionsAnswers/QuestionsAnswers";
+import ListingCard from "../components/ListingCard/ListingCard";
 
 // assets
 import pingLogo from "../assets/ping1.svg";
@@ -24,14 +26,14 @@ import clockIcon from "../assets/clock.svg";
 import toggleIcon from "../assets/toggleOffOn.svg";
 import arrow from "../assets/arrow.svg";
 import downArrow from "../assets/downArrow.svg";
-import { addDays, formatDistance } from "date-fns";
+
 
 // Define interfaces for Listing, user, Bid, and Breadcrumb
 interface Breadcrumb {
   name: string;
   url: string;
 }
-interface Listing {
+export interface Listing {
   listingId: string;
   title: string;
   sellerName: string;
@@ -72,7 +74,7 @@ const ListingPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
   const [bidAmount, setBidAmount] = useState<string>("");
-
+  
   const { id } = useParams();
   const {data, isPending, isError} = useQuery({ queryKey: ["listing", id], queryFn: fetchListing });
 
@@ -381,11 +383,11 @@ if (isError) return <div>Error</div>;
         <div className={styles.otherListingsTitleContainer}>
           <h2>Seller's other listings</h2>
           <div className={`inter-regular-16 ${styles.otherListingsCount}`}>
-            <a>View All (X)</a>
+            <a>View All ({})</a>
           </div>
         </div>
         <div className={styles.otherListingsCarousel}>
-          {/* TODO: add other listing card carousel */}
+          {ListingCard(data)}
         </div>
       </div>
       {/* Upgrade Notice */}

@@ -1,0 +1,56 @@
+.listingCardContainer {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+    background-color: #fff;
+    transition: transform 0.2s;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.listingCardDetailsTop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.listingCardDetailsBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.locationDateContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.location,
+.date {
+    color: #B9B7C1
+}
+
+.location,
+.date,
+.title,
+.bid {
+    padding: 0 1rem;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.bid {
+    color: black;
+    font-size: 1.2em;
+}
