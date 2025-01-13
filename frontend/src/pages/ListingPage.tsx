@@ -160,7 +160,7 @@ const ListingPage: React.FC = () => {
       if (index === 0 || index === breadcrumbs.length - 1) {
         return breadcrumb;
       }
-      return { ...breadcrumb, name: "..." };
+      return { ...breadcrumb, displayName: "..." };
     });
   };
 

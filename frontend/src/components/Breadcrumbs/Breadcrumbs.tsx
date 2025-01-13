@@ -4,6 +4,7 @@ import styles from "./Breadcrumbs.module.css";
 interface Breadcrumb {
   name: string;
   url: string;
+  displayName?: string;
 }
 
 interface BreadcrumbsProps {
@@ -20,7 +21,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, onBreadcrumbClic
           onClick={() => onBreadcrumbClick(index, breadcrumbs)}
           className={styles.breadcrumb}
         >
-          {breadcrumb.name} 
+          {breadcrumb.displayName || breadcrumb.name} 
           {index < breadcrumbs.length - 1 && " / "}
         </span>
       ))}
