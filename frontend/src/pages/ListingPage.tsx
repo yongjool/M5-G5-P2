@@ -154,6 +154,16 @@ const ListingPage: React.FC = () => {
     navigate(path);
   };
 
+  // Truncate breadcrumb names for display
+  const truncateBreadcrumbs = (breadcrumbs: Breadcrumb[]) => {
+    return breadcrumbs.map((breadcrumb, index) => {
+      if (index === 0 || index === breadcrumbs.length - 1) {
+        return breadcrumb;
+      }
+      return { ...breadcrumb, name: "..." };
+    });
+  };
+
 if (isPending) return <div>Loading...</div>;
 if (isError) return <div>Error</div>;
 
@@ -165,7 +175,7 @@ if (isError) return <div>Error</div>;
         <Navbar />
       </header>
       {/* Breadcrumbs */}
-      <Breadcrumbs breadcrumbs={data.breadcrumbs} onBreadcrumbClick={handleBreadcrumbClick} />
+      <Breadcrumbs breadcrumbs={truncateBreadcrumbs(data.breadcrumbs)} onBreadcrumbClick={handleBreadcrumbClick} />
       {/* Listing Details */}
       <div className={styles.listingImageContainer}>
         <div className={styles.heroImageContainer}>
