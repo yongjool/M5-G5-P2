@@ -275,15 +275,18 @@ button.lrgBtn {
 
 .imageCarousel {
   display: flex;
+  overflow-y: hidden;
   overflow-x: scroll;
   gap: 8px;
+  align-items: center;
   justify-content: center;
   margin: 1rem;
 }
 
 .carouselImage {
-  width: 100px;
-  height: auto;
+  height: 6rem;
+  max-height: 150px; /* Add this line to cap the max height */
+  width: 100%;
   cursor: pointer;
 }
 
@@ -644,7 +647,6 @@ input[type="checkbox"]:checked::after {
   width: calc(100% - 2rem);
   max-width: 900px;
   height: auto;
-  margin: 1rem;
   background-color: transparent;
 }
 
