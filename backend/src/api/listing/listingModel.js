@@ -5,7 +5,6 @@ const listingSchema = new mongoose.Schema({
     seller: { type: String, required: true },
     pageViews: { type: Number, required: true },
     watchlistCount: { type: Number, required: true },
-    viewCount: { type: Number, required: true },
     // description: { type: String, required: true },
     // start_price: { type: Number, required: true },
     // location: { type: String, required: true },
