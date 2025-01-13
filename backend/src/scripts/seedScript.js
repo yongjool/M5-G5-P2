@@ -15,7 +15,7 @@ async function seedDB() {
         await client.connect();
         console.log("Connected correctly to server");
 
-        const collection = client.db("app").collection("Listing");
+        const collection = client.db("app").collection("listings");
 
         // The drop() command destroys all data from a collection.
         // Make sure you run it against proper database and collection.
