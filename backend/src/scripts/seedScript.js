@@ -113,7 +113,13 @@ sellers.forEach((seller) => {
         const title = faker.commerce.productName();
         const pageviews = faker.number.int({ min: 1, max: 5000 });
         const watchlistCount = faker.number.int({ min: 1, max: 200 });
-        const images = [faker.image.urlPicsumPhotos(), faker.image.urlPicsumPhotos(), faker.image.urlPicsumPhotos()];
+        const images = [faker.image.urlPicsumPhotos({ height: 500,
+            width: 500
+         }), faker.image.urlPicsumPhotos({ height: 500,
+            width: 500
+         }), faker.image.urlPicsumPhotos({ height: 500,
+            width: 500
+         })];
         const createdAt = faker.date.recent();
         const reserveMet = faker.datatype.boolean();
         const oneDollarReserve = faker.datatype.boolean();
@@ -136,10 +142,10 @@ sellers.forEach((seller) => {
 
         const highestBid = bids.length > 0
             ? Math.max(...bids.map(bid => bid.bidAmount))
-            : 0;
+            : 1; // TODO: update this to be the listing starting price 
 
         listingData.push({
-            listingId: listingIdCounter++, // Add a unique listingId
+            listingId: (listingIdCounter++).toString(), // Add a unique listingId
             title,
             sellerName: seller.sellerName,
             profilePic: seller.profilePic,

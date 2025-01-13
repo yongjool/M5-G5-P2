@@ -19,7 +19,9 @@ async function getAll(req, res, next) {
 
 async function getOne(req, res, next) {
     try {
-        const listing = await Listing.findOne();
+        console.log(req.params);
+        const listing = await Listing.findOne({ listingId: req.params.id });
+        console.log(listing);
         res.status(200).json(listing);
     } catch (err) {
         res.status(500).json({

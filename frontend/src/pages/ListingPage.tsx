@@ -234,8 +234,7 @@ if (isError) return <div>Error</div>;
             alt="Auction expiration date"
           />
           <div className="inter-regular-12">
-            Closes: 11 hrs <br />
-            Wed 18 Dec, 8:30pm
+            {`Closes: ${formatDistance(new Date(), addDays(data.createdAt, 7))}`}
           </div>
         </div>
         <button
@@ -467,8 +466,7 @@ if (isError) return <div>Error</div>;
               <div className={`${styles.listingInfo} inter-regular-12`}>
                 <div>{data.location}</div>
                 <div>
-                  Closes:
-                  {formatDistance(new Date(), addDays(data.createdAt, 7))}
+                  {`Closes: ${formatDistance(new Date(), addDays(data.createdAt, 7))}`}
                 </div>
                 <div className={`${styles.blackText} ${styles.bold}`}>
                   {data.title}
@@ -614,8 +612,7 @@ if (isError) return <div>Error</div>;
               <div className={`${styles.listingInfo} inter-regular-12`}>
                 <div>{data.location}</div>
                 <div>
-                  Closes:{" "}
-                  {addDays(data.createdAt, 7).toLocaleDateString("en-NZ")}
+                  {`Closes: ${formatDistance(new Date(), addDays(data.createdAt, 7))}`}
                 </div>
                 <div className={`${styles.bold} ${styles.blackText}`}>
                   {data.title}
