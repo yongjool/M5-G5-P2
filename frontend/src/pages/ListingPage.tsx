@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
 import styles from "./ListingPage.module.css";
 import Header from "../components/Header/Header"
 import Navbar from "../components/Navigation/Navbar";
@@ -24,6 +25,7 @@ import toggleIcon from "../assets/toggleOffOn.svg";
 import arrow from "../assets/arrow.svg";
 import downArrow from "../assets/downArrow.svg";
 import PHIMAGE from "../assets/PHIMAGE.jpg";
+
 // Define interfaces for Listing, user, and Bid
 interface Listing {
   title: string;
@@ -100,6 +102,15 @@ const ListingPage: React.FC = () => {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
   const [bidAmount, setBidAmount] = useState<string>("");
 
+  const { id } = useParams();
+  const {data, isPending, isError} = useQuery({ queryKey: ["listing", id], queryFn: fetchListing });
+
+  async function fetchListing(): Promise<Listing> {
+    const res = await fetch(`http://127.0.0.1:4000/api/listing/${id}`)
+    const data = await res.json();
+    return data;
+  }
+
   // Set the initial selected image when the component mounts
   React.useEffect(() => {
     if (listing.images && listing.images.length > 0) {
@@ -169,6 +180,9 @@ const ListingPage: React.FC = () => {
     navigate(path);
   };
 
+if (isPending) return <div>Loading...</div>;
+if (isError) return <div>Error</div>;
+
   return (
     <div className={styles.listingPage}>
       {/* Header */}
@@ -186,7 +200,7 @@ const ListingPage: React.FC = () => {
           )}
         </div>
         <div className={styles.imageCarousel}>
-          {listing.images.map((image, index) => (
+          {data?.images.map((image, index) => (
             <img
               key={index}
               className={styles.carouselImage}
@@ -197,7 +211,7 @@ const ListingPage: React.FC = () => {
           ))}
         </div>
         <div className={styles.listingTitle}>
-          <h1>{listing.title}</h1>
+          <h1>{data?.title}</h1>
         </div>
       </div>
       {/* Bid Container */}
