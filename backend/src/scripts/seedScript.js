@@ -66,7 +66,7 @@ async function seedDB() {
             const sellerRating = faker.number.float({
                 min: 50.0,
                 max: 100.0,
-                precision: 0.01,
+                fractionDigits: 2,
             });
 
             // Randomly select a New Zealand city

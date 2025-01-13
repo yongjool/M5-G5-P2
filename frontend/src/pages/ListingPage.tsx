@@ -74,7 +74,9 @@ const ListingPage: React.FC = () => {
   async function fetchListing(): Promise<Listing> {
     const res = await fetch(`http://127.0.0.1:4000/api/listing/${id}`)
     const data = await res.json();
-    return data;
+    return { ...data,
+      createdAt: new Date(data.createdAt)
+     } ;
   }
 
   // Set the initial selected image when the component mounts
@@ -313,7 +315,7 @@ if (isError) return <div>Error</div>;
         <div className={styles.sellerMemberSince}>
           <div className={styles.memberSinceText}>Member since</div>
           <div className={styles.sellerCreatedAt}>
-            {data.user.createdAt}
+            {data.createdAt.toDateString()}
           </div>
         </div>
         <hr />
@@ -450,10 +452,7 @@ if (isError) return <div>Error</div>;
                 <div>{data.location}</div>
                 <div>
                   Closes:
-                  {new Date(
-                    new Date(data.createdAt).getTime() +
-                      7 * 24 * 60 * 60 * 1000
-                  ).toDateString()}
+                  {new Date(data.createdAt).setDate(data.createdAt.getDate() + 7)}
                 </div>
                 <div className={`${styles.blackText} ${styles.bold}`}>
                   {data.title}
