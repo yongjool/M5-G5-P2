@@ -76,57 +76,58 @@ async function seedDB() {
             sellers.push({ sellerName, profilePic, totalRatings, sellerRating, location });
         }
 
-        // Generate listings for each seller
-        sellers.forEach((seller) => {
-            const numberOfListings = faker.number.int({ min: 1, max: 10 });
+let listingIdCounter = 1; // Start a counter for unique listing IDs
 
-            for (let i = 0; i < numberOfListings; i++) {
-                const title = faker.commerce.productName();
-                const pageviews = faker.number.int({ min: 1, max: 5000 });
-                const watchlistCount = faker.number.int({ min: 1, max: 200 });
-                const images = [faker.image.url(), faker.image.url(), faker.image.url()];
-                const createdAt = faker.date.recent();
-                const reserveMet = faker.datatype.boolean();
-                const oneDollarReserve = faker.datatype.boolean();
+sellers.forEach((seller) => {
+    const numberOfListings = faker.number.int({ min: 1, max: 10 });
 
-                // Generate a random bid history
-                const bids = [];
-                const bidCount = faker.number.int({ min: 0, max: 4 });
-                let lastBidAmount = 0;
+    for (let i = 0; i < numberOfListings; i++) {
+        const title = faker.commerce.productName();
+        const pageviews = faker.number.int({ min: 1, max: 5000 });
+        const watchlistCount = faker.number.int({ min: 1, max: 200 });
+        const images = [faker.image.url(), faker.image.url(), faker.image.url()];
+        const createdAt = faker.date.recent();
+        const reserveMet = faker.datatype.boolean();
+        const oneDollarReserve = faker.datatype.boolean();
 
-                for (let j = 0; j < bidCount; j++) {
-                    const bidAmount = lastBidAmount + faker.number.int({ min: 1, max: 50 });
-                    lastBidAmount = bidAmount;
+        const bids = [];
+        const bidCount = faker.number.int({ min: 0, max: 4 });
+        let lastBidAmount = 0;
 
-                    bids.push({
-                        bidderName: faker.person.fullName(),
-                        bidAmount,
-                        bidTime: faker.date.past(),
-                    });
-                }
+        for (let j = 0; j < bidCount; j++) {
+            const bidAmount = lastBidAmount + faker.number.int({ min: 1, max: 50 });
+            lastBidAmount = bidAmount;
 
-                const highestBid = bids.length > 0
-                    ? Math.max(...bids.map(bid => bid.bidAmount))
-                    : 0;
+            bids.push({
+                bidderName: faker.person.fullName(),
+                bidAmount,
+                bidTime: faker.date.past(),
+            });
+        }
 
-                listingData.push({
-                    title,
-                    sellerName: seller.sellerName,
-                    profilePic: seller.profilePic,
-                    totalRatings: seller.totalRatings,
-                    sellerRating: seller.sellerRating,
-                    location: seller.location,
-                    pageviews,
-                    watchlistCount,
-                    images,
-                    createdAt,
-                    highestBid,
-                    reserveMet,
-                    oneDollarReserve,
-                    bids,
-                });
-            }
+        const highestBid = bids.length > 0
+            ? Math.max(...bids.map(bid => bid.bidAmount))
+            : 0;
+
+        listingData.push({
+            listingId: listingIdCounter++, // Add a unique listingId
+            title,
+            sellerName: seller.sellerName,
+            profilePic: seller.profilePic,
+            totalRatings: seller.totalRatings,
+            sellerRating: seller.sellerRating,
+            location: seller.location,
+            pageviews,
+            watchlistCount,
+            images,
+            createdAt,
+            highestBid,
+            reserveMet,
+            oneDollarReserve,
+            bids,
         });
+    }
+});
 
         await collection.insertMany(listingData);
 

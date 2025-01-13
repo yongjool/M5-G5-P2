@@ -24,76 +24,42 @@ import clockIcon from "../assets/clock.svg";
 import toggleIcon from "../assets/toggleOffOn.svg";
 import arrow from "../assets/arrow.svg";
 import downArrow from "../assets/downArrow.svg";
-import PHIMAGE from "../assets/PHIMAGE.jpg";
 
 // Define interfaces for Listing, user, and Bid
 interface Listing {
+  listingId: string;
   title: string;
-  seller: user;
-  pageViews: number;
-  id: string;
+  sellerName: string;
+  profilePic: string;
+  totalRatings: number;
+  sellerRating: number;
+  location: string;
+  pageviews: number;
   watchlistCount: number;
-  listingTitle: string;
-  bids: Bid[];
-  highestBid: () => Bid | null;
-  viewCount: number;
   images: string[];
   createdAt: Date;
-  //   reserveStatus: string;
+  highestBid: number;
+  reserveMet: boolean;
+  oneDollarReserve: boolean;
+  bids: Bid[];
+  
 }
 
-interface user {
+interface User {
   id: string;
   name: string;
   createdAt: Date;
   profilePic: string;
-  rating: string;
+  rating: number;
   totalRatings: number;
   location: string;
 }
+
 interface Bid {
-  amount: number;
   bidderName: string;
-  placedAt: Date;
-  id: string;
-  listingId: string;
+  bidAmount: number;
+  bidTime: Date;
 }
-
-// Sample bid data
-const bid: Bid = {
-  amount: 100,
-  bidderName: "TradeMeGuy7",
-  placedAt: new Date(),
-  id: "1234567890",
-  listingId: "1234567890",
-};
-
-// Sample listing data
-const listing: Listing = {
-  title: "Computer Monitor",
-  seller: {
-    id: "1234567890",
-    name: "TradeMeGuy7",
-    createdAt: new Date(),
-    profilePic: "seller profile pic",
-    rating: "99.87",
-    totalRatings: 1234,
-    location: "Miramar, Wellington",
-  },
-  pageViews: 1234,
-  id: "1234567890",
-  watchlistCount: 123,
-  listingTitle: "Computer Monitor",
-  highestBid: function () {
-    return this.bids.reduce((previous, current) =>
-      previous.amount > current.amount ? previous : current
-    );
-  },
-  bids: [bid],
-  viewCount: 1234,
-  images: [PHIMAGE, twitterLogo, PHIMAGE],
-  createdAt: new Date(),
-};
 
 const ListingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -113,10 +79,10 @@ const ListingPage: React.FC = () => {
 
   // Set the initial selected image when the component mounts
   React.useEffect(() => {
-    if (listing.images && listing.images.length > 0) {
-      setSelectedImage(listing.images[0]);
+    if (data && data.images.length > 0) {
+      setSelectedImage(data.images[0]);
     }
-  }, [listing.images]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
   // TODO: FIX disabled warning: React Hook useEffect has a missing dependency: 'listing.images'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
 
   // Handle image click to change the selected image
@@ -217,7 +183,7 @@ if (isError) return <div>Error</div>;
       {/* Bid Container */}
       <div className={styles.bidContainer}>
         <div className="inter-regular-12">Starting price</div>
-        <h1>${listing.highestBid()?.amount}</h1>
+        <h1>${data.highestBid}</h1>
         <button
           className={`inter-regular-16 ${styles.blue} ${styles.lrgBtn} `}
           onClick={handlePlaceBid}
@@ -265,27 +231,27 @@ if (isError) return <div>Error</div>;
           Add to Watchlist
         </button>
         <div className={`inter-regular-12 ${styles.watchlistCount}`}>
-          {listing.watchlistCount} others watchlisted
+          {data.watchlistCount} others watchlisted
         </div>
       </div>
       {/* Seller Profile */}
       <div className={styles.sellerProfileContainer}>
         <div className={styles.sellerProfilePic}>
-          <img src={listing.seller.profilePic} alt="seller profile pic" />
+          <img src={data.profilePic} alt="seller profile pic" />
         </div>
         <div className={`inter-regular-12 ${styles.sellerProfileText}`}>
           <div>
             <a>
-              {listing.seller.name} ({listing.seller.totalRatings})
+              {data.sellerName} ({data.totalRatings})
             </a>
           </div>
           <div>
             <span className={`${styles.blackText} ${styles.bold}`}>
-              {listing.seller.rating}
+              {data.sellerRating}
             </span>
             % positive feedback
           </div>
-          <div>Seller located in {listing.seller.location}</div>
+          <div>Seller located in {data.location}</div>
         </div>
       </div>
       {/* Product At Glance */}
@@ -332,22 +298,22 @@ if (isError) return <div>Error</div>;
           <h2>About the seller</h2>
         </div>
         <div className={styles.sellerProfile}>
-          <div>{listing.seller.profilePic}</div>
-          <div className="inter-bold-14">{listing.seller.name}</div>
+          <div>{data.profilePic}</div>
+          <div className="inter-bold-14">{data.sellerName}</div>
           <div>
-            {listing.seller.rating}% positive feedback (
-            {listing.seller.totalRatings})
+            {data.sellerRating}% positive feedback (
+            {data.totalRatings})
           </div>
         </div>
         <div className={styles.sellerLocationContainer}>
           <div className={styles.locationText}>Location</div>
-          <div className={styles.sellerLocation}>{listing.seller.location}</div>
+          <div className={styles.sellerLocation}>{data.location}</div>
         </div>
         <hr />
         <div className={styles.sellerMemberSince}>
           <div className={styles.memberSinceText}>Member since</div>
           <div className={styles.sellerCreatedAt}>
-            {listing.seller.createdAt.toDateString()}
+            {data.user.createdAt}
           </div>
         </div>
         <hr />
@@ -382,8 +348,8 @@ if (isError) return <div>Error</div>;
           <img className={styles.miniBrandLogo} src={shareNodes} alt="Share" />
           <div className={styles.shareLinkText}>Share this listing</div>
         </a>
-        <div className={styles.pageViews}>Page views: {listing.viewCount}</div>
-        <div className={styles.listingId}>Listing #{listing.id}</div>
+        <div className={styles.pageViews}>Page views: {data.pageviews}</div>
+        <div className={styles.listingId}>Listing #{data.listingId}</div>
         <div className={styles.communityWatch}>
           <img
             className={styles.miniBrandLogo}
@@ -478,24 +444,24 @@ if (isError) return <div>Error</div>;
             {/* Listing Info */}
             <div className={styles.listingInfoContainer}>
               <div className={styles.heroImagePreview}>
-                <img src={listing.images[0]} />
+                <img src={data.images[0]} />
               </div>
               <div className={`${styles.listingInfo} inter-regular-12`}>
-                <div>{listing.seller.location}</div>
+                <div>{data.location}</div>
                 <div>
                   Closes:
                   {new Date(
-                    new Date(listing.createdAt).getTime() +
+                    new Date(data.createdAt).getTime() +
                       7 * 24 * 60 * 60 * 1000
                   ).toDateString()}
                 </div>
                 <div className={`${styles.blackText} ${styles.bold}`}>
-                  {listing.title}
+                  {data.title}
                 </div>
                 <div>No reserve, no bid</div>
                 {/* PLACEHOLDER TEXT ADD DYNAMIC VALUES ^^^*/}
                 <div className={`${styles.blackText} ${styles.bold}`}>
-                  ${listing.highestBid()?.amount}
+                  ${data.highestBid}
                 </div>
               </div>
             </div>
@@ -628,24 +594,24 @@ if (isError) return <div>Error</div>;
             {/* Confirm Listing Info */}
             <div className={styles.listingInfoContainer}>
               <div className={`${styles.heroImage} ${styles.heroImagePreview}`}>
-                <img src={listing.images[0]} />
+                <img src={data.images[0]} />
               </div>
               <div className={`${styles.listingInfo} inter-regular-12`}>
-                <div>{listing.seller.location}</div>
+                <div>{data.location}</div>
                 <div>
                   Closes:{" "}
                   {new Date(
-                    new Date(listing.createdAt).getTime() +
+                    new Date(data.createdAt).getTime() +
                       7 * 24 * 60 * 60 * 1000
                   ).toDateString()}
                 </div>
                 <div className={`${styles.bold} ${styles.blackText}`}>
-                  {listing.title}
+                  {data.title}
                 </div>
                 <div>No reserve, no bid</div>
                 {/* PLACEHOLDER TEXT ADD DYNAMIC VALUES */}
                 <div className={`${styles.bold} ${styles.blackText}`}>
-                  ${listing.highestBid()?.amount}
+                  ${data.highestBid}
                 </div>
               </div>
             </div>
