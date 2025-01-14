@@ -61,6 +61,7 @@ async function seedDB() {
         // Create a fixed number of sellers
         for (let i = 0; i < 500; i++) {
             const sellerName = faker.person.firstName() + " " + faker.person.lastName();
+            const sellerId = i.toString();
             const profilePic = faker.image.avatar();
             const totalRatings = faker.number.int({ min: 1, max: 10000 });
             const sellerRating = faker.number.float({
@@ -73,7 +74,7 @@ async function seedDB() {
             const location = faker.helpers.arrayElement(newZealandLocations).city + ", " + faker.helpers.arrayElement(newZealandLocations).region;
 
             // Store seller details
-            sellers.push({ sellerName, profilePic, totalRatings, sellerRating, location });
+            sellers.push({ sellerName, sellerId, profilePic, totalRatings, sellerRating, location });
         }
 
 // Function to generate a random breadcrumb trail
@@ -148,6 +149,7 @@ sellers.forEach((seller) => {
             listingId: (listingIdCounter++).toString(), // Add a unique listingId
             title,
             sellerName: seller.sellerName,
+            sellerId: seller.sellerId,
             profilePic: seller.profilePic,
             totalRatings: seller.totalRatings,
             sellerRating: seller.sellerRating,

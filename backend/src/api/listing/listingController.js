@@ -33,14 +33,14 @@ async function getOne(req, res, next) {
 async function getAllUsersListings(req, res, next) {
     try {
         console.log(req.params);
-        const listings = await Listing.find({ userId: req.params.userId });
+        const listings = await Listing.find({ sellerId: req.params.sellerId });
         console.log(listings);
         res.status(200).json(listings);
     } catch (err) {
         res.status(500).json({
-            error: 'An error occurred while getting a listing.',
+            error: 'An error occurred while getting user listings.',
         });
     }
 }
 
-module.exports = {listingController: { getAll, getOne }};
+module.exports = {listingController: { getAll, getOne, getAllUsersListings }};

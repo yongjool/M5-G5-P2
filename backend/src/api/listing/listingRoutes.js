@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/', listingController.getAll);
 router.get('/:id', listingController.getOne);
-router.get('/userId/:userId', listingController.getAllUsersListings);
+router.get('/seller/:sellerId', listingController.getAllUsersListings);
 
 
 module.exports = router;

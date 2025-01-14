@@ -37,6 +37,7 @@ export interface Listing {
   listingId: string;
   title: string;
   sellerName: string;
+  sellerId: string;
   profilePic: string;
   totalRatings: number;
   sellerRating: number;
@@ -74,17 +75,54 @@ const ListingPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
   const [bidAmount, setBidAmount] = useState<string>("");
+  const [sellerListings, setSellerListings] = useState<Listing[]>([]);
   
   const { id } = useParams();
   const {data, isPending, isError} = useQuery({ queryKey: ["listing", id], queryFn: fetchListing });
-
+  const sellerId = data?.sellerId;
+  
   async function fetchListing(): Promise<Listing> {
     const res = await fetch(`http://127.0.0.1:4000/api/listing/${id}`)
     const data = await res.json();
-    return { ...data,
-      createdAt: new Date(data.createdAt)
-     } ;
+    return parseListingDTO(data);
   }
+
+async function fetchSellerListings(sellerId: string): Promise<Listing[]> {
+  const res = await fetch(`http://127.0.0.1:4000/api/listing/seller/${sellerId}`);
+  const sellerListings = await res.json();
+  return sellerListings.map(parseListingDTO);
+}
+
+function parseListingDTO(data: any): Listing {
+  return {
+    listingId: data.listingId,
+    title: data.title,
+    sellerName: data.sellerName,
+    sellerId: data.sellerId,
+    profilePic: data.profilePic,
+    totalRatings: data.totalRatings,
+    sellerRating: data.sellerRating,
+    location: data.location,
+    pageviews: data.pageviews,
+    watchlistCount: data.watchlistCount,
+    images: data.images,
+    createdAt: new Date(data.createdAt),
+    highestBid: data.highestBid,
+    reserveMet: data.reserveMet,
+    oneDollarReserve: data.oneDollarReserve,
+    bids: data.bids,
+    breadcrumbs: data.breadcrumbs,
+  };
+}
+
+React.useEffect(() => {
+  if (data) {
+    fetchSellerListings(data.sellerId).then(setSellerListings);
+    console.log(sellerListings);
+  }
+}, [data]);
+
+  
 
   // Set the initial selected image when the component mounts
   React.useEffect(() => {
@@ -383,11 +421,13 @@ if (isError) return <div>Error</div>;
         <div className={styles.otherListingsTitleContainer}>
           <h2>Seller's other listings</h2>
           <div className={`inter-regular-16 ${styles.otherListingsCount}`}>
-            <a>View All ({})</a>
+            <a>View All ({sellerListings.length})</a>
           </div>
         </div>
         <div className={styles.otherListingsCarousel}>
-          {ListingCard(data)}
+          {sellerListings.map((listing) => (
+            <ListingCard listing={listing} key={listing.listingId} />
+          ))}
         </div>
       </div>
       {/* Upgrade Notice */}

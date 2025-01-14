@@ -3,7 +3,7 @@ import styles from "./ListingCard.module.css";
 
 import React from 'react'
 
-function ListingCard(listing: Listing) {
+function ListingCard({listing}: {listing: Listing}) {
   return (
     <div className={styles.listingCardContainer}>
        <img src={listing.images[0]} className={styles.listingCardImage} />
