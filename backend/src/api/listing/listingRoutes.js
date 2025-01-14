@@ -7,5 +7,4 @@ router.get('/', listingController.getAll);
 router.get('/:id', listingController.getOne);
 router.get('/seller/:sellerId', listingController.getAllUsersListings);
 
-
 module.exports = router;

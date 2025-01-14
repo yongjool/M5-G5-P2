@@ -116,9 +116,6 @@ function parseListingDTO(data: any): Listing {
     oneDollarReserve: data.oneDollarReserve,
     bids: data.bids,
     breadcrumbs: data.breadcrumbs,
-  // TODO: add description and startPrice
-  // description: string;
-  // startPrice: number;
   };
 }
 
