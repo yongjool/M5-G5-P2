@@ -51,6 +51,9 @@ export interface Listing {
   oneDollarReserve: boolean;
   bids: Bid[];
   breadcrumbs: Breadcrumb[];
+  // TODO: add description and startPrice
+  // description: string;
+  // startPrice: number;
 }
 
 interface User {
@@ -113,6 +116,9 @@ function parseListingDTO(data: any): Listing {
     oneDollarReserve: data.oneDollarReserve,
     bids: data.bids,
     breadcrumbs: data.breadcrumbs,
+  // TODO: add description and startPrice
+  // description: string;
+  // startPrice: number;
   };
 }
 
@@ -130,8 +136,7 @@ React.useEffect(() => {
     if (data && data.images.length > 0) {
       setSelectedImage(data.images[0]);
     }
-  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
-  // TODO: FIX disabled warning: React Hook useEffect has a missing dependency: 'listing.images'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  }, [data]); 
 
   // Handle image click to change the selected image
   const handleImageClick = (image: string) => {

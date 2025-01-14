@@ -10,7 +10,7 @@ const listingSchema = new mongoose.Schema({
     watchlistCount: { type: Number, required: true },
     // TODO: add description and start_price
     // description: { type: String, required: true },
-    // start_price: { type: Number, required: true },
+    // startPrice: { type: Number, required: true },
     location: { type: String, required: true },
     createdAt: { type: String, required: true },
     images: { type: Array },
