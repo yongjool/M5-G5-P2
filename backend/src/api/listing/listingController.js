@@ -1,8 +1,6 @@
 const Listing = require('./listingModel');
 
 async function getAll(req, res, next) {
-    
-
     try {
         console.log('try to getAll');
         const listings = await Listing.find();
