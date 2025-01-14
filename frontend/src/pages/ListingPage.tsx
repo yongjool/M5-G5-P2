@@ -93,6 +93,7 @@ async function fetchSellerListings(sellerId: string): Promise<Listing[]> {
   return sellerListings.map(parseListingDTO);
 }
 
+// DATA TRANSFER OBJECT (DTO) PARSING FUNCTION
 function parseListingDTO(data: any): Listing {
   return {
     listingId: data.listingId,
