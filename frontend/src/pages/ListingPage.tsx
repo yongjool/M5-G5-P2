@@ -119,7 +119,7 @@ function parseListingDTO(data: any): Listing {
   };
 }
 
-useEffect(() => {
+React.useEffect(() => {
   if (data) {
     fetchSellerListings(data.sellerId).then(setSellerListings);
     console.log(sellerListings);
@@ -129,7 +129,7 @@ useEffect(() => {
   
 
   // Set the initial selected image when the component mounts
-  useEffect(() => {
+  React.useEffect(() => {
     if (data && data.images.length > 0) {
       setSelectedImage(data.images[0]);
     }
