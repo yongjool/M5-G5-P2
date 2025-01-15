@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { addDays, formatDistance } from "date-fns";
@@ -119,7 +119,7 @@ function parseListingDTO(data: any): Listing {
   };
 }
 
-React.useEffect(() => {
+useEffect(() => {
   if (data) {
     fetchSellerListings(data.sellerId).then(setSellerListings);
     console.log(sellerListings);
@@ -129,7 +129,7 @@ React.useEffect(() => {
   
 
   // Set the initial selected image when the component mounts
-  React.useEffect(() => {
+  useEffect(() => {
     if (data && data.images.length > 0) {
       setSelectedImage(data.images[0]);
     }
