@@ -231,9 +231,6 @@ button.lrgBtn {
   padding: 0 1rem;
 }
 
-.otherListingsTitle {
-}
-
 .otherListingsCount {
   align-content: center;
   padding: 0;
@@ -581,9 +578,14 @@ input[type="checkbox"]:checked::after {
 }
 
 .listingTitle {
+  display: flex;
   margin: 1rem;
   font-weight: bold;
+  text-align: left;
+  width: 100%;
+  padding: 0 0 0 1rem;
 }
+
 
 .copyrightText {
   display: flex;
